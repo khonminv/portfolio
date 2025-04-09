@@ -1,0 +1,45 @@
+1) Portfolio
+
+
+디자인 커스터마이징 방식으로 진행합니다.
+
+수업을 진행하고, 설명 문서를 작성하는 방식으로 진행합니다.
+
+
+
+2) Project
+
+
+현재 만들고 있는 웹 사이트를 코드를 업데이트합니다.
+
+마찬가지로 수업을 진행하고, 설명 문서를 작성하는 방식으로 진행합니다.
+
+
+
+3) Open Source
+
+
+UIUX 과제물로 작성합니다. 만들고 코드 업데이트합니다.
+
+
+
+4) Notion Resume
+
+
+이력서 내용을 Notion으로 작성합니다.
+
+
+
+5) Notion Specs
+
+
+배운 내용을 Notion으로 작성합니다.
+
+HTML / CSS / jQuery / JavaScript / SCSS / Libraries : SwiperJS, GSAP ...
+
+
+
+6) Figma
+
+
+포트폴리오 관련 디자인 UI 프로토타입을 작성합니다.

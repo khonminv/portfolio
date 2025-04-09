@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>basic :: Mobile Menu</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap">
+<style>
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, table, dl, dd {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+ul, ol {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+}
+.menu {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 100vh; /* 딤창의 크기를 디바이스 전체 크기로 지정합니다. */
+	background-color: rgba(0,0,0,.6);
+}
+.menu nav {
+	width: 80vw;
+	max-height: 72vh; /* 메뉴 크기를 디바이스의 72%로 지정합니다. */
+	overflow-y: auto; /* 메뉴 크기가 넘칠 경우에 스크롤바가 생성됩니다. */
+	font-size: 0.875em;
+}
+.menu nav > ul > li > a {
+	display: block;
+	line-height: 3.5;
+	text-indent: 1.25em;
+	text-decoration: none;
+	background-color: #24bbaf;
+	color: #fff;
+}
+.menu nav > ul > li.active > a {
+	background-color: #00998d;
+}
+.menu ul ul {
+	display: none; /* display: block; */
+	padding: 0.375em 0;
+	background-color: rgba(0,0,0,.1);
+}
+.menu ul ul a {
+	display: block;
+	width: 100%;
+	line-height: 2.75;
+	text-indent: 1.25em;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	$("nav > ul > li").click(function(e){
+		e.preventDefault();
+
+		if($(this).hasClass("active") == false){
+			$("nav > ul > li").removeClass("active");
+			$(this).addClass("active");
+			$("nav ul ul").slideUp(300);
+			$(this).find("ul").slideDown(300);
+		}
+		else{
+			$(this).removeClass("active");
+			$(this).find("ul").slideUp(300);
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="menu">
+	<nav>
+		<ul>
+			<li>
+				<a href="">HTML</a>
+				<ul>
+					<li><a href="">HTML Tutorial</a></li>
+					<li><a href="">HTML Forms</a></li>
+					<li><a href="">HTML5</a></li>
+					<li><a href="">HTML Graphics</a></li>
+					<li><a href="">HTML Media</a></li>
+					<li><a href="">HTML APIs</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">CSS</a>
+				<ul>
+					<li><a href="">CSS Tutorial</a></li>
+					<li><a href="">CSS3</a></li>
+					<li><a href="">CSS Responsive</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">JavaScript</a>
+				<ul>
+					<li><a href="">JS Tutorial</a></li>
+					<li><a href="">JS Forms</a></li>
+					<li><a href="">JS Objects</a></li>
+					<li><a href="">JS Functions</a></li>
+					<li><a href="">JS HTML DOM</a></li>
+					<li><a href="">JS Brower BOM</a></li>
+					<li><a href="">JS Libraries</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">jQuery</a>
+				<ul>
+					<li><a href="">jQuery Tutorial</a></li>
+					<li><a href="">jQuery Effects</a></li>
+					<li><a href="">jQuery HTML</a></li>
+					<li><a href="">jQuery Traversing</a></li>
+					<li><a href="">jQuery AJAX</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</div>
+</body>
+</html>

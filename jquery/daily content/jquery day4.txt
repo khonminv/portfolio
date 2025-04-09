@@ -1,0 +1,126 @@
+﻿1) 오늘 배운 문법
+
+
+$(노드).css({속성: 값, 속성: 값});
+
+$(노드).addClass(클래스 이름);
+
+$(노드).click(function(){
+	실행문;
+});
+
+$(window).ready(function(){
+	실행문;
+});
+
+
+
+2) Window 이벤트
+
+
+2-1) load 이벤트
+
+HTML을 다 읽고 코드 준비가 다 된 상태 이벤트입니다.
+
+$(window).ready(function(){
+});
+
+$(function(){
+});
+
+
+2-2) resize 이벤트
+
+화면 크기를 재조정하는 이벤트입니다.
+
+$(window).resize(function(){
+});
+
+
+2-3) scroll 이벤트
+
+스크롤 이벤트입니다.
+
+$(window).scroll(function(){
+});
+
+
+
+3) 학습 태도
+
+
+'어느 부분을 변경해야 하나?'
+
+'바꿀 수 없다면 어디 명령어인가?(jQuery 혹은 JavaScript)'
+
+
+
+4) 연습 예제
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>basic :: jQuery Node Access</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<style>
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #555;
+	color: #000;
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li {
+	margin-top: 20px;
+}
+.title {
+	margin: 0;
+	padding: 0;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+.container {
+	margin-top: 35px;
+}
+.active {
+	background-color: #ff0;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+// $(window).ready(function(){
+$(function(){
+	$("#tutorial li").click(function(){
+		$("#tutorial li").removeClass("active");
+		$(this).addClass("active");
+	});
+});
+</script>
+</head>
+
+<body>
+<h1 class="title">basic :: jQuery Node Access</h1>
+<div class="container">
+	<ul id="tutorial">
+		<li class="html">HTML</li>
+		<li class="css">CSS</li>
+		<li class="css3">CSS3</li>
+		<li class="javascript">JavaScript</li>
+		<li class="jquery"><p>jQuery</p></li>
+		<li class="blank"></li>
+	</ul>
+	<p id="portfolio">portfolio</p>
+</div>
+</body>
+</html>

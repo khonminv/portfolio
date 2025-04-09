@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>basic :: jQuery Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<style>
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, table, dl, dd {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+ul, ol {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
+}
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #f1f1f1;
+	color: #555;
+}
+.title {
+	margin: 0;
+	margin-bottom: 35px;
+	padding: 0;
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 50px;
+	min-width: 440px;
+}
+.controller {
+	display: flex;
+	gap: 12px;
+	padding-top: 20px;
+}
+.controller li a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	transition: all 0.3s;
+}
+.controller li.on a {
+	width: 50px;
+	background-color: #8ac007;
+}
+.picture {
+	position: relative;
+	margin-top: 30px;
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+}
+.picture ul {
+	display: flex;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 2400px;
+	transition: left 0.4s;
+}
+.picture li {
+	width: 400px;
+	height: 400px;
+}
+.picture img {
+	max-width: 100%;
+	height: auto;
+}
+.swiper {
+ 	width: 100%;
+ 	height: 100%;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+ 	background: #fff;
+ 	display: flex;
+	justify-content: center;
+ 	align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".controller li").click(function(e){
+			e.preventDefault();
+			$(this).addClass("on");
+			$(".controller li").not(this).removeClass("on")
+
+			let xoffset=400 * -1 * $(this).index();
+			$(".picture ul").css({left : xoffset});
+		});
+		
+		// let swiper = new Swiper(".mySwiper", {});
+	})
+	
+</script>
+</head>
+
+<body>
+<h1 class="title">basic :: jQuery Example</h1>
+<div class="container">
+	<ul class="controller">
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
+	</ul>
+	<div class="picture">
+		<ul>
+			<li><img src="images/work1.jpg" alt=""></li>
+			<li><img src="images/work2.jpg" alt=""></li>
+			<li><img src="images/work3.jpg" alt=""></li>
+			<li><img src="images/work4.jpg" alt=""></li>
+			<li><img src="images/work5.jpg" alt=""></li>
+			<li><img src="images/work6.jpg" alt=""></li>
+		</ul>
+	</div>
+	<!-- <div class="swiper mySwiper">
+		<div class="swiper-wrapper">
+		  <div class="swiper-slide">Slide 1</div>
+		  <div class="swiper-slide">Slide 2</div>
+		  <div class="swiper-slide">Slide 3</div>
+		  <div class="swiper-slide">Slide 4</div>
+		  <div class="swiper-slide">Slide 5</div>
+		  <div class="swiper-slide">Slide 6</div>
+		  <div class="swiper-slide">Slide 7</div>
+		  <div class="swiper-slide">Slide 8</div>
+		  <div class="swiper-slide">Slide 9</div>
+		</div>
+	</div>	 -->
+</div>
+</body>
+</html>

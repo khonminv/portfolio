@@ -1,0 +1,111 @@
+﻿1) 인터렉션(Interaction)을 만드는 규칙(CSS + JavaScript)
+
+
+1-1) css()보다는 addClass()를 추천
+
+css()로 지정된 스타일은 인라인으로 정의됩니다.
+
+인라인 스타일은 로드된 스타일보다는 훨씬 강하게 스타일 지정됩니다.
+
+addClass()를 사용하면 다채로운 효과를 줄 수 있습니다.
+
+
+1-2) 변형 CSS는 배치 CSS보다는 transform CSS를 사용
+
+transform: scale(xscale, yscale)
+
+transform: scale(xyscale)
+
+tranform: scaleX(xscale)
+
+tranform : scaleY(yscale)
+
+tranform: rotate(30deg)
+
+tranform: translate(xoffset, yoffset)
+
+tranform: translateX(xoffset)
+
+tranform: translateY(yoffset)
+
+
+
+2) 연습 예제
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>문서 제목</title>
+<meta charset="utf-8">
+<style>
+body, ul, ol, h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
+ul, ol {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+img {
+	vertical-align: top;
+}
+.container {
+	position: relative;
+	margin: 0 auto;
+	width: 1000px;
+}
+.container .ball {
+	position: absolute;
+	left: 0;
+	top: 100px;
+	width: 50px;
+	height: 50px;
+	background-color: #09f;
+	border-radius: 25px;
+	transition: left 0.3s;
+}
+.container button.active {
+	background-color: #000;
+	color: #fff;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	$("#btn1").click(function(){
+		// console.log("btn1 clicked");
+		$(".ball").css({"left" : "100px"});
+		$(".button_group button").removeClass("active");
+		$(this).addClass("active");
+	});
+	$("#btn2").click(function(){
+		// console.log("btn2 clicked");
+		$(".ball").css({"left" : "200px"});
+		$(".button_group button").removeClass("active");
+		$(this).addClass("active");
+	});
+	$("#btn3").click(function(){
+		// console.log("btn3 clicked");
+		$(".ball").css({"left" : "300px"});
+		$(".button_group button").removeClass("active");
+		$(this).addClass("active");
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="container">
+	<div class="button_group">
+		<button id="btn1">100px</button>
+		<button id="btn2">200px</button>
+		<button id="btn3">300px</button>
+	</div>
+	<div class="ball"></div>
+</div>
+</body>
+</html>

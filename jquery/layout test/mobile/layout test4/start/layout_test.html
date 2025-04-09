@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>basic :: Layout Test</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap">
+	<style>
+		body,
+		ul,
+		ol,
+		p,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		dl,
+		dt,
+		dd,
+		table,
+		th,
+		td {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			line-height: 1;
+			font-family: "Open Sans", "Noto Sans KR", sans-serif;
+			font-size: 1em;
+			color: #000;
+			height: 3000px;
+			background-color: #a600fa;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+
+		img {
+			vertical-align: top;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		.hd_inr {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			max-width: 1280px;
+			margin: 0 auto;
+			/* border-bottom: 1px solid #ccc; */
+		}
+
+		.inr {
+			max-width: 1280px;
+			margin: 0 auto;
+		}
+
+		/* header */
+		.back {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background-color: #fff;
+			transform: translateX(100%);
+			transition: transform 0.3s ease;
+			z-index: -1;
+
+		}
+
+		.back.active {
+			transform: translateX(0);
+		}
+
+		header {
+			position: fixed;
+			top: 0;
+			height: 110px;
+			width: 100%;
+			transition: 0.3s;
+			z-index: 2000;
+			background-color: transparent;
+		}
+
+		header.active {
+			height: 300px;
+			background-color: #fff;
+			color: #000;
+		}
+		header.fixed a, 
+		header.active a {
+			color: #000;
+		}
+		header.fixed{
+			background-color: #fff;
+		}
+		header .hd_right {
+			display: flex;
+			align-items: center;
+		}
+
+		header .logo {
+			width: 299px;
+			height: 36px;
+		}
+
+		header .logo a {
+			display: block;
+			background: url(images/logo_light.png)0 0 / cover;
+			text-indent: -9999;
+			font-size: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		header.fixed .logo a,
+		header.active .logo a {
+			background: url(images/logo.png) 0 0 / cover;
+		}
+
+		header nav {
+			z-index: 1000;
+		}
+
+		header nav>ul {
+			display: flex;
+		}
+
+		header nav>ul>li {
+			position: relative;
+			padding: 17px 30px;
+		}
+
+		header nav>ul>li.active>a {
+			color: #ff8f45;
+		}
+
+		header nav>ul>li>a {
+			position: relative;
+			display: block;
+			color: #fff;
+			padding: 30px;
+			font-weight: 600;
+		}
+
+		header nav>ul>li.active>a::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 5px;
+			display: block;
+			width: 100%;
+			height: 2px;
+			background-color: #ff8f45;
+		}
+
+		header nav>ul>li>ul {
+			display: none;
+			position: absolute;
+			top: 110px;
+			left: 50%;
+			text-align: center;
+			width: 100%;
+			margin-top: 20px;
+			transform: translateX(-50%);
+		}
+
+		header nav>ul>li>ul>li {
+			padding: 10px 10px;
+		}
+
+		header nav>ul>li.active>ul>li a:hover {
+			color: #ff8f45;
+		}
+
+		header nav>ul>li>ul>li {
+			padding: 10px 10px;
+		}
+
+		header .lang {
+			position: relative;
+			margin-left: 10px;
+		}
+
+		header .lang a {
+			display: flex;
+			align-content: center;
+		}
+
+		header .lang ul {
+			display: none;
+			position: absolute;
+			top: 30px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		header .lang ul li {
+			background-color: #fff;
+		}
+
+		header .lang ul li.active a {
+
+			background-color: #ff8f45;
+			color: #fff;
+		}
+
+		header .lang ul li a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			padding: 10px 20px;
+			font-size: 0.875em;
+		}
+
+		header .lang span {
+			display: block;
+			width: 20px;
+			height: 20px;
+			background: url(images/language.png);
+		}
+		header.fixed .lang span,
+		header.active .lang span {
+			background: url(images/language_dark.png);
+		}
+
+		header .lang p {
+			position: relative;
+			display: block;
+			color: #fff;
+			line-height: 20px;
+			font-size: 1.15em;
+			font-weight: 500;
+			padding: 0 20px 0 10px;
+		}
+
+		header .lang p::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			right: 3px;
+			width: 9px;
+			height: 6px;
+			background: url(images/language_arrow.png);
+			transform: translateY(-50%);
+		}
+		header.fixed .lang p::after,
+		header.active .lang p::after {
+			background: url(images/language_arrow_dark.png);
+		}
+		header.fixed .lang p,
+		header.active .lang p {
+			color: #000;
+		}
+
+		header .tab {
+			display: none;
+			border: 1px solid #fff;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			margin-left: 10px;
+		}
+
+		header.active .tab {
+			border: 1px solid #000;
+		}
+
+		header.active .tab.active {
+			border: none;
+		}
+
+		header .tab span {
+			position: relative;
+			top: 40%;
+			left: 50%;
+			display: block;
+			width: 15px;
+			height: 2px;
+			text-indent: -9999;
+			font-size: 0;
+			overflow: hidden;
+			background-color: #fff;
+			margin-bottom: 5px;
+			transform: translate(-50%, -50%);
+		}
+
+		header.active .tab span {
+			background-color: #000;
+			margin-bottom: 0;
+		}
+
+		header.active .tab.active span:nth-child(1) {
+			transform: rotate(45deg) translate(15%, 50%);
+			left: 30%;
+		}
+
+		header.active .tab.active span:nth-child(2) {
+			transform: rotate(-45deg) translate(5%, 50%);
+			left: 30%;
+		}
+
+		@media only screen and (max-width:1000px) {
+			header {
+				height: 50px;
+				padding: 7px 5%;
+			}
+
+			header.active {
+				height: 50px;
+				background-color: transparent;
+			}
+
+			header.active a {
+				color: #000;
+			}
+
+			header .logo {
+				width: 200px;
+				height: 24px;
+			}
+
+			nav {
+				position: absolute;
+				right: -100%;
+				top: 50px;
+				width: 100%;
+				height: 100vh;
+				background-color: #fff;
+				transition: 0.3s;
+			}
+
+			nav.active {
+				right: 0;
+				z-index: 2000;
+			}
+
+			nav.active ul {
+				flex-direction: column;
+				margin-top: 2em;
+			}
+
+			header nav>ul>li {
+				padding: 10px 30px;
+			}
+
+			header nav>ul>li>a {
+				font-size: 1.25em;
+				padding: 1em;
+			}
+
+			header nav>ul>li.active>a::after {
+				content: "";
+				position: absolute;
+				left: initial;
+				right: 0;
+				top: 50%;
+				display: block;
+				width: 12px;
+				height: 8px;
+				background: url(images/language_arrow_dark.png)0 0 /cover;
+				transform: translateY(-50%) rotate(0deg);
+			}
+
+			header nav>ul>li>a::after {
+				content: "";
+				position: absolute;
+				right: 0;
+				top: 50%;
+				display: block;
+				width: 12px;
+				height: 8px;
+				background: url(images/language_arrow_dark.png)0 0 /cover;
+				transform: translateY(-50%) rotate(-90deg);
+			}
+
+			header nav>ul>li>ul {
+				position: relative;
+				top: 0;
+				transform: translateX(-50%);
+				text-align: left;
+			}
+
+			header nav>ul>li>ul>li {
+				padding: 10px 30px;
+			}
+
+			header .lang p {
+				font-size: 0.875em;
+			}
+
+			header .tab {
+				display: block;
+			}
+		}
+
+		/* slider */
+		.slider {
+			position: relative;
+			height: 100vh;
+			background-image: linear-gradient(50deg, #83e8fe, #83e8fe, #a600fa, #a600fa);
+		}
+
+		.slider .text_box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			color: #fff;
+			font-size: 1.5em;
+		}
+
+		.slider .text_box p {
+			white-space: nowrap;
+		}
+
+		.slider .text_box h3 {
+			font-size: 2em;
+			white-space: nowrap;
+			margin-top: 20px;
+		}
+
+		.slider .pagination {
+			position: absolute;
+			bottom: 50px;
+			left: 50%;
+			transform: translateX(-50%);
+			color: #fff;
+		}
+
+		.slider .pagination a {
+			position: absolute;
+			bottom: 30px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: block;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background-color: #ccc;
+		}
+
+		@media only screen and (max-width:1000px) {
+			.slider .text_box h3 {
+				white-space: wrap;
+			}
+
+			.slider {
+				font-size: .75em;
+			}
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+		$(function () {
+
+			let isMobile;
+
+			$(window).resize(function () {
+				if (window.innerWidth > 1000) { //데스크탑
+					if (isMobile != false) {
+						isMobile = false;
+
+						console.log(isMobile);
+						$("header").removeClass("active");
+						$("nav").removeClass("active");
+						$(".tab").removeClass("active");
+						$(".back").removeClass("active");
+						$("nav > ul > li").removeClass("active");
+						$("nav > ul > li").find("ul").slideUp(300);
+					}
+				}
+				else {
+					if (isMobile != true) { //모바일
+						isMobile = true;
+
+						console.log(isMobile);
+						$("header").removeClass("active");
+						$("header nav ul ul").hide();
+					}
+				}
+			});
+			$(window).trigger("resize");
+
+			//header scroll
+			let next;
+			let prev;
+			let direction;
+
+			$(window).scroll(function () {
+				if ($(window).scrollTop() > window.innerHeight) {
+					next = $(window).scrollTop();
+
+					if (next > prev) {
+						if(direction != "down"){
+							direction = "down";
+							console.log(direction);
+
+							$("header").css({ top: "-100%" });
+							$("header").removeClass("fixed");
+						}
+					}
+					else{
+						if(direction != "up"){
+							direction = "up";
+							console.log(direction);
+
+							$("header").css({ top: 0 });
+							$("header").addClass("fixed");
+						}
+					}
+					prev=next;
+				}
+				if($(window).scrollTop() == 0){
+					if($("header").hasClass("fixed") == true){
+						$("header").removeClass("fixed");
+					}
+				}
+			});
+
+
+
+			//nav
+			$("nav > ul > li").hover(
+				function () {
+					if (isMobile == false) {
+						$(this).addClass("active");
+						$("header").addClass("active");
+						$("header nav ul ul").show();
+					}
+				},
+				function () {
+					if (isMobile == false) {
+						$(this).removeClass("active");
+					}
+				}
+			)
+			$("header").mouseleave(function () {
+				if (isMobile == false) {
+					$("header").removeClass("active");
+					$("header nav ul ul").hide();
+				}
+
+			});
+
+			//lang
+			$(".lang > a").click(function (e) {
+				e.preventDefault();
+
+				$("header .lang ul").toggle(300)
+			});
+
+
+			//mobile
+			$("nav > ul > li").click(function (e) {
+				e.preventDefault();
+				if (isMobile == true) {
+					if ($("nav > ul > li").hasClass("active") == false) {
+						$("nav > ul > li").removeClass("active");
+						$("nav > ul > li").find("ul").slideUp(300);
+						$(this).addClass("active");
+						$(this).children("ul").slideDown(300);
+					}
+					else {
+						$("nav > ul > li").removeClass("active");
+						$("nav > ul > li").find("ul").slideUp(300);
+					}
+				}
+			});
+			$(".tab").click(function (e) {
+				e.preventDefault();
+				if (isMobile == true) {
+					if ($(".tab").hasClass("active") == false) {
+						$("header").addClass("active");
+						$("nav").addClass("active");
+						$(".tab").addClass("active");
+						$(".back").addClass("active");
+					}
+					else {
+						$("header").removeClass("active");
+						$("nav").removeClass("active");
+						$(".tab").removeClass("active");
+						$(".back").removeClass("active");
+						$("nav > ul > li").removeClass("active");
+						$("nav > ul > li").find("ul").slideUp(300);
+					}
+				}
+
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="back"></div>
+			<div class="hd_inr">
+				<div class="logo">
+					<a href="">logo</a>
+				</div>
+				<div class="hd_right">
+					<nav>
+						<ul>
+							<li>
+								<a href="">소개</a>
+								<ul class="sub">
+									<li><a href="">인사말</a></li>
+									<li><a href="">체험관 홍보영상</a></li>
+									<li><a href="">체험관 캐릭터 소개</a></li>
+									<li><a href="">체험관</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="">안내</a>
+								<ul class="sub">
+									<li><a href="">체험관 안내</a></li>
+									<li><a href="">찾아오시는 길</a></li>
+									<li><a href="">유실물 안내</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="">예약</a>
+								<ul class="sub">
+									<li><a href="">이용안내</a></li>
+									<li><a href="">예약하기</a></li>
+									<li><a href="">예약정보확인/취소</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="">커뮤니티</a>
+								<ul class="sub">
+									<li><a href="">공지사항</a></li>
+									<li><a href="">갤러리</a></li>
+									<li><a href="">자주묻는질문</a></li>
+									<li><a href="">보도자료</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+					<div class="lang">
+						<a href="">
+							<span></span>
+							<p>KO</p>
+						</a>
+						<ul>
+							<li class="active"><a href="">KO</a></li>
+							<li><a href="">EN</a></li>
+						</ul>
+					</div>
+					<div class="tab">
+						<a href="">
+							<span>1</span>
+							<span>2</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="slider">
+			<div class="inr">
+				<div class="text_box">
+					<p>세상을 인식하고 구현하는 욕망의 진화!</p>
+					<h3>가상세계, 메타버스를 탐구하고 체험한다</h3>
+				</div>
+				<div class="pagination">
+					<a href=""></a>
+					<span>Scroll Down</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

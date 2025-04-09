@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>basic :: jQuery Test</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap">
+<style>
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, table, dl, dd {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+ul, ol {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
+}
+body {
+	line-height: 1;
+	font-family: "Open Sans", "Noto Sans KR", sans-serif;
+	font-size: 1em;
+}
+.keyvisual {
+	position: relative;
+	margin: 0 auto;
+	width: 1180px;
+	height: 400px;
+	overflow: hidden;
+}
+.keyimage {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 3540px;
+	height: 400px;
+	transition: left 0.3s;
+}
+.keyimage li {
+	float: left;
+	width: 1180px;
+	height: 400px;
+}
+.controller {
+	margin-top: 20px;
+	text-align: center;
+}
+.controller li {
+	display: inline-block;
+	margin: 0 6px;
+}
+.controller li a {
+	display: block;
+	width: 12px;
+	height: 12px;
+	text-indent: -9999px;
+	background-color: #fff;
+	border-radius: 6px;
+	box-shadow: 0 0 2px rgba(0,0,0,.4);
+}
+.controller li.on a {
+	width: 30px;
+	background-color: #c10a28;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+</head>
+
+<body>
+<div class="keyvisual">
+	<ul class="keyimage">
+		<li><img src="images/keyvisual1.jpg" alt="keyvisual"></li>
+		<li><img src="images/keyvisual2.jpg" alt="keyvisual"></li>
+		<li><img src="images/keyvisual3.jpg" alt="keyvisual"></li>
+	</ul>
+</div>
+<div class="controller">
+	<ul>
+		<li><a href="">1</a></li>
+		<li><a href="">2</a></li>
+		<li><a href="">3</a></li>
+	</ul>
+</div>
+</body>
+</html>

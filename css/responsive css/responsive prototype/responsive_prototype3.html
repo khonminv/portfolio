@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>basic :: Media Quries</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap">
+<style>
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, table, dl, dd {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+ul, ol {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
+}
+body {
+	margin: 20px;
+	padding: 20px;
+	overflow-x: hidden;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background: #ccc;
+	color: #555;
+}
+.title {
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 50px;
+}
+.box_group {
+	display: flex;
+	flex-wrap: wrap;
+	/* align-items: stretch; */
+	width: 100%;
+}
+.box_group div[class^=box] {
+	display: flex;
+	/* align-items: center; */
+	padding: 20px;
+	width: 25%;
+	line-height: 1.5;
+	font-size: 0.875em;
+	background-color: #fff;
+	box-sizing: border-box;
+}
+.line {
+	margin-top: 50px;
+	padding: 20px;
+	overflow: hidden;
+	line-height: 1.5;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 0.875em;
+	background-color: #fff;
+}
+.multi_line {
+	margin-top: 50px;
+	padding: 20px;
+	background-color: #fff;
+}
+.multi_line p {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	max-height: 3em;
+	overflow: hidden;
+	line-height: 1.5;
+	text-overflow: ellipsis;
+	font-size: 0.875em;
+}
+
+@media only screen and (max-width: 800px) {
+	.box_group div[class^=box] {
+		width: 50%;
+	}
+}
+</style>
+</head>
+
+<body>
+<h1 class="title">CSS3 Media Quries</h1>
+<div class="container">
+	<div class="box_group">
+		<div class="box1">
+			box1 :<br><br>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis erat at nisl ullamcorper, vitae fringilla tortor condimentum. Integer eget pellentesque mi. Donec semper nunc vitae metus tempus malesuada. Sed rhoncus tincidunt risus.</div>
+		<div class="box2">box2 :</div>
+		<div class="box3">box3 :</div>
+		<div class="box4">box4 : </div>
+	</div>
+	<div class="line">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis erat at nisl ullamcorper, vitae fringilla tortor condimentum. Integer eget pellentesque mi. Donec semper nunc vitae metus tempus malesuada. Sed rhoncus tincidunt risus.
+	</div>
+	<div class="multi_line">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis erat at nisl ullamcorper, vitae fringilla tortor condimentum. Integer eget pellentesque mi. Donec semper nunc vitae metus tempus malesuada. Sed rhoncus tincidunt risus.
+		</p>
+	</div>
+</div>
+</body>
+</html>

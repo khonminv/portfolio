@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>basic :: jQuery Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap">
+<style>
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, table, dl, dd {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+ul, ol {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
+}
+body {
+	margin: 20px;
+	padding: 20px;
+	font-family: "Open Sans", "Noto Sans KR", sans-serif;
+	font-size: 1em;
+	font-weight: 400;
+	background-color: #f1f1f1;
+}
+.title {
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 50px;
+}
+.code_area .area1 input[type=text] {
+	padding: 0 10px;
+	height: 32px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 0.875em;
+	border: 1px solid #ccc;
+	outline: none;
+	box-sizing: border-box;
+}
+.code_area .area1 input[type=button] {
+	margin-left: 5px;
+	padding: 0 15px;
+	height: 32px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 0.875em;
+	background-color: #ccc;
+	color: #333;
+	border: none;
+	cursor: pointer;
+}
+.code_area .area1 .result {
+	margin-top: 25px;
+	text-transform: uppercase;
+	font-size: 0.875em;
+}
+.code_area .area2 {
+	position: relative;
+	margin-top: 100px;
+}
+.code_area .area2 .button {
+	display: inline-block;
+	padding: 0 15px;
+	line-height: 32px;
+	font-size: 0.875em;
+	background-color: #ccc;
+	color: #333;
+}
+.code_area .area2 .ball {
+	position: absolute;
+	left: 0;
+	top: 70px;
+	width: 40px;
+	height: 40px;
+	background-color: #666;
+	border-radius: 20px;
+	transition: left 0.3s;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	/*
+	let result=82;
+	let grade="";
+
+	if(result >= 90){
+		grade="A";
+	}
+	else if(result >= 80){
+		grade="B";
+	}
+	else if(result >= 70){
+		grade="C";
+	}
+	else if(result >= 60){
+		grade="D";
+	}
+	else{
+		grade="F";
+	}
+
+	// console.log(grade);
+	*/
+
+	let result;
+
+	$("input[type=button]").click(function(){
+		result=$("#number").val();
+		result=parseInt(result);
+		// console.log(result);
+		// console.log(isNaN(result));
+
+		if(isNaN(result)){
+			$(".result").text("Not a Number");
+		}
+		else{
+			if(result >= 90){
+				grade="A";
+			}
+			else if(result >= 80){
+				grade="B";
+			}
+			else if(result >= 70){
+				grade="C";
+			}
+			else if(result >= 60){
+				grade="D";
+			}
+			else{
+				grade="F";
+			}
+
+			$(".result").text("Grade is "+grade);
+		}
+
+		$("#number").val("").focus();
+	});
+
+	let offsetx=0;
+
+	$(".area2 .button").click(function(e){
+		e.preventDefault();
+
+		if(offsetx < 200){
+			offsetx+=50;
+		}
+		else{
+			offsetx=0;
+		}
+
+		$(".area2 .ball").css({ "left": offsetx });
+	});
+});
+</script>
+</head>
+
+<body>
+<h1 class="title">basic :: jQuery Example</h1>
+<div class="container">
+	<div class="code_area">
+		<div class="area1">
+			<input type="text" placeholder="result" id="number"><input type="button" value="result">
+			<div class="result">result</div>
+		</div>
+		<div class="area2">
+			<a href="" class="button">moving</a>
+			<div class="ball"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

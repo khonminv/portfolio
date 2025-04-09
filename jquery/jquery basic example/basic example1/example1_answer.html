@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>basic :: jQuery Node Access</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap">
+<style>
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, table, dl, dd {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+ul, ol {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
+}
+body {
+	margin: 20px;
+	padding: 20px;
+	line-height: 1;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+	background-color: #f1f1f1;
+	color: #555;
+}
+button {
+	padding: 5px 15px;
+	background-color: #ccc;
+	color: #000;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: all 0.5s;
+}
+button:hover {
+	background-color: #888;
+}
+.title {
+	margin: 0;
+	padding: 0;
+	font-size: 1.5em;
+	font-weight: 300;
+}
+.container {
+	margin-top: 50px;
+}
+.ball {
+	position: absolute;
+	left: 0;
+	top: 200px;
+	width: 50px;
+	height: 50px;
+	background-color: #555;
+	border-radius: 25px;
+	transition: 0.3s;
+}
+.dummy {
+	margin: 0 150px 0 0;
+	height: 100px;
+	opacity: 0;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	let xoffset=0;
+	let amount=100;
+	let limitX;
+
+	$("#move_btn").click(function(e){
+		e.preventDefault();
+
+		limitX=$(".dummy").width();
+		xoffset=xoffset+amount;
+		$(".ball").css({ left: xoffset });
+
+		if(xoffset > limitX || xoffset <= 0){
+			amount=amount*(-1);
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+
+<h1 class="title">basic :: jQuery Example</h1>
+<div class="container">
+	<button id="move_btn">move</button>
+	<div class="ball"></div>
+	<div class="dummy"></div>
+</div>
+</body>
+</html>

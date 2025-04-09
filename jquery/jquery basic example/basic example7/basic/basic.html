@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>basic :: jQuery Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
+<style>
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, table, dl, dd {
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+ul, ol {
+	list-style: none;
+}
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
+}
+body {
+	margin: 20px;
+	padding: 20px;
+	font-family: "Open Sans", "Noto Sans KR", sans-serif;
+	font-size: 1em;
+	font-weight: 400;
+	background-color: #f1f1f1;
+}
+.title {
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #555;
+}
+.container {
+	margin-top: 50px;
+}
+.list_area li {
+	display: flex;
+	align-items: flex-start;
+	height: 100px;
+}
+.list_area li a {
+	display: inline-block;
+	padding: 0 10px;
+	line-height: 32px;
+	vertical-align: top;
+	font-size: 0.875em;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+.list_area li.active1 .box {
+	display: none;
+	margin-left: 100px;
+	width: 50px;
+	height: 50px;
+	vertical-align: top;
+	background-color: #999;
+}
+.list_area li.active2 .box {
+	margin-left: 100px;
+	width: 50px;
+	height: 0;
+	vertical-align: top;
+	background-color: #999;
+	/* transition: height 0.3s; */
+}
+.list_area li.active3 .box {
+	margin-left: 100px;
+	width: 50px;
+	height: 0;
+	vertical-align: top;
+	background-color: #999;
+	transition: height 0.3s;
+}
+.list_area li.active3 .box.active {
+	height: 50px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	$("li.active1 a").click(function(e){
+		e.preventDefault();
+		// $(this).next().css({ "display": "block" });
+		// $(this).next().show();
+		// $(this).next().hide();
+		// $(this).next().toggle();
+
+		// $(this).next().slideDown(300);
+		// $(this).next().slideUp(300);
+		// $(this).next().slideToggle(300);
+		// $(this).next().slideToggle(300, function(){
+			// console.log($(this).css("display"));
+		// });
+
+		// $(this).next().fadeIn(300);
+		// $(this).next().fadeOut(300);
+		// $(this).next().fadeToggle(300);
+		$(this).next().fadeToggle(300, function(){
+			// console.log($(this).css("display"));
+		});
+	});
+
+	$("li.active2 a").click(function(e){
+		e.preventDefault();
+
+		// $(this).next().css({ "height": 50 });
+		// $(this).next().animate({ "height": 50 }, 300);
+		$(this).next().animate({ "height": 50 }, 300, function(){
+			// console.log("complete");
+		});
+	});
+
+	$("li.active3 a").click(function(e){
+		e.preventDefault();
+		$(this).next().addClass("active");
+	});
+
+	$(".list_area li.active3 .box").on("transitionend", function(){
+		// console.log("complete");
+	});
+});
+</script>
+</head>
+
+<body>
+<h1 class="title">basic :: jQuery Example</h1>
+<div class="container">
+	<div class="list_area">
+		<ul>
+			<li class="active1"><a href="">active1</a> <div class="box"></div></li>
+			<li class="active2"><a href="">active2</a> <div class="box"></div></li>
+			<li class="active3"><a href="">active3</a> <div class="box"></div></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
