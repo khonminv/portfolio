@@ -19,6 +19,9 @@ body {
 	font-family: "Roboto", "Noto Sans KR", sans-serif;
 	font-size: 1em;
 }
+body.fixed{
+	overflow-y: hidden;
+}
 
 .container {
 	margin: 0 auto;
@@ -119,25 +122,24 @@ header .bot ul li a.active {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	z-index: 4000;
+	z-index: 5500;
 	background-color: rgba(0,0,0,.6);
 }
 .dim.active {
 	display: block;
 }
 .mobile{
-	display: none;
 	position: fixed;
 	right: -100%;
 	top: 0;
 	width: 80%;
 	height: 100vh;
 	background-color: #fff;
-	z-index: 5000;
-	transition: all 0.3s;
+	z-index: 6000;
+	transition: right 0.3s;
+	overflow: hidden;
 }
 .mobile.active{
-	display: block;
 	right: 0;
 }
 .mobile .top{
@@ -177,7 +179,7 @@ header .bot ul li a.active {
 	margin-bottom: 10px;
 }
 .mobile .gnb ul{
-	height: 80%;
+	height: calc(100vh - 300px);
 	overflow-y: auto;
 }
 .mobile .gnb li{

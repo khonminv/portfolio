@@ -2,19 +2,22 @@ window.addEventListener("DOMContentLoaded", function(){
 	let tab=document.querySelector("header .tab");
 	let mobile=document.querySelector(".mobile");
 	let dim=document.querySelector(".dim");
-	let close=document.querySelector(".close")
+	let close=document.querySelector(".close");
+	let body=document.querySelector("body");
 
 	tab.addEventListener("click", function(e){
 		e.preventDefault();
 
 		mobile.classList.add("active");
 		dim.classList.add("active");
+		body.classList.add("fixed")
 	});
 	close.addEventListener("click", function(e){
 		e.preventDefault();
 
 		mobile.classList.remove("active");
 		dim.classList.remove("active");
+		body.classList.remove("fixed")
 	});
 
 

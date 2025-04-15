@@ -1,10 +1,5 @@
 
 $(function () {
-
-
-
-
-
 	
 	let isMobile;
 	$(window).resize(function(){ //데스크탑
