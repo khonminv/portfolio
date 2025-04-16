@@ -190,7 +190,6 @@ window.addEventListener("load", function () {
 			start: "top 80%",
 			end: "bottom 60%",
 			scrub: 2,
-			markers:true
 		}
 	})
 
