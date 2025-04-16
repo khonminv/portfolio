@@ -74,10 +74,12 @@ header nav ul li{
 	position: relative;
 	line-height: 75px;
 }
-header nav ul li:hover a{
+header nav ul li:hover a,
+header nav ul li.active a{
 	color: #9153a0;
 }
-header nav ul li:hover::after{
+header nav ul li:hover::after,
+header nav ul li.active::after{
 	content: "";
 	position: absolute;
 	top: 75px;
@@ -88,6 +90,19 @@ header nav ul li:hover::after{
 header nav ul.active li:hover::after{
 	top: 40px;
 }
+#header .menu_zone {
+	position: absolute;
+	z-index: 90;
+	width: 100%;
+	background-color: transparent;
+	transition: background-color 0.3s, transform 0.4s;
+}
+#header .menu_zone.fixed {
+	position: fixed;
+	height: 75px;
+	background-color: rgb(36, 29, 29);
+}
+
 header nav ul li a{
 	display: block;
 	color: #fff;
@@ -148,6 +163,7 @@ header nav ul li a{
 	transform: translate(-50%,-50%);
 }
 .main .keytext span{
+	display: inline-block;
 	font-size: 3em;
 }
 .main .keytext h3{
@@ -159,6 +175,11 @@ header nav ul li a{
 	padding: 1em 4em;
 	border: 1px solid #fff;
 	color: #fff;
+	transition: background-color 0.3s;
+}
+.main .keytext a:hover{
+	background-color: #fff;
+	color: #000;
 }
 .main .main_img {
 	width: 100%;
@@ -585,6 +606,24 @@ footer .ft_left p{
 	border-radius: 50%;
 	text-align: center;
 	line-height: 30px;
+}
+.btn_top {
+	position: fixed;
+	right: -100px;
+	bottom: 118px;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 600;
+	background-color: rgba(210, 38, 199, 0.6);
+	color: #fff;
+	border-radius: 50%;
+	transition: right 0.3s;
+}
+.btn_top.active {
+	right: 16px;
 }
 @media only screen and (max-width:940px){
 	footer{
