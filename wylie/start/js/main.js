@@ -15,7 +15,6 @@ window.addEventListener("load", function () {
 
 	//이것은 모바일인가 
 	let isMobile;
-
 	
 	window.addEventListener("resize", function(){
 		if(window.innerWidth > 720){
@@ -24,12 +23,21 @@ window.addEventListener("load", function () {
 				console.log("pc")
 				
 				tab.classList.remove("active");
+				gnbList.forEach(function(item){
+					item.classList.remove("active");
+				});
+				navList.classList.remove("active");
+				navImg.classList.remove("active");
+				body.classList.remove("fixed");
+				tabicon();
 			}
 		}
 		else{
 			if(isMobile != true){
 				isMobile = true;
 				console.log("mo")
+				tabicon();
+
 			}
 		}
 	});
@@ -69,6 +77,9 @@ window.addEventListener("load", function () {
 					gnbList[i].classList.remove("active");
 				}
 			}
+			else{
+				gnbList[i].classList.remove("active");
+			}
 		});
 
 		if(n != 0){
@@ -101,7 +112,15 @@ window.addEventListener("load", function () {
 		});
 	});
 
-
+	function tabicon(){
+		if (navImg.classList.contains("active")) {
+			navImg.setAttribute('src', 'images/ico_tab_close.png');
+			header.style.overflow = "visible";
+		} else {
+			navImg.setAttribute('src', 'images/ico_tab_open.png');
+			header.style.overflow = "hidden";
+		}
+	}
 	//tab메뉴
 	navImg.addEventListener("click", function (e) {
 		e.preventDefault();
@@ -110,13 +129,7 @@ window.addEventListener("load", function () {
 		navImg.classList.toggle("active");
 		body.classList.toggle("fixed");
 
-		if (navImg.classList.contains("active")) {
-			navImg.setAttribute('src', 'images/ico_tab_close.png');
-			header.style.overflow = "visible";
-		} else {
-			navImg.setAttribute('src', 'images/ico_tab_open.png');
-			header.style.overflow = "hidden";
-		}
+		tabicon();
 	});
 
 	//navi
@@ -130,8 +143,18 @@ window.addEventListener("load", function () {
 			topPos=pageList[i].offsetTop;
 
 			// console.log(topPos);
+			if(isMobile == false){
+				gsap.to(window, { scrollTo: topPos, duration: 0.4 });
+			}
+			else{
+				navList.classList.remove("active");
+				navImg.classList.remove("active");
+				body.classList.remove("fixed");
+				tabicon();
 
-			gsap.to(window, { scrollTo: topPos, duration: 0.4 });
+				gsap.to(window, { scrollTo: topPos, duration: 0.4 });
+			}
+			
 		});
 	});
 

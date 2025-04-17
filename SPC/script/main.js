@@ -1,5 +1,15 @@
-window.addEventListener("load",function(){
+window.addEventListener("load", function(){
+	let header = document.querySelector("header");
+	let navBg = document.querySelector(".nav_back");
+	let nav = document.querySelector("header nav");
+	let lang = document.querySelector(".lang a");
+	let langSub = document.querySelector(".lang_sub");
+	let wayTopList = document.querySelectorAll(".way_top > ul > li a");
+	let wayBotList = document.querySelectorAll(".way_bot > ul li");
 
+	let moWayList = document.querySelectorAll(".way_mobile li > a");
+	let moWayTab = document.querySelectorAll(".way_mobile_tab");
+	let body = document.body;
 	let isMobile;
 
 	window.addEventListener("resize", function(){
@@ -27,12 +37,12 @@ window.addEventListener("load",function(){
 
 
 	//header
-	let header = document.querySelector("header");
-	let nav = document.querySelector("header nav");
+	
 
 	nav.addEventListener("mouseenter", function(){
 		if(isMobile == false){
 			header.classList.add("active")
+			
 		}
 	});
 	header.addEventListener("mouseleave",function(){
@@ -40,6 +50,65 @@ window.addEventListener("load",function(){
 			header.classList.remove("active")
 		}
 	});
+
+	//lang
+	lang.addEventListener("click", function(e){
+		e.preventDefault();
+
+		if(lang.classList.contains("active") == false){
+			lang.classList.add("active");
+			header.style.overflow = "visible";	
+		}
+		else{
+			lang.classList.remove("active");
+			header.style.overflow = "hidden";	
+		}
+	});
+
+	//spc way
+	wayTopList.forEach(function(item,i){
+		item.addEventListener("click", function(e){
+			e.preventDefault()
+			if(item.classList.contains("active") == false){
+				wayTopList.forEach(function(item2,j){
+					wayTopList[j].classList.remove("active");
+					wayBotList[j].classList.remove("active");
+					
+				});
+				wayTopList[i].classList.add("active");
+				wayBotList[i].classList.add("active");
+				
+			}
+		})
+	})
+	//spc way mobile
+	moWayList.forEach(function(item,i){
+		item.addEventListener("click", function(e){
+			if(isMobile == true){
+				e.preventDefault()
+				if(item.classList.contains("active") == false){
+					moWayList.forEach(function(item2,j){
+						gsap.to(moWayTab[j],{height:0,duration:0.5})
+						moWayList[j].classList.remove("active");
+						moWayTab[j].classList.remove("active");
+						
+					});
+					gsap.to(moWayTab[i],{height:"500px",duration:0.5})
+					moWayList[i].classList.add("active");
+					moWayTab[i].classList.add("active");
+					
+				}
+				else{
+					gsap.to(moWayTab[i],{height:0,duration:0.5})
+					moWayList[i].classList.remove("active");
+					moWayTab[i].classList.remove("active");
+					
+				}
+			}
+			
+		})
+	})
+
 
 
 	//slider

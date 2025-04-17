@@ -79,6 +79,7 @@ header.active{
 	background-color: #fff;
 }
 header .nav_back{
+	display: none;
 	position: absolute;
 	top: 70px;
 	left: 0;
@@ -86,6 +87,9 @@ header .nav_back{
 	height: 100%;
 	background-color: #eaeaea;
 	z-index: 2000;
+}
+header.active .nav_back{
+	display: block;
 }
 .start header .logo{
 	position: relative;
@@ -173,14 +177,18 @@ header .nav_back{
 	display: block;
 }
 .start header .hd_right{
+	position: absolute;
+	top: 0;
+	right: 20px;
 	display: flex;
-	height: 100%;
+	height: 70px;
 	padding: 10px 0;
 }
 .start header .hd_right .search{
+	position: relative;
 	width: 25px;
 	height: 100%;
-	margin-right: 20px;
+	margin-right: 40px;
 	
 }
 .start header .hd_right .search a{
@@ -199,13 +207,22 @@ header .nav_back{
 	width: 100%;
 	height: 100%;
 }
-.start header .hd_right .search .sh_black{
+.start header .hd_right .search .sh_white{
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.start header .hd_right .search .sh_black{
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 	opacity: 0;
 }
 .start header.active .hd_right .search .sh_black{
+	display: block;
 	opacity: 1;
 }
 .start header.active .hd_right .search .sh_white{
@@ -244,7 +261,7 @@ header .nav_back{
 	right: 20px;
 	transform: translateY(-50%);
 }
-.start header .hd_right .lang a{
+.start header .hd_right .lang > a{
 	display: block;
 	position: relative;
 	top: 25px;
@@ -256,12 +273,16 @@ header .nav_back{
 	margin-right: 15px;
 	z-index: 2650;
 	transform: translateY(-50%);
+	overflow: hidden;
 }
-.start header.active .hd_right .lang a{
+.start header .hd_right .lang > a.active{
+	overflow: visible;
+}
+.start header.active .hd_right .lang > a{
 	border: 1px solid #000;
 	color: #000;
 }
-.start header .hd_right .lang a::after{
+.start header .hd_right .lang > a::after{
 	content: "";
 	display: block;
 	position: absolute;
@@ -273,9 +294,34 @@ header .nav_back{
 	transform: translateY(-50%);
 
 }
-.start header.active .hd_right .lang a::after{
+.start header.active .hd_right .lang > a::after{
 	content: "";
 	background: url(../images/icon_fmsite_top_bk.png) no-repeat;
+}
+.lang_sub{
+	display: block;
+	position: absolute;
+	top: 40px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.lang_sub li.active{
+	color: red;
+}
+.lang_sub:hover{
+	display: block;
+}
+.lang_sub li{
+	width: 100%;
+	padding: 10px 15px;
+}
+.lang_sub li:not(:first-child){
+	border-top: 1px solid #fff;
+}
+.lang_sub li a{
+	display: block;
+	height: 30px;
+	line-height: 30px;
 }
 .start header .hd_right .careers a{
 	display: inline-block;
@@ -305,7 +351,7 @@ header .nav_back{
 }
 .start header .hd_right .tab{
 	position: relative;
-	display: block;
+	display: none;
 	width: 100%;
 	height: 100%;
 }
@@ -384,6 +430,9 @@ header .nav_back{
 	.start header .hd_right .lang,
 	.start header .hd_right .careers{
 		display: none;
+	}
+	.start header .hd_right .tab{
+		display: block;
 	}
 }
 @media only screen and (max-width:980px){
@@ -499,25 +548,37 @@ header .nav_back{
 	height: 2px;
 	background-color: #000;
 }
-.spc_way .way_top ul li a p:hover::after{
-	opacity: 1;
+.spc_way .way_top ul li a:hover p::after{
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #000;
 }
 .spc_way .way_bot{
 	padding-top: 5vh;
 	max-width: 1280px;
-	overflow: hidden;
+	height: 550px;
 }
 .spc_way .way_bot ul{
+	position: relative;
 	display: flex;
 	width: 300%;
 }
 .spc_way .way_bot ul li{
+	position: absolute;
 	width: 33.333%;
 	display: flex;
 	gap: 50px;
 	justify-content: space-between;
+	opacity: 0;
+	transition: opacity 0.3s;
 }
-
+.spc_way .way_bot ul li.active{
+	opacity: 1;
+}
 .spc_way .way_bot .way_text{
 	max-width: 400px;
 }
@@ -557,6 +618,9 @@ header .nav_back{
 	background: url(../images/mo_icon_ham_arrow_down.png);
 	transform: translateY(-50%);
 }
+.spc_way .way_mobile ul li a.active::after{
+	transform: rotate(180deg) translateY(50%);
+}
 .spc_way .way_mobile ul li a span{
 	min-width: 11em;
 	font-size: 0.875em;
@@ -567,7 +631,11 @@ header .nav_back{
 	font-weight: 600;
 }
 .spc_way .way_mobile .way_mobile_tab{
-	display: none;
+	height: 0;
+	overflow: hidden;
+}
+.spc_way .way_mobile .way_mobile_tab.active{
+	height: 500px;
 }
 .spc_way .way_mobile .way_mobile_tab img{
 	object-fit: cover;
