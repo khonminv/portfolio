@@ -1,0 +1,59 @@
+:root{
+	--swiper-theme-color: #fff;
+}
+#open_source{
+	@extend %section;
+
+}
+.swiper {
+	width: 100%;
+	height: auto;
+	padding: 50px;
+  }
+
+.swiper-slide {
+	@include padding-style(20px);
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	color: $main-color;
+	opacity: 0.3;
+	transition: opacity 0.3s ease;
+}
+.swiper-slide-active {
+	opacity: 1;
+  }
+.swiper-slide img {
+	display: block;
+	width: 50px;
+	height: 50px;
+}
+#swiper-pagination{
+	position: absolute;
+	bottom: -30%;
+}
+.slide_top{
+	@include margin-style(0 0 10px 0);
+	display: flex;
+	align-items: center;
+	gap: 20px
+}
+.slide_mid{
+	@include margin-style(0 0 10px 0);
+	display: block;
+	height: 200px;
+}
+.slide_bot{
+	text-align: right;
+}
+.slide_bot .viewmore{
+	display: inline-block;
+	border-radius: 10px;
+	margin-top: 20px;
+}
+.slide_bot .viewmore a{
+	display: inline-block;
+	padding: 5px 10px;
+	color: $main-color;
+	border: 1px solid #fff;
+}

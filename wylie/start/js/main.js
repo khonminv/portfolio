@@ -165,6 +165,9 @@ window.addEventListener("load", function () {
 		gsap.to(window, { scrollTo: 0, duration: 0.4 });
 	});
 
+
+	//gsap
+	
 	//main
 	const mainTl = gsap.timeline();
 

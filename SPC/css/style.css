@@ -33,6 +33,12 @@ body {
 *{
 	box-sizing: border-box;
 }
+body.fixed{
+	overflow: hidden;
+}
+body.fixed::-webkit-scrollbar {
+    display: none;
+}
 .dim {
 	display: none;
 	position: fixed;
@@ -84,12 +90,16 @@ header .nav_back{
 	top: 70px;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 265px;
 	background-color: #eaeaea;
 	z-index: 2000;
 }
 header.active .nav_back{
 	display: block;
+}
+header.fixed{
+	position: fixed;
+	background-color: rgb(169, 146, 146);
 }
 .start header .logo{
 	position: relative;
@@ -313,21 +323,22 @@ header.active .nav_back{
 }
 .lang_sub li{
 	width: 100%;
-	padding: 10px 15px;
+	padding: 0 15px;
 }
 .lang_sub li:not(:first-child){
 	border-top: 1px solid #fff;
 }
-.lang_sub li a{
+.lang_sub li{
 	display: block;
-	height: 30px;
-	line-height: 30px;
+	height: 40px;
+	line-height: 40px;
+	color: #000;
 }
 .start header .hd_right .careers a{
 	display: inline-block;
 	position: relative;
 	top: 25px;
-	padding: 10px 30px 10px 15px;
+	padding: 10px 15px 10px 15px;
 	border: 1px solid #fff;
 	background-color: #fff;
 	font-size: 0.875em;
@@ -337,17 +348,6 @@ header.active .nav_back{
 .start header.active .hd_right .careers a{
 	top: 25px;
 	background-color: #fef0bd;
-}
-.start header .hd_right .careers a::after{
-	content: "";
-	display: block;
-	position: absolute;
-	top: 50%;
-	right: 15px;
-	width: 10px;
-	height: 5px;
-	background: url(../images/icon_fmsite_top_bk.png) no-repeat;
-	transform: translateY(-50%);
 }
 .start header .hd_right .tab{
 	position: relative;
@@ -368,14 +368,17 @@ header.active .nav_back{
 	display: block;
 }
 .mo_tab{
-	display: none;
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: -9999px;
 	width: 90%;
 	height: 100vh;
 	background-color: #fff;
 	z-index: 10000;
+	transition: 0.3s;
+}
+.mo_tab.active{
+	right: 0;
 }
 .mo_tab .lang{
 	display: flex;
@@ -388,32 +391,58 @@ header.active .nav_back{
 	display: block;
 	width: 60px;
 }
-.mo_tab .lang a:first-child{
-	border-right: 1px solid #eaeaea;
+.mo_tab .lang a.active{
+	color: #e6a7c6;
 }
-.mo_tab.active{
-	display: block;
+.mo_tab .lang a:first-child{
+	border-right: 1px solid #ebebeb;
+}
+.mo_tab .mo_tab_top{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.mo_tab .mo_tab_top .mo_tab_close{
+	margin-right: 40px;
 }
 .mo_tab .mo_nav{
 	padding: 0 20px;
 }
 .mo_tab .mo_nav > ul > li{
 	position: relative;
-	padding: 10px 0;
 	line-height: 50px;
-	border-bottom: 1px solid #eaeaea;
+}
+.mo_tab .mo_nav > ul > li > a{
+	display: block;
+	padding: 10px 0;
+	line-height: 30px;
+}
+.mo_tab .mo_nav > ul > li.active > a{
+	color: #e6a7c6;
+	border-bottom: 1px solid #592626;
 }
 .mo_tab .mo_nav > ul > li::after{
 	content:"";
 	position: absolute;
-	top: 50%;
+	top: 25px;
 	right: 20px;
 	width: 20px;
 	height: 12px;
 	background: url(../images/mo_icon_ham_arrow_down.png) 0 0 / cover;
 	transform: translateY(-50%);
 }
-
+.mo_tab .mo_nav > ul > li.active::after{
+	transform: rotate(180deg) translateY(50%);
+}
+.mo_tab .mo_nav > ul > li .sub{
+	height: 0;
+	padding: 0 10px;
+	background-color: #eaeaea;
+	overflow: hidden;
+}
+.mo_tab .mo_nav > ul > li.active .sub{
+	height: auto;
+}
 @media only screen and (max-width:1500px){
 	.start header:hover nav > ul{
 		gap: 20px;
@@ -439,6 +468,9 @@ header.active .nav_back{
 	.start header nav{
 		display: none;
 	}
+	header::-webkit-scrollbar {
+		display: none; /* 스크롤바를 숨깁니다 */
+	}
 }
 
 /* slider */
@@ -460,11 +492,18 @@ header.active .nav_back{
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 }
-.slider .keytext {
+.slider .key_inr{
 	position: absolute;
-	left: 30%;
-	bottom: 20%;
+	top: 65%;
+	left: 50%;
 	transform: translateX(-50%);
+	max-width: 1920px;
+	margin: 0 auto;
+	text-align: left;
+	width: 100%;
+}
+.slider .keytext {
+	padding: 30px;
 }
 .slider .keytext span{
 	display: block;
@@ -473,10 +512,12 @@ header.active .nav_back{
 	margin-bottom: 3em;
 }
 .slider .keytext p{
+	display: block;
 	font-size: 2em;
 	color: #fff;
 }
 .slider .keytext strong{
+	display: block;
 	font-size: 2em;
 	color: #fff;
 }
@@ -488,10 +529,6 @@ header.active .nav_back{
 		background-color: rgba(0, 0, 0, 0.2);
 	}
 	.slider .keytext {
-		position: absolute;
-		left: 40%;
-		bottom: 5%;
-		transform: translateX(-50%);
 		white-space: nowrap;
 		font-size: 0.75em;
 	}
@@ -583,7 +620,7 @@ header.active .nav_back{
 	max-width: 400px;
 }
 .spc_way .way_bot .way_img{
-	width: 100%;
+	width: 60%;
 	overflow: hidden;
 }
 .spc_way .way_bot img{
@@ -635,7 +672,7 @@ header.active .nav_back{
 	overflow: hidden;
 }
 .spc_way .way_mobile .way_mobile_tab.active{
-	height: 500px;
+	height: 100%;
 }
 .spc_way .way_mobile .way_mobile_tab img{
 	object-fit: cover;
@@ -715,6 +752,7 @@ header.active .nav_back{
 	font-size: 1em;
 	padding: 5px 60px 5px 20px;
 	background-color: #eaeaea;
+	transition: background 0.3s;
 }
 .content .left .button a:hover{
 	background: linear-gradient(0deg,#fff,#ffaadc)
@@ -737,7 +775,7 @@ header.active .nav_back{
 	overflow: visible;
 }
 .swiper {
-	width: 100%;
+	width: 90%;
 	height: 100%;
 	overflow: hidden;
 }
@@ -802,6 +840,10 @@ header.active .nav_back{
 	}
 	.content_mobile{
 		display: block;
+		width: 100%;
+	}
+	.swiper {
+		margin-left: 0;
 		width: 100%;
 	}
 }

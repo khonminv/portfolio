@@ -1,0 +1,47 @@
+#skill{
+	@extend %section;
+	position: relative;
+
+}
+#skill .inr{
+	display: flex;
+	align-items: center;
+	position: fixed;
+	top: -40%;
+	right: -900px;
+	gap: 150px;
+}
+
+#skill .skill_text{
+	color: $main-color;
+	font-size: 6em;
+	text-align: right;
+	opacity: 0.5;
+}
+#skill .skill_text strong{
+	white-space: nowrap;
+}
+#skill ul{
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	width: 2610px;
+
+}
+#skill ul li{
+	@include padding-style(20px);
+	display: block;
+	border: 1px solid #fff;
+	border-radius: 50px;
+	width: 300px;
+	height: 380px;
+}
+#skill ul li img{
+	@include margin-style(0 66px 40px 66px);
+	display: block;
+	width: 128px;
+	height: 128px;
+}
+#skill ul li p{
+	color: $main-color;
+}

@@ -1,27 +1,4 @@
-
-$(function () {
-	
-	let isMobile;
-	$(window).resize(function(){ //데스크탑
-		if(window.innerWidth > 1000){
-			if(isMobile != false){
-				isMobile = false;
-				console.log(isMobile);
-				$("nav").removeClass("mo");
-			}
-		}
-		else{
-			if(isMobile != true){ //모바일
-				isMobile = true;
-				console.log(isMobile);
-				$("nav").addClass("mo");
-				$("nav").removeClass("mo");
-				$(".mobile").removeClass("active");
-			}
-		}
-	});
-	$(window).trigger("resize");
-
+window.addEventListener("load",function(){
 	//cursor
 	let cursorFlag;
 	let cursor=document.querySelector(".cursor");
@@ -29,7 +6,34 @@ $(function () {
 	let mouseTarget=document.querySelector(".sec3_bot");
 	let mouseTargetList=Array.from(mouseTarget.firstElementChild.children);
 	let footerBlock=document.querySelector("footer");
+	let nav = document.querySelector("#nav");
+	let mobileTab = document.querySelector(".mobile");
+	let isMobile;
 
+	window.addEventListener("resize", function(){
+		if(window.innerWidth > 1000){
+			if(isMobile != false){
+				isMobile = false;
+				console.log(isMobile);
+				nav.classList.remove("mo")
+			}
+		}
+		else{
+			if(isMobile != true){ //모바일
+				isMobile = true;
+				console.log(isMobile);
+				nav.classList.remove("mo")
+				nav.classList.add("mo")
+				mobileTab.classList.remove("active");
+			}
+		}
+	});
+
+	function triggerResizeEvent() {
+		const event = new Event('resize');
+		window.dispatchEvent(event);
+	}
+	triggerResizeEvent();
 	function moveCircle(e){
 		let x=e.pageX;
 		let y=e.pageY;
@@ -296,4 +300,11 @@ $(function () {
 					  },
 	});
 	
+	let goTop = document.querySelector(".go_top");
+	//go top
+	goTop.addEventListener("click", function(e){
+		e.preventDefault();
+
+		gsap.to(window, { scrollTo: 0, duration: 0.4 });
+	});
 });
