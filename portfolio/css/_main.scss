@@ -1,62 +1,105 @@
 .start{
 	width: 100%;
 	height: 100vh;
-}
-.start #header{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 70px;
-	background-color: transparent;
-	z-index: 1000;
-}
-.start #header.fixed{
-	position: fixed;
-}
-.start #header .header_zone{
-	display: flex;
-	align-content: center;
-	justify-content: space-between;
 
-}
-.start #header .header_zone .logo{
-	@include padding-style(10px 0);
-}
+	#header{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 70px;
+		background-color: transparent;
+		z-index: 1000;
+		transition: 0.3s;
+		overflow: hidden;
 
-.start #header .header_zone nav ul{
-	display: flex;
-	gap: 50px;
-}
-.start #header .header_zone nav ul li a{
-	@include padding-style(10px 20px);
-	display: block;
-	line-height: 50px;
-	color: $main-color;
-}
-.start .main video{
-	width: 100%;
-	height: 100vh;
-	object-fit: cover;
-	z-index: 0;
-}
-.start .main .main_text{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-}
-.start .main .main_text p{
-	font-size: 6em;
-	font-style: italic;
-	color: $main-color;
-	font-family: $start-font;
-}
-.start .main span{
-	display: block;
-	position: absolute;
-	left: 50%;
-	bottom: 20px;
-	transform: translateX(-50%);
-	color: $main-color;
+		&.fixed{
+			position: fixed;
+			background-color: #14131372;
+		}
+
+		.header_zone{
+			display: flex;
+			align-content: center;
+			justify-content: space-between;
+			
+			.logo{
+				@include padding-style(10px 0);
+				img{
+					@media only screen and (max-width:780px){
+						width: 70%;
+					}
+				}
+				
+			}
+			nav ul{
+				display: flex;
+				gap: 50px;
+				@media only screen and (max-width:1080px){
+					gap: 30px;
+				}
+				@media only screen and (max-width:780px){
+					position: fixed;
+					right: 10px;
+					top: 50%;
+					flex-direction: column;
+					gap: 15px;
+					text-align: right;
+					transform: translateY(-50%);
+				}
+				li{
+					&.active a{
+						border-bottom: 1px solid #fff;
+						color: aqua;
+
+						@media only screen and (max-width:780px){
+							border-bottom: none;
+						}
+					}
+					a{
+						@include padding-style(10px 20px);
+						display: block;
+						line-height: 50px;
+						color: $main-color;
+	
+						@media only screen and (max-width:780px){
+							@include padding-style(0);
+							line-height: 20px;
+						}
+						
+					}
+				} 
+			}
+		}
+	}
+	.main{
+		video{
+			width: 100%;
+			height: 100vh;
+			object-fit: cover;
+			z-index: 0;
+		}
+		.main_text{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+
+			p{
+				font-size: 6em;
+				font-style: italic;
+				color: $main-color;
+				font-family: $start-font;
+			}
+		}
+
+		span{
+			display: block;
+			position: absolute;
+			left: 50%;
+			bottom: 20px;
+			transform: translateX(-50%);
+			color: $main-color;
+		}
+	} 
 }

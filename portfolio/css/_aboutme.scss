@@ -1,26 +1,25 @@
 #about_me{
-	@extend %section;
-	@include padding-style(10vh 0);
+	@include padding-style(10vh 0 0);
 	position: relative;
-	overflow: hidden;
-}
-#about_me .introduce{
-	width: 100%;
-}
-#about_me .introduce h3{
-	@include padding-style(10px 0);
-	font-size: 2.75em;
-	border-bottom: 1px solid #fff;
-	color: $main-color;
-}
-#about_me .introduce ul{
-	list-style: circle;
-	@include padding-style(0 25px);
-	@include margin-style(20px 0);
-}
-#about_me .introduce ul li{
-	@include padding-style(10px 0);
-	line-height: 50px;
-	color: $main-color;
-	font-size: 1.5em;
+	.introduce{
+		width: 100%;
+		h3{
+			@include padding-style(10px 0);
+			font-size: 2.75em;
+			border-bottom: 1px solid #fff;
+			color: $main-color;
+		}
+		ul{
+			list-style: circle;
+			@include padding-style(0 25px);
+			@include margin-style(20px 0);
+
+			li{
+				@include padding-style(10px 0);
+				line-height: 50px;
+				color: $main-color;
+				font-size: 1.5em;
+			}
+		}
+	}
 }

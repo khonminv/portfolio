@@ -1,12 +1,63 @@
 window.addEventListener("load", function(){
 	let video = document.querySelector(".main video");
-	let proList = document.querySelectorAll(".pro_list > li");
-	let body = document.body;
-	let header = document.querySelector("#haeder")
-
-	let sectionLi = document.querySelectorAll("section");
-
+	let imgBox = document.querySelectorAll(".img_box");
+	let header = document.querySelector("#header");
+	let menuList = document.querySelectorAll("#nav ul li");
+	let secList = document.querySelectorAll("section");
+	let startpage = document.querySelector(".start")
+	let pageList = [startpage, ...secList];
+	let skill = document.querySelector("#skill");
+	let cursor = document.querySelector(".cursor");
+	let aTag = document.querySelectorAll(".view");
 	lenisAnimation();
+
+
+
+
+	// console.log(aTag)
+
+
+
+	//ismobile
+
+	let isMobile;
+	window.addEventListener("resize", function(){
+		if(window.innerWidth < 780){
+			if(isMobile != true){
+				isMobile = true;
+				console.log("mo");
+			}
+		}
+		else{
+			if(isMobile != false){
+				isMobile = false;
+				console.log("pc");
+			}
+		}
+	});
+	function resizeEvent(){
+		const event = new Event("resize")
+		window.dispatchEvent(event);
+	}
+	resizeEvent();
+	//cursor
+	document.body.addEventListener('mousemove', function(e) {
+		gsap.to(cursor,{
+			x: e.clientX,
+			y: e.clientY,
+			duration:0.1,
+		});
+	});
+	aTag.forEach(function(item){
+		item.addEventListener("mouseenter", function(){
+			cursor.classList.add("view");
+		});
+		item.addEventListener("mouseleave", function(){
+			cursor.classList.remove("view");
+		});
+	});
+	
+	
 	//video
 	video.muted = true;
 	video.play()
@@ -16,19 +67,109 @@ window.addEventListener("load", function(){
 
 
 	//header
-	// let position=0;
-	// window.addEventListener("scroll", function(){
-	// 	position = scrollY;
-	// 	console.log(window.innerHeight)
+	window.addEventListener("scroll", function(){
 
-	// 	if(window.innerHeight < position){
-	// 		header.classList.add("fixed");
-	// 	}
-	// });
+
+		if(500 < window.scrollY){
+			if(header.classList.contains("fixed") == false){
+				header.classList.add("fixed");
+				gsap.fromTo("#header",{opacity:0},{opacity:1,duration:0.3});
+				console.log("fix")
+			}
+		}
+		else{
+			if(header.classList.contains("fixed") == true){
+				header.classList.remove("fixed");
+			}
+			
+		}
+	});
+
+	menuList.forEach(function(item,i){
+		item.addEventListener("click",function(e){
+			e.preventDefault();
+
+			if(item.classList.contains("active") == false){
+				menuList.forEach(function(item2,j){
+					menuList[j].classList.remove("active")
+				});
+				item.classList.add("active");
+				gsap.to(window,{scrollTo:pageList[i+1],duration:0.5});
+			}
+		});
+	});
+
+	let offsetList=[];
+	let pageN=0;
+	let pushPage=false;
+
+	function offsetMeasure(){
+		offsetList=[];
+
+		pageList.forEach(function(item, i){
+			if(!pushPage){
+				offsetList.push(item.offsetTop);
+			}
+			else{
+				if(i != 2){
+					offsetList.push(item.offsetTop);
+				}
+				else{
+					offsetList.push(item.offsetTop+1550); // pin
+				}
+			}
+		});
+
+		// console.log(offsetList);
+	};
+
+	offsetMeasure();
+
+	window.addEventListener("scroll", function(){
+		let t=window.scrollY;
+		let h=window.innerHeight;
+
+		if(t < offsetList[1]-h/2){
+			pageN=0;
+			controlMenu(pageN);
+		}
+		else if(t < offsetList[2]-h/5){
+			pageN=1;
+			controlMenu(pageN);
+		}
+		else if(t < offsetList[3]-h/2){
+			pageN=2;
+			controlMenu(pageN);
+		}
+		else if(t < offsetList[4]-h/2){
+			pageN=3;
+			controlMenu(pageN);
+		}
+		else{
+			pageN=4;
+			controlMenu(pageN);
+		}
+
+	});
 	
-	
-
-
+	controlMenu();
+	function controlMenu(n){
+		
+		menuList.forEach(function(item,i){
+			if(i==n-1){
+				item.classList.add("active");
+				
+			}
+			else if(n == 0){
+				item.classList.remove("active");
+				
+			}
+			else{
+				item.classList.remove("active");
+				
+			}
+		});
+	};
 	
 
 
@@ -36,56 +177,61 @@ window.addEventListener("load", function(){
 	const skillTl = gsap.timeline({
 		scrollTrigger:{
 			trigger: "#skill",
-			start: "top 60%",
-			end: "bottom -100%",
-			scrub: true,
+			start: "top 20%",
+			end: "+=2000",
+			scrub: 1,
 			pin:true,
+			// markers:true
+			onEnter: function(){
+				pushPage=true;
+
+				offsetMeasure();
+			}
 		},
-		
 	});
+	
 	skillTl.to(".skill_text",{opacity:1,duration:2});
-	skillTl.to("#skill .inr",{opacity:1,x:-3000,duration:3});
+	skillTl.to("#skill .inr",{opacity:1,xPercent:-150,duration:6});
 	
 
 	//project
-	proList.forEach(function(item,i){
-		item.addEventListener("mouseenter",function(){
-			item.classList.add("active");
+	imgBox.forEach(function(item) {
+		let dragFlag = false;
+	
+		gsap.set(item.children, { opacity: 0 });
+	
+		item.addEventListener("mousemove", function(e) {
+			if (!dragFlag) return;
+	
+			const rect = item.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+	
+			Array.from(item.children).forEach(function(child) {
+				gsap.to(child, {
+					x: x/2,
+					y: y/2,
+					duration: 0.5,
+					ease: "power1.out",
+					overwrite: "auto"
+				});
+			});
 		});
-		item.addEventListener("mouseleave", function(){
-			item.classList.remove("active");
+	
+		item.addEventListener("mouseenter", function() {
+			dragFlag = true;
+			gsap.to(item.children, { opacity: 1, duration: 0.3 });
+		});
+	
+		item.addEventListener("mouseleave", function() {
+			dragFlag = false;
+			gsap.to(item.children, { opacity: 0, duration: 0.3 });
 		});
 	});
-
-	const projectTl = gsap.timeline({
-		scrollTrigger: {
-		  trigger: "#project",
-		  start: "top center",
-		  end: "bottom 70%",
-		  scrub: true,
-		  duration:3,
-		  onEnter: function() {
-			body.classList.add("active");
-		  },
-		  onLeave: function() {
-			body.classList.remove("active");
-		  },
-		  onEnterBack: function() {
-			body.classList.add("active");
-		  },
-		  onLeaveBack: function() {
-			body.classList.remove("active");
-		  },
-		}
-	  });
-
-	
 
 	//open source
 	var swiper = new Swiper(".openSlide", {
 		speed:1000,
-		slidesPerView: 5,
-		spaceBetween:30,
 		loop:true,
 		centeredSlides: true,
 		pagination: {
@@ -107,6 +253,22 @@ window.addEventListener("load", function(){
 			  slides[this.activeIndex].classList.add('swiper-slide-active');
 			},
 		  },
+		breakpoints:{
+			480:{
+				slidesPerView: 2,
+			},
+			780:{
+				spaceBetween:20,
+				slidesPerView: 3,
+			},
+			1080:{
+				spaceBetween:30,
+			},
+			1400:{
+				spaceBetween:40,
+				slidesPerView: 4,
+			}
+		}
 	  });
 	//gsap
 	

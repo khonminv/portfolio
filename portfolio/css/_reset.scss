@@ -22,14 +22,23 @@ img {
 	border: none;
 }
 body{
+	width: 100vw;
 	font-family: "Open Sans","Noto Sans KR", sans-serif;
 	background-color: #232323;
 	transition: background-color 0.3s;
-}
-body.active{
-	background-color: #f1e72d;
+	
+	@media only screen and (max-width:1080px){
+		font-size: 0.875em;
+	}
+	@media only screen and (max-width:780px){
+		font-size: 0.75em;
+	}
+
+	&.active{
+		background-color: #f1e72d;
+	}
 }
 .inr{
-	@include padding-style(0 50px);
+	@include padding-style(0 5em);
 	max-width: 1920px;
 }
