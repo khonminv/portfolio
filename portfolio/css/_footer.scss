@@ -13,8 +13,6 @@ footer{
 
 		.ft_top_left{
 			width: 45%;
-			white-space: wrap;
-			
 		}
 		.ft_top_right{
 			width: 45%;
@@ -26,11 +24,15 @@ footer{
 			border-bottom: 1px solid #fff;
 		}
 		p{
-			@include padding-style(10px 0 )
+			@include padding-style(10px 0 );
+			width:100%;
 		}
 		a{
+			width: 100%;
 			display: block;
 			color: $main-color;
+			white-space: normal;
+			overflow-wrap: break-word;
 		}
 	}
 	.ft_mid{
@@ -47,6 +49,9 @@ footer{
 		p{
 			@include padding-style(10px 0);
 			font-size: 1.25em;
+			a{
+				color: #fff;
+			}
 		}
 	}
 	.ft_bot{
@@ -59,6 +64,7 @@ footer{
 			top: 50%;
 			left: 50%;
 			transform: $translate-mid;
+			white-space: nowrap;
 		}
 	}
 }

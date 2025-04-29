@@ -12,7 +12,9 @@
 		z-index: 1000;
 		transition: 0.3s;
 		overflow: hidden;
-
+		@media only screen and (max-width:780px){
+			height: 55px;
+		}
 		&.fixed{
 			position: fixed;
 			background-color: #14131372;
@@ -48,15 +50,17 @@
 					transform: translateY(-50%);
 				}
 				li{
-					&.active a{
+					&.active a,
+					&.hover{
 						border-bottom: 1px solid #fff;
-						color: aqua;
+						color: #f7ea2d;
 
 						@media only screen and (max-width:780px){
 							border-bottom: none;
 						}
 					}
-					a{
+					a{	
+						
 						@include padding-style(10px 20px);
 						display: block;
 						line-height: 50px;

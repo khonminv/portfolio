@@ -36,6 +36,7 @@ body {
   font-family: "Open Sans", "Noto Sans KR", sans-serif;
   background-color: #232323;
   transition: background-color 0.3s;
+  overflow: hidden;
 }
 @media only screen and (max-width: 1080px) {
   body {
@@ -45,6 +46,11 @@ body {
 @media only screen and (max-width: 780px) {
   body {
     font-size: 0.75em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 0.5em;
   }
 }
 body.active {
@@ -70,6 +76,11 @@ body.active {
   z-index: 1000;
   transition: 0.3s;
   overflow: hidden;
+}
+@media only screen and (max-width: 780px) {
+  .start #header {
+    height: 55px;
+  }
 }
 .start #header.fixed {
   position: fixed;
@@ -108,12 +119,12 @@ body.active {
     transform: translateY(-50%);
   }
 }
-.start #header .header_zone nav ul li.active a {
+.start #header .header_zone nav ul li.active a, .start #header .header_zone nav ul li.hover {
   border-bottom: 1px solid #fff;
-  color: aqua;
+  color: #f7ea2d;
 }
 @media only screen and (max-width: 780px) {
-  .start #header .header_zone nav ul li.active a {
+  .start #header .header_zone nav ul li.active a, .start #header .header_zone nav ul li.hover {
     border-bottom: none;
   }
 }
@@ -161,7 +172,7 @@ body.active {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 1000;
+  z-index: 2000;
   width: 50px;
   height: 50px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -171,19 +182,27 @@ body.active {
           user-select: none;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  font-size: 0;
   -webkit-backdrop-filter: invert(1);
           backdrop-filter: invert(1);
+  transition: width 0.3s, height 0.3s;
+}
+@media only screen and (max-width: 780px) {
+  .cursor {
+    display: none;
+  }
 }
 .cursor.view {
-  font-size: 1em;
-  width: 75px;
-  height: 75px;
-  text-align: center;
+  width: 25px;
+  height: 25px;
+}
+.cursor .cursor_in {
+  display: none;
+  width: 65px;
+  height: 65px;
+  text-align: right;
   line-height: 30px;
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
   color: #fff;
+  z-index: 1999;
 }
 
 #about_me {
@@ -195,7 +214,7 @@ body.active {
 }
 #about_me .introduce h3 {
   padding: 10px 0;
-  font-size: 2.75em;
+  font-size: 2.5em;
   border-bottom: 1px solid #fff;
   color: #fff;
 }
@@ -208,7 +227,7 @@ body.active {
   padding: 10px 0;
   line-height: 50px;
   color: #fff;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 #skill {
@@ -233,11 +252,16 @@ body.active {
     right: -1400px;
   }
 }
+@media only screen and (max-width: 480px) {
+  #skill .inr {
+    right: -1550px;
+  }
+}
 #skill .inr .skill_text {
   color: #fff;
   font-size: 6em;
   text-align: right;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 @media only screen and (max-width: 1080px) {
   #skill .inr .skill_text {
@@ -258,11 +282,10 @@ body.active {
   gap: 30px;
 }
 #skill .inr ul li {
-  padding: 1.25em;
+  padding: 1.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   border: 1px solid #fff;
   border-radius: 50px;
   width: 300px;
@@ -276,15 +299,22 @@ body.active {
 }
 @media only screen and (max-width: 780px) {
   #skill .inr ul li {
-    width: 150px;
-    height: 200px;
+    padding: 1.5em;
+    width: 180px;
+    height: 220px;
     border-radius: 30px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #skill .inr ul li {
+    padding: 2em;
   }
 }
 #skill .inr ul li img {
   display: block;
-  width: 8em;
-  height: 8em;
+  width: 6em;
+  height: 6em;
+  margin-bottom: 3em;
 }
 @media only screen and (max-width: 780px) {
   #skill .inr ul li img {
@@ -293,11 +323,13 @@ body.active {
   }
 }
 #skill .inr ul li p {
+  line-height: 1.5;
   color: #fff;
+  font-size: 0.95em;
 }
 @media only screen and (max-width: 780px) {
   #skill .inr ul li p {
-    font-size: 0.75em;
+    font-size: 0.55em;
   }
 }
 
@@ -307,32 +339,40 @@ body.active {
   height: 200vh;
   color: #fff;
 }
+@media only screen and (max-width: 780px) {
+  #project {
+    height: 150vh;
+  }
+}
 #project .inr h3 {
   display: block;
   font-size: 3em;
   padding-bottom: 50px;
   letter-spacing: 10px;
 }
+#project .inr ul li {
+  border-bottom: 1px solid #fff;
+}
 #project .inr ul li:first-child {
   border-top: 1px solid #fff;
 }
 #project .inr ul li a {
-  padding: 8em 0;
-  position: relative;
+  padding: 10em 0;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #fff;
+  width: 100%;
   color: #fff;
 }
 @media only screen and (max-width: 1080px) {
   #project .inr ul li a {
-    padding: 5em 0;
+    padding: 8em 0;
   }
 }
 @media only screen and (max-width: 780px) {
   #project .inr ul li a {
-    padding: 3em 0;
+    padding: 5em 0;
   }
 }
 #project .inr ul li a .pro_left h4 {
@@ -345,7 +385,8 @@ body.active {
 }
 #project .inr ul li a .pro_right p {
   display: block;
-  font-size: 1.25em;
+  font-size: 1em;
+  line-height: 1.5;
 }
 #project .inr ul li a .img_box {
   position: absolute;
@@ -356,11 +397,16 @@ body.active {
   transform: translate(-50%, -50%);
   z-index: 2;
 }
+@media only screen and (max-width: 780px) {
+  #project .inr ul li a .img_box {
+    display: none;
+  }
+}
 #project .inr ul li a .img_box img {
-  position: absolute;
   display: block;
-  width: 10em;
-  height: 10em;
+  position: absolute;
+  width: 30em;
+  height: 30em;
   -o-object-fit: contain;
      object-fit: contain;
   z-index: 99999;
@@ -405,7 +451,6 @@ body.active {
 }
 #open_source .swiper .swiper-slide .slide_bot .viewmore {
   display: inline-block;
-  border-radius: 10px;
   margin-top: 20px;
 }
 #open_source .swiper .swiper-slide .slide_bot .viewmore a {
@@ -413,6 +458,7 @@ body.active {
   padding: 5px 10px;
   color: #fff;
   border: 1px solid #fff;
+  border-radius: 5px;
 }
 #open_source .swiper .swiper-slide-active {
   opacity: 1;
@@ -443,7 +489,6 @@ footer .ft_top {
 }
 footer .ft_top .ft_top_left {
   width: 45%;
-  white-space: wrap;
 }
 footer .ft_top .ft_top_right {
   width: 45%;
@@ -456,10 +501,14 @@ footer .ft_top h4 {
 }
 footer .ft_top p {
   padding: 10px 0;
+  width: 100%;
 }
 footer .ft_top a {
+  width: 100%;
   display: block;
   color: #fff;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 footer .ft_mid {
   width: 100%;
@@ -476,6 +525,9 @@ footer .ft_mid p {
   padding: 10px 0;
   font-size: 1.25em;
 }
+footer .ft_mid p a {
+  color: #fff;
+}
 footer .ft_bot {
   position: relative;
   width: 100%;
@@ -486,4 +538,109 @@ footer .ft_bot .copyright {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #f7ea2d;
+  transition: opacity 0.3s;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+#L_logo {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  transform: translate(-50%, -50%);
+  fill: white;
+  z-index: 9998;
+}
+
+.drowing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 102;
+}
+
+g {
+  fill: none;
+  stroke: rgb(4, 4, 4);
+  stroke-linecap: round;
+  stroke-width: 350;
+}
+
+path {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: line-ani01 0.2s linear 1.6s both;
+}
+
+.loading__line01 {
+  animation: line-ani01 0.2s linear 1.6s both;
+}
+
+.loading__line02 {
+  animation: line-ani01 0.2s linear 1.7s both;
+}
+
+.loading__line03 {
+  animation: line-ani01 0.2s linear 1.8s both;
+}
+
+.loading__line04 {
+  animation: line-ani01 0.2s linear 2s both;
+}
+
+.loading__line05 {
+  animation: line-ani01 0.2s linear 2.1s both;
+}
+
+.loading__line06 {
+  animation: line-ani01 0.2s linear 2.2s both;
+}
+
+.loading__line07 {
+  animation: line-ani01 0.2s linear 2.3s both;
+}
+
+.loading__line08 {
+  animation: line-ani01 0.2s linear 2.5s both;
+}
+
+.loading__line09 {
+  animation: line-ani01 0.2s linear 2.6s both;
+}
+
+.loading__line10 {
+  animation: line-ani01 0.2s linear 2.7s both;
+}
+
+.loading__line11 {
+  animation: line-ani01 0.2s linear 2.9s both;
+}
+
+@keyframes line-ani01 {
+  0% {
+    stroke-dashoffset: 1600px;
+  }
+  100% {
+    stroke-dashoffset: 200px;
+  }
+}
+@keyframes logo-ani01 {
+  from {
+    height: 0%;
+  }
+  to {
+    height: 50px;
+  }
 }

@@ -1,0 +1,88 @@
+#loading{
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background-color: #f7ea2d;
+	transition: opacity 0.3s;
+	overflow: hidden;
+	z-index: 9999;
+	
+}
+#L_logo{
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 150px;
+	transform: translate(-50%, -50%);
+	fill: white;
+	z-index: 9998;
+}
+.drowing{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	z-index: 102;
+}
+g{
+	fill: none;
+	stroke: rgb(4, 4, 4);
+	stroke-linecap: round;
+	stroke-width: 350;
+}
+path{
+	stroke-dasharray: 1600;
+	stroke-dashoffset: 1600;
+	animation: line-ani01 0.2s linear 1.6s both;
+}
+.loading__line01{
+	animation: line-ani01 0.2s linear 1.6s both;
+}
+.loading__line02{
+	animation: line-ani01 0.2s linear 1.7s both;
+}
+.loading__line03{
+	animation: line-ani01 0.2s linear 1.8s both;
+}
+.loading__line04{
+	animation: line-ani01 0.2s linear 2.0s both;
+}
+.loading__line05{
+	animation: line-ani01 0.2s linear 2.1s both;
+}
+.loading__line06{
+	animation: line-ani01 0.2s linear 2.2s both;
+}
+.loading__line07{
+	animation: line-ani01 0.2s linear 2.3s both;
+}
+.loading__line08{
+	animation: line-ani01 0.2s linear 2.5s both;
+}
+.loading__line09{
+	animation: line-ani01 0.2s linear 2.6s both;
+}
+.loading__line10{
+	animation: line-ani01 0.2s linear 2.7s both;
+}
+.loading__line11{
+	animation: line-ani01 0.2s linear 2.9s both;
+}
+@keyframes line-ani01 {
+	0% {
+		stroke-dashoffset: 1600px;
+	}
+	100% {
+		stroke-dashoffset: 200px;
+	}
+}
+@keyframes logo-ani01 {
+	from {
+			height: 0%;
+		}
+	to {
+			height: 50px;
+		}
+}

@@ -5,7 +5,7 @@
 		width: 100%;
 		h3{
 			@include padding-style(10px 0);
-			font-size: 2.75em;
+			font-size: 2.5em;
 			border-bottom: 1px solid #fff;
 			color: $main-color;
 		}
@@ -18,7 +18,7 @@
 				@include padding-style(10px 0);
 				line-height: 50px;
 				color: $main-color;
-				font-size: 1.5em;
+				font-size: 1.25em;
 			}
 		}
 	}

@@ -40,14 +40,14 @@
 			
 				.viewmore{
 					display: inline-block;
-					border-radius: 10px;
+					
 					margin-top: 20px;
-			
 					a{
 						display: inline-block;
 						padding: 5px 10px;
 						color: $main-color;
 						border: 1px solid #fff;
+						border-radius: 5px;
 					}
 				}
 			}

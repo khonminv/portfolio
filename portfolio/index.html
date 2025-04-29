@@ -18,8 +18,34 @@
 	<script src="script/main.js"></script>
 </head>
 <body>
+	<div id="loading">
+		<div class="L_img">
+			<svg id="L_logo" width="160" height="50" xmlns="http://www.w3.org/2000/svg">
+				<text x="50" y="40" font-size="40" font-family="Georgia, serif" fill="none" stroke="white" stroke-width="2" text-anchor="middle" font-weight="bold">HO</text>
+				<text x="90" y="20" font-size="12" font-family="Georgia, serif" fill="none" stroke="white" stroke-width="1" font-weight="bold">Portfolio</text>
+				<text x="90" y="40" font-size="20" font-family="Georgia, serif" fill="none" stroke="white" stroke-width="1" font-weight="bold">min</text>
+			</svg>
+		</div>
+		<svg class="drowing" width="1173.224" height="1579.93" class="visible1024">
+			<g fill="none" stroke="#040404" stroke-linecap="round" stroke-width="200">
+			  <path d="M100 103.533v1367.276" class="loading__line01"></path>
+			  <path d="m250 1474.581 75.44-1369.23" class="loading__line02"></path>
+			  <path d="M500.777 103.533v1367.276" class="loading__line03"></path>
+			  <path d="m650.114 1474.581 75.44-1369.23" class="loading__line04"></path>
+			  <path d="M850.555 103.533v1367.276" class="loading__line05"></path>
+			  <path d="m1050.892 1474.581 75.44-1369.23" class="loading__line06"></path>
+			  <path d="M1150.332 103.533v1367.276" class="loading__line07"></path>
+			  <path d="m1250.669 1474.581 75.44-1369.23" class="loading__line08"></path>
+			  <path d="M1400.109 103.533v1367.276" class="loading__line09"></path>
+			  <path d="m1600.446 1474.581 75.44-1369.23" class="loading__line10"></path>
+			  <path d="M1800.224 103.533v1367.276" class="loading__line11"></path>
+			</g>
+		  </svg>
+	</div>
 	<div class="wrapper">
-		<div class="cursor">view</div>
+		<div class="cursor">
+			<div class="cursor_in">view</div>
+		</div>
 		<div class="start">
 			<header id="header">
 				<div class="inr">
@@ -31,10 +57,10 @@
 						</div>
 						<nav id="nav">
 							<ul>
-								<li><a href="">About Me</a></li>
-								<li><a href="">Skill</a></li>
-								<li><a href="">Project</a></li>
-								<li><a href="">Open Source</a></li>
+								<li><a href="" class="view">About Me</a></li>
+								<li><a href="" class="view">Skill</a></li>
+								<li><a href="" class="view">Project</a></li>
+								<li><a href="" class="view">Open Source</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -103,7 +129,7 @@
 						</p>
 					</li>
 					<li>
-						<img src="images/styled.svg" alt="styled">
+						<img src="images/styledcomponents.svg" alt="styledcomponents">
 						<p>
 							Styled components 를 활용하여 props기반 조건부 스타일, 테마설정, 반응형 레이아웃을 구현할 수 있습니다.
 						</p>
@@ -133,7 +159,7 @@
 								<div class="pro_left">
 									<h4>SPC</h4>
 								</div>
-								<div class="img_box"><img src="images/spc.png" alt="spc"></div>
+								<div class="img_box"><img src="images/spc.PNG" alt="spc"></div>
 								<div class="pro_right">
 									<p>
 										관련 사이트 리뉴얼 디자인 하여 Swiper 활용한 이미지 슬라이더 및 서브 슬라이더 구현한 사이트
@@ -147,7 +173,7 @@
 								<div class="pro_left">
 									<h4>고운세상</h4>
 								</div>
-								<div class="img_box"><img src="images/goun.jpg" alt="goun"></div>
+								<div class="img_box"><img src="images/goun.PNG" alt="goun"></div>
 								<div class="pro_right">
 									<p>
 										scrollTrigger()를 사용하여 스크롤 기반 인터랙션 구현한 반응형 사이트
@@ -160,7 +186,7 @@
 								<div class="pro_left">
 									<h4>wylie</h4>
 								</div>
-								<div class="img_box"><img src="images/wylie.png" alt="wylie"></div>
+								<div class="img_box"><img src="images/wylie.PNG" alt="wylie"></div>
 								<div class="pro_right">
 									<p>
 										CSS와 Grid 레이아웃을 활용하여 다양한 화면 크기에 최적화된 UI를 제공하며
@@ -174,7 +200,7 @@
 								<div class="pro_left">
 									<h4>O’kichen</h4>
 								</div>
-								<div class="img_box"><img src="images/o'kichen.png" alt="/o'kichen"></div>
+								<div class="img_box"><img src="images/okic.PNG" alt="o'kichen"></div>
 								<div class="pro_right">
 									<p>
 										PWA(Progressive Web App)로 설치 가능한 웹 애플리케이션 개발 가능하며
@@ -282,7 +308,7 @@
 				<div class="ft_mid">
 					<h4>CONTACT</h4>
 					<p>PHONE : 010 - 4906 -5924</p>
-					<p>EMAIL : ghals1447@naver.com</p>
+					<p><a href="mailto:ghals1447@naver.com" class="view">EMAIL : ghals1447@naver.com</a></p>
 				</div>
 				<div class="ft_bot">
 					<div class="copyright">

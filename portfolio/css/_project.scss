@@ -4,7 +4,9 @@
 	position: relative;
 	height: 200vh;
 	color: $main-color;
-
+	@media only screen and (max-width:780px){
+		height: 150vh;
+	}
 	.inr {
 		h3{
 			display: block;
@@ -14,28 +16,29 @@
 		}
 		ul {
 			li {
+				border-bottom: 1px solid #fff;
 				&:first-child{
 					border-top: 1px solid #fff;
 				}
-				a{
-					@include padding-style(8em 0);
-					position: relative;
+				a{	
+					@include padding-style(10em 0);
 					display: flex;
+					position: relative;
 					align-items: center;
 					justify-content: space-between;
-					border-bottom: 1px solid #fff;
+					width: 100%;
 					color: $main-color;
-					
+
 					@media only screen and (max-width:1080px){
-						@include padding-style(5em 0);
+						@include padding-style(8em 0);
 					}
 					@media only screen and (max-width:780px){
-						@include padding-style(3em 0);
+						@include padding-style(5em 0);
 					}
 					.pro_left h4{
 						@include padding-style(0 0 0 1.5em);
 						font-size: 2.5em;
-					
+						
 					}
 					.pro_right{
 						@include padding-style(0 1.5em 0 );
@@ -43,7 +46,8 @@
 
 						p{
 							display: block;
-							font-size: 1.25em;
+							font-size: 1em;
+							line-height: 1.5;
 						}
 					}
 					.img_box{
@@ -54,14 +58,17 @@
 						height: 100%;
 						transform: $translate-mid;
 						z-index: 2;
-
+						@media only screen and (max-width:780px){
+							display: none;
+						}
 						img{
-							position: absolute;
 							display: block;
-							width: 10em;
-							height: 10em;
+							position: absolute;
+							width: 30em;
+							height: 30em;
 							object-fit: contain;
 							z-index: 99999;
+							
 						}
 					}
 				}

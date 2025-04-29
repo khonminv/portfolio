@@ -26,12 +26,16 @@ body{
 	font-family: "Open Sans","Noto Sans KR", sans-serif;
 	background-color: #232323;
 	transition: background-color 0.3s;
+	overflow: hidden;
 	
 	@media only screen and (max-width:1080px){
 		font-size: 0.875em;
 	}
 	@media only screen and (max-width:780px){
 		font-size: 0.75em;
+	}
+	@media only screen and (max-width:480px){
+		font-size: 0.5em;
 	}
 
 	&.active{
