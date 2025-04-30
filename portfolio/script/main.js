@@ -6,7 +6,7 @@ window.addEventListener("load", function(){
 	let secList = document.querySelectorAll("section");
 	let startpage = document.querySelector(".start")
 	let pageList = [startpage, ...secList];
-	let skill = document.querySelector("#skill");
+	let topBtn = document.querySelector(".go_top");
 	let cursor = document.querySelector(".cursor");
 	let cursorIn = document.querySelector(".cursor_in")
 	let aTag = document.querySelectorAll(".view");
@@ -72,7 +72,11 @@ window.addEventListener("load", function(){
 			cursorIn.style.display = "none";
 		});
 	});
-	
+	//go top
+	topBtn.addEventListener("click", function(e){
+		e.preventDefault();
+		gsap.to(window,{scrollTo:startpage.offsetTop,duration:0.5})
+	});
 	
 	//video
 	video.muted = true;
@@ -89,6 +93,7 @@ window.addEventListener("load", function(){
 		if(500 < window.scrollY){
 			if(header.classList.contains("fixed") == false){
 				header.classList.add("fixed");
+				topBtn.classList.add("active");
 				gsap.fromTo("#header",{opacity:0},{opacity:1,duration:0.3});
 				console.log("fix")
 			}
@@ -96,6 +101,7 @@ window.addEventListener("load", function(){
 		else{
 			if(header.classList.contains("fixed") == true){
 				header.classList.remove("fixed");
+				topBtn.classList.remove("active");
 			}
 			
 		}
@@ -131,7 +137,7 @@ window.addEventListener("load", function(){
 					offsetList.push(item.offsetTop-1);
 				}
 				else{
-					offsetList.push(item.offsetTop+1300); // pin
+					offsetList.push(item.offsetTop+1200); // pin
 				}
 			}
 		});
@@ -208,7 +214,7 @@ window.addEventListener("load", function(){
 	
 	skillTl.to(".skill_text",{opacity:1,duration:2});
 	if(isMobile == true){
-		skillTl.to("#skill .inr",{opacity:1,xPercent:-80,duration:6});
+		skillTl.to("#skill .inr",{opacity:1,xPercent:-100,duration:6});
 	}
 	else{
 		skillTl.to("#skill .inr",{opacity:1,xPercent:-150,duration:6});

@@ -22,10 +22,7 @@ footer{
 			display: block;
 			font-size: 1.5em;
 			border-bottom: 1px solid #fff;
-		}
-		p{
-			@include padding-style(10px 0 );
-			width:100%;
+			margin-bottom: 1.5em;
 		}
 		a{
 			width: 100%;
@@ -33,6 +30,12 @@ footer{
 			color: $main-color;
 			white-space: normal;
 			overflow-wrap: break-word;
+			img{
+				display: block;
+				width: 6em;
+				height: 6em;
+				object-fit: cover;
+			}
 		}
 	}
 	.ft_mid{

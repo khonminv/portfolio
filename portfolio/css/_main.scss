@@ -50,24 +50,26 @@
 					transform: translateY(-50%);
 				}
 				li{
-					&.active a,
-					&.hover{
-						border-bottom: 1px solid #fff;
+					&.active a{
 						color: #f7ea2d;
+						// border: 2px solid #f7ea2d;
+						box-sizing: border-box;
 
 						@media only screen and (max-width:780px){
-							border-bottom: none;
+							border: 1px solid #f7ea2d;
 						}
 					}
 					a{	
 						
-						@include padding-style(10px 20px);
-						display: block;
+						@include padding-style(7px 20px);
+						display: inline-block;
 						line-height: 50px;
 						color: $main-color;
+						border-radius: 8px;
+						margin-top: 2px;
 	
 						@media only screen and (max-width:780px){
-							@include padding-style(0);
+							@include padding-style(3px 5px);
 							line-height: 20px;
 						}
 						

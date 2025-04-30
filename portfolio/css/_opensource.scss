@@ -3,12 +3,13 @@
 }
 #open_source{
 	@extend %section;
+	@include padding-style(10vh 0);
 
 	.swiper {
 		width: 100%;
 		height: auto;
-		padding: 100px 50px;
-	
+		
+		
 		.swiper-slide {
 			@include padding-style(20px);
 			width: 100%;

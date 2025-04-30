@@ -2,7 +2,7 @@
 	@extend %section;
 	@include padding-style(10vh 0 10vh);
 	position: relative;
-	height: 200vh;
+	height: 250vh;
 	color: $main-color;
 	@media only screen and (max-width:780px){
 		height: 150vh;
