@@ -27,6 +27,7 @@ body{
 	background-color: $main-bg;
 	transition: background-color 0.3s;
 	overflow: hidden;
+	touch-action: pan-y; /* 수직 스크롤 허용 */
 	
 	@media only screen and (max-width:1080px){
 		font-size: 0.875em;
