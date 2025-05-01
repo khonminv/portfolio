@@ -163,7 +163,7 @@ body.active {
   height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
-  z-index: 0;
+  z-index: -1;
 }
 .start .main .main_text {
   position: absolute;
