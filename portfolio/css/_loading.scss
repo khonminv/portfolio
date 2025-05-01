@@ -2,7 +2,7 @@
 	position: fixed;
 	width: 100%;
 	height: 100vh;
-	background-color: #f7ea2d;
+	background-color: #000;
 	transition: opacity 0.3s;
 	overflow: hidden;
 	z-index: 9999;
@@ -13,7 +13,7 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 150px;
+	width: 180px;
 	transform: translate(-50%, -50%);
 	fill: white;
 	z-index: 9998;
@@ -28,7 +28,7 @@
 }
 g{
 	fill: none;
-	stroke: rgb(4, 4, 4);
+	stroke: #8B0000;
 	stroke-linecap: round;
 	stroke-width: 350;
 }

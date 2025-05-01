@@ -1,4 +1,14 @@
 window.addEventListener("load", function(){
+	const lenis=new Lenis();
+
+	lenis.on("scroll", ScrollTrigger.update);
+
+	gsap.ticker.add(function(time){
+		lenis.raf(time*1000)
+	});
+
+	gsap.ticker.lagSmoothing(0);
+
 	let video = document.querySelector(".main video");
 	let imgBox = document.querySelectorAll(".img_box");
 	let header = document.querySelector("#header");
@@ -6,13 +16,15 @@ window.addEventListener("load", function(){
 	let secList = document.querySelectorAll("section");
 	let startpage = document.querySelector(".start")
 	let pageList = [startpage, ...secList];
+	let pageOffset=pageList.map(item => item.offsetTop);
+
+	console.log(pageOffset);
+
 	let topBtn = document.querySelector(".go_top");
 	let cursor = document.querySelector(".cursor");
 	let cursorIn = document.querySelector(".cursor_in")
 	let aTag = document.querySelectorAll(".view");
 	let proList = document.querySelectorAll("#project ul li");
-
-	lenisAnimation();
 
 
 
@@ -37,13 +49,13 @@ window.addEventListener("load", function(){
 		if(window.innerWidth < 780){
 			if(isMobile != true){
 				isMobile = true;
-				console.log("mo");
+				// console.log("mo");
 			}
 		}
 		else{
 			if(isMobile != false){
 				isMobile = false;
-				console.log("pc");
+				// console.log("pc");
 			}
 		}
 	});
@@ -75,7 +87,7 @@ window.addEventListener("load", function(){
 	//go top
 	topBtn.addEventListener("click", function(e){
 		e.preventDefault();
-		gsap.to(window,{scrollTo:startpage.offsetTop,duration:0.5})
+		gsap.to(window,{scrollTo:startpage.offsetTop,duration:0.6,autoKill:false});
 	});
 	
 	//video
@@ -90,12 +102,12 @@ window.addEventListener("load", function(){
 	window.addEventListener("scroll", function(){
 
 
-		if(500 < window.scrollY){
+		if(window.scrollY > 500){
 			if(header.classList.contains("fixed") == false){
 				header.classList.add("fixed");
 				topBtn.classList.add("active");
 				gsap.fromTo("#header",{opacity:0},{opacity:1,duration:0.3});
-				console.log("fix")
+				// console.log("fix")
 			}
 		}
 		else{
@@ -107,6 +119,7 @@ window.addEventListener("load", function(){
 		}
 	});
 
+	// menuList
 	menuList.forEach(function(item,i){
 		item.addEventListener("click",function(e){
 			e.preventDefault();
@@ -115,9 +128,24 @@ window.addEventListener("load", function(){
 				menuList.forEach(function(item2,j){
 					menuList[j].classList.remove("active")
 				});
+
 				item.classList.add("active");
-				gsap.to(window,{scrollTo:pageList[i+1],duration:0.5});
 			}
+
+			let pageTargety;
+
+			if(i != 1){
+				pageTargety=pageList[i+1].offsetTop;
+			}
+			else{
+				pageTargety=pageOffset[2];
+			}
+
+			gsap.to(window, { scrollTo: pageTargety, duration: 0.5, onComplete: function(){
+				setTimeout(function(){
+					gsap.to(window, { scrollTo: pageTargety, duration: 0.2 });
+				}, 10);
+			}});
 		});
 	});
 
@@ -201,8 +229,9 @@ window.addEventListener("load", function(){
 			trigger: "#skill",
 			start: "top 20%",
 			end: "+=2000",
-			scrub: 1,
+			scrub: true,
 			pin:true,
+			autoKill: false,
 			// markers:true
 			onEnter: function(){
 				pushPage=true;

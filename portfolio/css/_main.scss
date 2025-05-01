@@ -17,7 +17,7 @@
 		}
 		&.fixed{
 			position: fixed;
-			background-color: #14131372;
+			background-color: rgba(0,0,0,.6);
 		}
 
 		.header_zone{
@@ -51,12 +51,12 @@
 				}
 				li{
 					&.active a{
-						color: #f7ea2d;
+						color: #8B0000;
 						// border: 2px solid #f7ea2d;
 						box-sizing: border-box;
 
 						@media only screen and (max-width:780px){
-							border: 1px solid #f7ea2d;
+							border: 1px solid #8B0000;
 						}
 					}
 					a{	
@@ -67,6 +67,8 @@
 						color: $main-color;
 						border-radius: 8px;
 						margin-top: 2px;
+						font-family: "Noto Sans, sans-serif";
+						font-weight: 500;
 	
 						@media only screen and (max-width:780px){
 							@include padding-style(3px 5px);
@@ -89,16 +91,44 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			transform: translate(-50%,-50%);
-
-			p{
+			transform: $translate-mid;
+			b{
+				display: block;
+				font-size: 6em;
+				color: $main-color;
+				font-family: "Lora", serif;
+				line-height: 0.9;
+				letter-spacing: 4px;
+			}
+			p{	
+				display: block;
 				font-size: 6em;
 				font-style: italic;
 				color: $main-color;
 				font-family: $start-font;
+				letter-spacing: 12px;
+			}
+			
+
+			
+			
+		}
+		.btn{
+			position: absolute;
+			right: 7.5em;
+			bottom: 4.5em;
+			display: flex;
+			gap: 30px;
+			a{
+				display: block;
+				
+				img{
+					display: block;
+					width: 3em;
+					height: 3em;
+				}
 			}
 		}
-
 		span{
 			display: block;
 			position: absolute;

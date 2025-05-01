@@ -11,6 +11,7 @@
 		h3{
 			display: block;
 			font-size: 3em;
+			font-family: $start-font;
 			padding-bottom: 50px;
 			letter-spacing: 10px;
 		}
@@ -21,7 +22,7 @@
 					border-top: 1px solid #fff;
 				}
 				a{	
-					@include padding-style(10em 0);
+					@include padding-style(10em 3em);
 					display: flex;
 					position: relative;
 					align-items: center;
@@ -42,7 +43,7 @@
 					}
 					.pro_right{
 						@include padding-style(0 1.5em 0 );
-						width: 30%;
+						width: 35%;
 
 						p{
 							display: block;

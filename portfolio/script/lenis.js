@@ -1,13 +1,11 @@
 function lenisAnimation(){
-	const lenis=new Lenis({
-		duration: 2,
-		easing: t => Math.min(1, 1.001-Math.pow(2, -10*t))
-	});
+	const lenis=new Lenis();
 
-	function raf(time){
-		lenis.raf(time);
-		requestAnimationFrame(raf);
-	}
+lenis.on("scroll", ScrollTrigger.update);
 
-	requestAnimationFrame(raf);
+gsap.ticker.add(function(time){
+   lenis.raf(time*1000)
+});
+
+gsap.ticker.lagSmoothing(0);
 }

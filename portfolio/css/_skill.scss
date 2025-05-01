@@ -25,7 +25,7 @@
 			color: $main-color;
 			font-size: 6em;
 			text-align: right;
-			opacity: 0.3;
+			opacity: 0.2;
 			@media only screen and (max-width:1080px){
 				font-size: 4.5em;
 			}
@@ -34,6 +34,10 @@
 			}
 			strong{
 				white-space: nowrap;
+				b{
+					font-weight: 600;
+					color: #8B0000;
+				}
 			}
 		}
 		ul{
@@ -42,7 +46,8 @@
 			gap: 30px;
 
 			li{
-				@include padding-style(1.5em);
+				@include padding-style(2em);
+				position: relative;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -50,7 +55,12 @@
 				border-radius: 50px;
 				width: 300px;
 				height: 380px;
-				
+				&:nth-child(4) img,
+				&:nth-child(7) img
+				{
+					width: 5em;
+					height: 5em;
+				}
 				
 				@media only screen and (max-width:1080px){
 					width: 250px;
@@ -69,7 +79,6 @@
 					display: block;
 					width: 6em;
 					height: 6em;
-					margin-bottom: 3em;
 					@media only screen and (max-width:780px){
 						width: 4em;
 						height: 4em;
@@ -77,12 +86,17 @@
 					}
 				}
 				p{	
+					position: absolute;
+					top: 50%;
+					display: block;
+					width: 90%;
 					line-height: 1.5;
 					color: $main-color;
 					font-size: 0.95em;
 					@media only screen and (max-width:780px){
 						font-size: 0.55em;
 					}
+					
 				}
 
 				

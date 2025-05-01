@@ -24,7 +24,7 @@ img {
 body{
 	width: 100vw;
 	font-family: "Open Sans","Noto Sans KR", sans-serif;
-	background-color: #232323;
+	background-color: $main-bg;
 	transition: background-color 0.3s;
 	overflow: hidden;
 	

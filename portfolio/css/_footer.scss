@@ -26,7 +26,7 @@ footer{
 		}
 		a{
 			width: 100%;
-			display: block;
+			display: inline-block;
 			color: $main-color;
 			white-space: normal;
 			overflow-wrap: break-word;
@@ -46,8 +46,9 @@ footer{
 		h4{
 			@include padding-style(10px 0);
 			display: block;
-			font-size: 1.5em;
+			font-size: 1.75em;
 			border-bottom: 1px solid #fff;
+			margin-bottom: 1em;
 		}
 		p{
 			@include padding-style(10px 0);
