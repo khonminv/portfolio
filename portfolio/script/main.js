@@ -1,14 +1,14 @@
 window.addEventListener("load", function(){
-	// const lenis=new Lenis();
+	const lenis=new Lenis();
 
-	// lenis.on("scroll", ScrollTrigger.update);
+	lenis.on("scroll", ScrollTrigger.update);
 
-	// gsap.ticker.add(function(time){
-	// 	lenis.raf(time*1000)
-	// });
+	gsap.ticker.add(function(time){
+		lenis.raf(time*1000)
+	});
 
 	// gsap.ticker.lagSmoothing(0);
-
+	let body = document.body
 	let video = document.querySelector(".main video");
 	let imgBox = document.querySelectorAll(".img_box");
 	let header = document.querySelector("#header");
@@ -40,6 +40,7 @@ window.addEventListener("load", function(){
 	}, 3500);
 	setTimeout(function() {
 		document.getElementById('loading').style.display = "none";
+		body.style.overflow = "auto";
 	}, 4000);
 
 
