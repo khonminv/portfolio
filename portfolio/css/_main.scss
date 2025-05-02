@@ -27,10 +27,14 @@
 			
 			.logo{
 				@include padding-style(10px 0);
-				img{
-					@media only screen and (max-width:780px){
-						width: 70%;
-					}
+				a{
+					display: block;
+					img{
+						@media only screen and (max-width:780px){
+							width: 70%;
+						}
+				}
+				
 				}
 				
 			}
@@ -119,6 +123,10 @@
 			bottom: 4.5em;
 			display: flex;
 			gap: 30px;
+
+			@media only screen and (max-width:480px){
+				right: 4.5em;
+			}
 			a{
 				display: block;
 				
