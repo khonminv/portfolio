@@ -4,7 +4,7 @@
 	.introduce{
 		width: 100%;
 		h3{
-			@include padding-style(10px 0);
+			padding-bottom: 40px;
 			font-size: 2.5em;
 			border-bottom: 1px solid #f5f5f5;
 			color: $main-color;

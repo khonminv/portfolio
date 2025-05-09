@@ -34,7 +34,7 @@ img {
 
 body {
   width: 100vw;
-  font-family: "Open Sans", "Noto Sans KR", sans-serif;
+  font-family: "Roboto Condensed", "Noto Sans KR", sans-serif;
   background-color: #1a1f2b;
   transition: background-color 0.3s;
   overflow: hidden;
@@ -89,7 +89,7 @@ body.active {
 }
 .start #header {
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 0;
   width: 100%;
   height: 70px;
@@ -105,7 +105,7 @@ body.active {
 }
 .start #header.fixed {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
 }
 .start #header .header_zone {
   display: flex;
@@ -114,6 +114,7 @@ body.active {
 }
 .start #header .header_zone .logo {
   padding: 10px 0;
+  width: 150px;
 }
 .start #header .header_zone .logo a {
   display: block;
@@ -159,7 +160,6 @@ body.active {
   color: #fff;
   border-radius: 8px;
   margin-top: 2px;
-  font-family: "Noto Sans, sans-serif";
   font-weight: 500;
 }
 @media only screen and (max-width: 780px) {
@@ -185,7 +185,6 @@ body.active {
   display: block;
   font-size: 6em;
   color: #fff;
-  font-family: "Lora", serif;
   line-height: 0.9;
   letter-spacing: 4px;
 }
@@ -214,8 +213,8 @@ body.active {
 }
 .start .main .btn a img {
   display: block;
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
 }
 .start .main span {
   display: block;
@@ -271,7 +270,7 @@ body.active {
   width: 100%;
 }
 #about_me .introduce h3 {
-  padding: 10px 0;
+  padding-bottom: 40px;
   font-size: 2.5em;
   border-bottom: 1px solid #f5f5f5;
   color: #fff;
@@ -295,24 +294,24 @@ body.active {
 #skill .inr {
   position: absolute;
   top: 10%;
-  right: -850px;
+  right: -1000px;
   display: flex;
   align-items: center;
   gap: 150px;
 }
 @media only screen and (max-width: 1080px) {
   #skill .inr {
-    right: -1200px;
+    right: -1250px;
   }
 }
 @media only screen and (max-width: 780px) {
   #skill .inr {
-    right: -1350px;
+    right: -1550px;
   }
 }
 @media only screen and (max-width: 480px) {
   #skill .inr {
-    right: -1450px;
+    right: -1550px;
   }
 }
 #skill .inr .skill_text {
@@ -329,6 +328,11 @@ body.active {
 @media only screen and (max-width: 780px) {
   #skill .inr .skill_text {
     font-size: 3.5em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #skill .inr .skill_text {
+    font-size: 3em;
   }
 }
 #skill .inr .skill_text strong {
@@ -595,7 +599,6 @@ footer .ft_top h4 {
   margin-bottom: 1.5em;
 }
 footer .ft_top a {
-  width: 100%;
   display: inline-block;
   color: #fff;
   white-space: normal;

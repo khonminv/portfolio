@@ -1,4 +1,59 @@
+import { useEffect } from "react";
+import gsap from "gsap";
+
 function SPCway(){
+	let isMobile;
+	
+	useEffect(()=>{
+	let wayTopList = document.querySelectorAll(".way_top > ul > li a");
+	let wayBotList = document.querySelectorAll(".way_bot > ul li");
+
+	let moWayList = document.querySelectorAll(".way_mobile li > a");
+	let moWayTab = document.querySelectorAll(".way_mobile_tab");
+
+
+	//spc way
+	wayTopList.forEach(function(item,i){
+		item.addEventListener("click", function(e){
+			e.preventDefault()
+			if(item.classList.contains("active") == false){
+				wayTopList.forEach(function(item2,j){
+					wayTopList[j].classList.remove("active");
+					wayBotList[j].classList.remove("active");
+					
+				});
+				wayTopList[i].classList.add("active");
+				wayBotList[i].classList.add("active");
+				
+			}
+		})
+	})
+	//spc way mobile
+	moWayList.forEach(function(item,i){
+		item.addEventListener("click", function(e){
+			if(isMobile === true){
+				e.preventDefault()
+				if(item.classList.contains("active") === false){
+					moWayList.forEach(function(item2,j){
+						gsap.to(moWayTab[j],{height:0,duration:0.5})
+						moWayList[j].classList.remove("active");
+						moWayTab[j].classList.remove("active");
+					});
+					gsap.fromTo(moWayTab[i],{height:0},{height:"500px",duration:0.5})
+					moWayList[i].classList.add("active");
+					moWayTab[i].classList.add("active");
+				}
+				else{
+					gsap.fromTo(moWayTab[i],{height:"500px"},{height:0,duration:0.5})
+					moWayList[i].classList.remove("active");
+					moWayTab[i].classList.remove("active");
+				}
+			}
+		})
+	})
+
+	});
+
 	return(
 		<div className="spc_way">
 			<div className="inr">

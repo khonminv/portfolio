@@ -1,4 +1,5 @@
 import Lang from "./Lang";
+
 function Hd_right(){
 	return(
 		<div className="hd_right">

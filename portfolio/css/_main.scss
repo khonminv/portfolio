@@ -4,7 +4,7 @@
 
 	#header{
 		position: absolute;
-		top: 0;
+		top: 20px;
 		left: 0;
 		width: 100%;
 		height: 70px;
@@ -17,7 +17,7 @@
 		}
 		&.fixed{
 			position: fixed;
-			background-color: rgba(0,0,0,.6);
+			background-color: transparent;
 		}
 
 		.header_zone{
@@ -27,6 +27,7 @@
 			
 			.logo{
 				@include padding-style(10px 0);
+				width: 150px;
 				a{
 					display: block;
 					img{
@@ -58,7 +59,7 @@
 						color: #8B0000;
 						// border: 2px solid #f7ea2d;
 						box-sizing: border-box;
-
+						
 						@media only screen and (max-width:780px){
 							border: 1px solid #8B0000;
 						}
@@ -71,9 +72,8 @@
 						color: $main-color;
 						border-radius: 8px;
 						margin-top: 2px;
-						font-family: "Noto Sans, sans-serif";
 						font-weight: 500;
-	
+
 						@media only screen and (max-width:780px){
 							@include padding-style(3px 5px);
 							line-height: 20px;
@@ -100,7 +100,7 @@
 				display: block;
 				font-size: 6em;
 				color: $main-color;
-				font-family: "Lora", serif;
+				// font-family: "Lora", serif;
 				line-height: 0.9;
 				letter-spacing: 4px;
 			}
@@ -132,8 +132,8 @@
 				
 				img{
 					display: block;
-					width: 3em;
-					height: 3em;
+					width: 2em;
+					height: 2em;
 				}
 			}
 		}

@@ -1,4 +1,4 @@
-function Brand(){
+function Sec_Brand(){
 	return(
 		<div className="content" id="brand">
 						<div className="left">
@@ -43,4 +43,4 @@ function Brand(){
 	);
 }
 
-export default Brand;
+export default Sec_Brand;

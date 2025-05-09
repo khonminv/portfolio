@@ -1,14 +1,13 @@
 import './css/style.css'
-import Dim from './components/Dim';
-import Start from './components/start/Start';
-import Section from './components/section/Section';
-import SPCnow from './components/spcnow/SPCnow';
-import Footer from './components/footer/Footer';
+import Start from './components/Start';
+import Section from './components/Section';
+import SPCnow from './components/SPCnow';
+import Footer from './components/Footer';
+
 
 function App() {
   return (
     <div className="wrapper">
-		<Dim />
 		<Start />
 		<Section />
 		<SPCnow />

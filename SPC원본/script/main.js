@@ -1,9 +1,7 @@
 window.addEventListener("load", function(){
 	let header = document.querySelector("header");
-	let navBg = document.querySelector(".nav_back");
 	let nav = document.querySelector("header nav");
 	let lang = document.querySelector(".lang a");
-	let langSub = document.querySelector(".lang_sub");
 	let wayTopList = document.querySelectorAll(".way_top > ul > li a");
 	let wayBotList = document.querySelectorAll(".way_bot > ul li");
 

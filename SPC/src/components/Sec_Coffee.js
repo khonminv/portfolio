@@ -1,4 +1,4 @@
-function Coffee(){
+function Sec_Coffee(){
 	return(
 		<div className="content" id="coffee">
 						<div className="left">
@@ -43,4 +43,4 @@ function Coffee(){
 	);
 }
 
-export default Coffee;
+export default Sec_Coffee;

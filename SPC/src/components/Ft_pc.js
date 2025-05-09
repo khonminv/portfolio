@@ -1,9 +1,7 @@
 import Ft_logo from "./Ft_logo";
 import Fm_site from "./Fm_site";
-import Locate from "./Locate";
-import Link from "./Link";
-import Sns from "./Sns";
-import Copyright from "./Copyright";
+import Link from "./Ft_Link";
+import Sns from "./Ft_sns";
 
 function Ft_pc(){
 	return(
@@ -13,9 +11,15 @@ function Ft_pc(){
 			</div>
 			<div className="ft_bot">
 				<div className="ft_bot_left">
-					<Locate />
+					<div className="locate">
+						<span>
+							서울시 서초구 양재동 남부순환로 2620 (양재동 11-149)
+						</span>
+					</div>
 					<Link />
-					<Copyright />
+					<div className="copyright">
+						<span>Copyright SPC All rights reserverd.</span>
+					</div>
 				</div>
 				<div className="ft_bot_right">
 					<Sns />

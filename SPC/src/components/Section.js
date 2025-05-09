@@ -1,7 +1,7 @@
 import SPCway from "./SPCway";
-import Brand from "./Brand";
-import Coffee from "./Coffee";
-import Circulation from "./Circulation";
+import Brand from "./Sec_Brand";
+import Coffee from "./Sec_Coffee";
+import Circulation from "./Sec_Circulation";
 function Section(){
 	return(
 		<div className="cont section">

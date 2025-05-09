@@ -1,4 +1,4 @@
-function Circulation(){
+function Sec_Circulation(){
 	return(
 		<div className="content" id="circulation">
 						<div className="left">
@@ -43,4 +43,4 @@ function Circulation(){
 	);
 }
 
-export default Circulation;
+export default Sec_Circulation;

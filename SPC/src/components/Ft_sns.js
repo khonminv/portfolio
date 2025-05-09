@@ -1,4 +1,4 @@
-function Sns(){
+function Ft_sns(){
 	return(
 		<div className="sns">
 			<ul>
@@ -10,4 +10,4 @@ function Sns(){
 	);
 }
 
-export default Sns;
+export default Ft_sns;

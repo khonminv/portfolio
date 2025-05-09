@@ -1,4 +1,4 @@
-function Link(){
+function Ft_Link(){
 	return(
 		<div className="link">
 			<ul>
@@ -11,4 +11,4 @@ function Link(){
 	);
 }
 
-export default Link;
+export default Ft_Link;

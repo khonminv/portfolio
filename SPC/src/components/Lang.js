@@ -1,4 +1,8 @@
+
+
 function Lang(){
+	
+
 	return(
 		<div className="lang">
 			<a href="">

@@ -37,11 +37,14 @@ window.addEventListener("load", function(){
 	setTimeout(function() {
 		document.getElementById('loading').style.opacity = 0;
 		window.scrollTo(0, 0);
+		
+		body.style.overflow = "auto";
+		body.style.overflowX = "hidden";
 	}, 3500);
 	setTimeout(function() {
 		document.getElementById('loading').style.display = "none";
-		body.style.overflow = "auto";
-	}, 4000);
+
+	}, 3700);
 
 
 	//ismobile
