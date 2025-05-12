@@ -386,6 +386,9 @@ header.fixed{
 	line-height: 30px;
 	border-bottom: 1px solid #eaeaea;
 }
+.mo_tab .lang ul{
+	display: flex;
+}
 .mo_tab .lang a{
 	padding: 20px;
 	display: block;
@@ -401,12 +404,14 @@ header.fixed{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	border-bottom: 1px solid #eaeaea;
 }
 .mo_tab .mo_tab_top .mo_tab_close{
 	margin-right: 40px;
 }
 .mo_tab .mo_nav{
 	padding: 0 20px;
+	width: 100%;
 }
 .mo_tab .mo_nav > ul > li{
 	position: relative;
@@ -672,7 +677,7 @@ header.fixed{
 	overflow: hidden;
 }
 .spc_way .way_mobile .way_mobile_tab.active{
-	height: 100%;
+	height: auto;
 }
 .spc_way .way_mobile .way_mobile_tab img{
 	object-fit: cover;
@@ -861,7 +866,7 @@ header.fixed{
 	bottom: 0;
 	z-index: -1;
 }
-.now {
+.now ul li{
 	display: flex;
 	gap: 30px;
 	z-index: 200;
@@ -901,7 +906,7 @@ header.fixed{
 	.now_mobile{
 		display: block;
 	}
-	.now{
+	.now ul{
 		display: none;
 	}
 }

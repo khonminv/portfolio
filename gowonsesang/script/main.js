@@ -34,6 +34,8 @@ window.addEventListener("load",function(){
 		window.dispatchEvent(event);
 	}
 	triggerResizeEvent();
+
+	
 	function moveCircle(e){
 		let x=e.pageX;
 		let y=e.pageY;

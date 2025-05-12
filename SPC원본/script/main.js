@@ -26,8 +26,13 @@ window.addEventListener("load", function(){
 		else{
 			if(isMobile != true){
 				isMobile = true;
-				header.classList.add("mo");
-				console.log("true")
+				header.classList.remove("mo");
+				tabBox.classList.remove("active");
+				body.classList.remove("fixed");
+				monavList.forEach((item, i) => {
+					item.classList.remove("active");
+					monavSubList[i].style.height = 0;
+				});
 			}
 		}
 	});

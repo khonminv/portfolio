@@ -1,10 +1,12 @@
+import data from "../data";
+
 function Ft_sns(){
 	return(
 		<div className="sns">
 			<ul>
-				<li><a href=""><img src="/images/ft_facebook.png" alt="ft_facebook"/></a></li>
-				<li><a href=""><img src="/images/ft_insta.png" alt="ft_insta"/></a></li>
-				<li><a href=""><img src="/images/ft_youtube.png" alt="ft_youtube"/></a></li>
+				{
+					data.footer.sns.map((d,i)=><li key={i+1}><a href=""><img src={`/images/${d}`} alt={d.split(".")[0]}/></a></li>)
+				}
 			</ul>
 		</div>
 	);

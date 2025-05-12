@@ -1,9 +1,8 @@
-// src/store.js
 import { createStore } from 'redux';
 
 // 초기 상태
 const initialState = {
-    isMobile: window.innerWidth <= 980,
+    isMobile: window.innerWidth <= 1280,
 };
 
 // 리듀서

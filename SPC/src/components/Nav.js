@@ -4,7 +4,6 @@ function Nav(p){
     : { depth1: '', depth2: [] };
 	
 	return(
-		<>
 			<li>
 				<a href="">{depth1}</a>
 				<ul className="sub">
@@ -13,9 +12,6 @@ function Nav(p){
 					}
 				</ul>
 			</li>
-		</>
-				
-
 	);
 }
 
