@@ -13,7 +13,7 @@
 ### ⚡View 
 | 메인 | 슬라이더 | 모바일 |
 | :-: | :-: | :-: |
-| <img src="images/spc1.PNG" width="200px" height="200px" align="top"> | <img src="images/spc3.PNG" width="200px" height="200px" align="top"> | <img src="images/spc4.PNG" width="200px" align="top"> |
+| <img src="public/images/spc1.PNG" width="200px" height="200px" align="top"> | <img src="public/images/spc3.PNG" width="200px" height="200px" align="top"> | <img src="public/images/spc4.PNG" width="200px" align="top"> |
 
 ## 📣Focus
 * React, Redux, GSAP (GreenSock Animation Platform) 등을 활용하여 스크롤 애니메이션 및 다양한 UI구현
