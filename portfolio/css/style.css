@@ -79,8 +79,20 @@ body.active {
   border-radius: 50%;
   transition: right 0.3s;
 }
+@media only screen and (max-width: 480px) {
+  .go_top {
+    width: 4em;
+    height: 4em;
+    bottom: 30px;
+  }
+}
 .go_top.active {
   right: 50px;
+}
+@media only screen and (max-width: 480px) {
+  .go_top.active {
+    right: 20px;
+  }
 }
 
 .start {
@@ -188,6 +200,11 @@ body.active {
   line-height: 0.9;
   letter-spacing: 4px;
 }
+@media only screen and (max-width: 480px) {
+  .start .main .main_text b {
+    font-size: 5em;
+  }
+}
 .start .main .main_text p {
   display: block;
   font-size: 6em;
@@ -195,6 +212,12 @@ body.active {
   color: #fff;
   font-family: "Playfair Display", serif;
   letter-spacing: 12px;
+}
+@media only screen and (max-width: 480px) {
+  .start .main .main_text p {
+    font-size: 5em;
+    letter-spacing: 8px;
+  }
 }
 .start .main .btn {
   position: absolute;
@@ -307,7 +330,7 @@ body.active {
 }
 @media only screen and (max-width: 780px) {
   #skill .inr {
-    right: -1550px;
+    right: -1450px;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -416,7 +439,7 @@ body.active {
 }
 @media only screen and (max-width: 780px) {
   #project {
-    height: 150vh;
+    height: 180vh;
   }
 }
 #project .inr h3 {
@@ -433,7 +456,7 @@ body.active {
   border-top: 1px solid #fff;
 }
 #project .inr ul li a {
-  padding: 10em 3em;
+  padding: 7em 3em;
   display: flex;
   position: relative;
   align-items: center;
@@ -451,17 +474,42 @@ body.active {
     padding: 5em 0;
   }
 }
+@media only screen and (max-width: 480px) {
+  #project .inr ul li a {
+    display: block;
+  }
+}
 #project .inr ul li a .pro_left h4 {
   padding: 0 0 0 1.5em;
   font-size: 2.5em;
+}
+@media only screen and (max-width: 780px) {
+  #project .inr ul li a .pro_left h4 {
+    padding: 0 0 0 0.5em;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #project .inr ul li a .pro_left h4 {
+    margin-bottom: 1em;
+  }
 }
 #project .inr ul li a .pro_right {
   padding: 0 1.5em 0;
   width: 35%;
 }
+@media only screen and (max-width: 1080px) {
+  #project .inr ul li a .pro_right {
+    width: 45%;
+  }
+}
 @media only screen and (max-width: 780px) {
   #project .inr ul li a .pro_right {
     width: 60%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #project .inr ul li a .pro_right {
+    width: 100%;
   }
 }
 #project .inr ul li a .pro_right p {

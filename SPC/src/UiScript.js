@@ -25,10 +25,10 @@ function UiScript() {
     const moWayTab = document.querySelectorAll(".way_mobile_tab");
 
 
-
 	//isMobile
     const handleResize = () => {
       const mobile = window.innerWidth <= 1280;
+	 
       if (mobile !== isMobile) {
         dispatch({ type: 'SET_MOBILE', payload: mobile });
         if (mobile) {
@@ -58,7 +58,6 @@ function UiScript() {
         }
       }
     };
-
 
 	//header fix
     window.addEventListener("resize", handleResize);
@@ -144,13 +143,12 @@ function UiScript() {
 		});
     };
 
-    // monavList 이벤트 핸들러
+    // monavList
     const monavClickHandlers = [];
     monavList.forEach((item, i) => {
 		const clickHandler = (e) => {
 			e.preventDefault();
 
-			console.log(isMobile)
 
 			if (isMobile) {
 			if (!item.classList.contains("active")) {
@@ -167,36 +165,34 @@ function UiScript() {
 			}
 		};
 		item.addEventListener("click", clickHandler);
-		monavClickHandlers.push({ item, clickHandler }); // 핸들러를 저장
+		monavClickHandlers.push({ item, clickHandler });
     });
 
-    // wayTopList 이벤트 핸들러
+    // wayTopList
     const wayTopClickHandlers = [];
     wayTopList.forEach((item, i) => {
 		const clickHandler = (e) => {
 			e.preventDefault();
 
-			console.log(isMobile)
 			if (!item.classList.contains("active")) {
 			wayTopList.forEach((item2, j) => {
 				item2.classList.remove("active");
 				wayBotList[j].classList.remove("active");
 			});
 			item.classList.add("active");
-			wayBotList[Array.from(wayTopList).indexOf(item)].classList.add("active");
+			wayBotList[i].classList.add("active");
 			}
 		};
 		item.addEventListener("click", clickHandler);
-		wayTopClickHandlers.push({ item, clickHandler }); // 핸들러를 저장
+		wayTopClickHandlers.push({ item, clickHandler });
     });
 
-    // moWayList 이벤트 핸들러
+    // moWayList
     const moWayClickHandlers = [];
     moWayList.forEach((item, i) => {
 		const clickHandler = (e) => {
 			e.preventDefault();
 
-			console.log(isMobile)
 			if (!item.classList.contains("active")) {
 			moWayList.forEach((item2, j) => {
 				gsap.to(moWayTab[j], { height: 0, duration: 0.5 });
@@ -213,10 +209,10 @@ function UiScript() {
 			}
 		};
 		item.addEventListener("click", clickHandler);
-		moWayClickHandlers.push({ item, clickHandler }); // 핸들러를 저장
+		moWayClickHandlers.push({ item, clickHandler });
     });
 
-    // GSAP 애니메이션
+    // GSAP
     const mainTl = gsap.timeline({ duration: 0.4 });
     mainTl.fromTo(".keytext span", { y: 30, opacity: 0 }, { y: 0, opacity: 1 });
     mainTl.fromTo(".keytext p", { y: 30, opacity: 0 }, { y: 0, opacity: 1 });
@@ -260,7 +256,7 @@ function UiScript() {
     };
   }, [isMobile, dispatch]);
 
-  return null; // No UI to return
+  return null;
 }
 
 export default UiScript;

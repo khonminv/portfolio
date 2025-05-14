@@ -59,8 +59,17 @@ body{
 	border: 1px solid #fff;
 	border-radius: 50%;
 	transition: right 0.3s;
+	@media only screen and (max-width:480px){
+		width: 4em;
+		height: 4em;
+		bottom: 30px;
+	}
 
 	&.active{
 		right:50px;
+
+		@media only screen and (max-width:480px){
+			right:20px;
+		}
 	}
 }

@@ -5,7 +5,7 @@
 	height: 250vh;
 	color: $main-color;
 	@media only screen and (max-width:780px){
-		height: 150vh;
+		height: 180vh;
 	}
 	.inr {
 		h3{
@@ -22,7 +22,7 @@
 					border-top: 1px solid #fff;
 				}
 				a{	
-					@include padding-style(10em 3em);
+					@include padding-style(7em 3em);
 					display: flex;
 					position: relative;
 					align-items: center;
@@ -36,17 +36,33 @@
 					@media only screen and (max-width:780px){
 						@include padding-style(5em 0);
 					}
+					@media only screen and (max-width:480px){
+						display: block;
+					}
 					.pro_left h4{
 						@include padding-style(0 0 0 1.5em);
 						font-size: 2.5em;
+
+						@media only screen and (max-width:780px){
+							@include padding-style(0 0 0 0.5em);
 						
+						}
+						@media only screen and (max-width:480px){
+							margin-bottom: 1em;
+						
+						}
 					}
 					.pro_right{
 						@include padding-style(0 1.5em 0 );
 						width: 35%;
-
+						@media only screen and (max-width:1080px){
+							width: 45%;
+						}
 						@media only screen and (max-width:780px){
 							width: 60%;
+						}
+						@media only screen and (max-width:480px){
+							width: 100%;
 						}
 						p{
 							display: block;

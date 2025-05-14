@@ -103,6 +103,9 @@
 				// font-family: "Lora", serif;
 				line-height: 0.9;
 				letter-spacing: 4px;
+				@media only screen and (max-width:480px){
+					font-size: 5em;
+				}
 			}
 			p{	
 				display: block;
@@ -111,6 +114,10 @@
 				color: $main-color;
 				font-family: $start-font;
 				letter-spacing: 12px;
+				@media only screen and (max-width:480px){
+					font-size: 5em;
+					letter-spacing: 8px;
+				}
 			}
 			
 
