@@ -92,11 +92,12 @@ function UiScript() {
 
 <br>
 <br>
-<br>
+
 
 
 
 ---
+
 <br>
 <img src="public/images/Animation2.gif">
 
@@ -130,6 +131,7 @@ function UiScript() {
 ```
 > Redux 상태 변화가 발생할 때 페이지 로드가 다시 되기 때문에 이벤트가 중복 발생 되어 오류가 발생할 가능성이 있는데, 이벤트를 핸들러로 정의를 하여 이벤트 중복이 발생되지 않도록 하였습니다.
 
+<br>
 <br>
 
 ---

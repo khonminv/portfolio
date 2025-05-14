@@ -47,9 +47,10 @@ window.addEventListener("load", function(){
 			}
 		}
 	});
+
+	
 });
 
-let map;
 
 function initMap(){
 	let myLatLng={lat: 37.390141551118695, lng: 126.97151846772532};
@@ -63,7 +64,7 @@ function initMap(){
 		rotateControl: false
 	});
 
-	let marker=new google.maps.Marker({
+	let marker = new google.maps.Marker({
 		position: myLatLng,
 		map: map,
 		title: "(주)오뚜기"

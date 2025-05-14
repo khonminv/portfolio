@@ -49,20 +49,16 @@ window.addEventListener("load", function () {
 	
 	triggerResizeEvent();
 
-	// 빈 배열로 페이지 리스트를 작성합니다.
+	// 빈 배열로 페이지 리스트를 작성
 	let pageList = [start];
 
-
-
 	sectionList.forEach(function (item) {
-		// id 값이 signature가 아닐 경우,
 		if (item.getAttribute("id") != "signature") {
-			// 뒤에 영역에 배열자로 추가합니다.
 			pageList.push(item);
 		}
 	});
 
-	console.log(pageList); // #header #business ...
+	console.log(pageList);
 
 
 	function controlMenu(n){

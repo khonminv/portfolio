@@ -21,9 +21,26 @@ HTML, CSS, JavaScript를 활용하여 반응형 웹 디자인과 모바일 내�
 * HTML, CSS, JavaScript를 활용한 반응형 웹 디자인 구현
 * Swiper.js를 이용한 동적인 이미지 슬라이더 구현
 * Google Maps API를 활용한 지도 표시 및 마커 추가
-* PAW를 활용하여 설치 가능한 웹 애플리케이션을 구현
+* PWA를 활용하여 설치 가능한 웹 애플리케이션을 구현
+
+<br>
+
+---
+
+<br>
+
+<img src="images/Animation1.gif" alt="pwa" />
 
 ### ⚡Code View 
+---
+<br>
+
+<p align="center">
+  <img src="images/Animation2.gif" alt="pagination" />
+</p>
+
+<br>
+
 ```
 //main slide
 	let swiper = new Swiper(".main_slider", {
@@ -52,3 +69,46 @@ on 속성에 init을 사용 하여 슬라이더가 로드 되었을때 총 슬�
 slideChangeTransitionStart를 사용 하여 슬라이드의 교체가 이루어 질 때 현재 슬라이드 번호를 갱신하여 표시 합니다.
 
 <br>
+
+---
+
+<br>
+
+<p align="center">
+  <img src="images/googlemapcap.png" alt="googlemap" />
+</p>
+
+<br>
+
+```
+function initMap(){
+	let myLatLng={lat: 37.390141551118695, lng: 126.97151846772532};
+
+	let map=new google.maps.Map(document.getElementById("map"), {
+		center: myLatLng,
+		zoom: 16,
+		mapTypeControl: false,
+		zoomControl: false,
+		fullscreenControl: false,
+		rotateControl: false
+	});
+
+	let marker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		title: "(주)오뚜기"
+	});
+}
+```
+
+
+> 이 코드는 Google Maps API를 사용하여 특정 위치에 지도를 생성하고 마커를 표시하는 initMap 함수를 정의합니다. 위도 37.3901, 경도 126.9715의 특정 위치를 중심으로 설정하며, 맵 타입, 확대/축소, 전체화면, 회전은 비활성화되어 있습니다. 또한 지정된 위치에 "(주)오뚜기"라는 제목을 가진 마커를 추가하여 사용자가 해당 위치를 쉽게 인식할 수 있도록 합니다.
+
+<br>
+
+---
+
+<br>
+
+
+
