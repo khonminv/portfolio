@@ -4,7 +4,6 @@ function NowMo(){
 	return(
 		<div className="now_mobile">
 			<ul>
-				
 					{
 						data.now.map((d,i)=>
 							<li key={i+1}>
@@ -16,7 +15,6 @@ function NowMo(){
 							</li>
 						)
 					}
-			
 			</ul>
 			
 		</div>

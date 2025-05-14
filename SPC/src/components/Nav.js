@@ -1,7 +1,7 @@
 function Nav(p){
-	const { depth1, depth2 } = p.propsValue 
-    ? { depth1: p.propsValue.depth1, depth2: p.propsValue.depth2 }
-    : { depth1: '', depth2: [] };
+	const { depth1, depth2 } = p.propsValue;
+    // ? { depth1: p.propsValue.depth1, depth2: p.propsValue.depth2 }
+    // : { depth1: '', depth2: [] };
 	
 	return(
 			<li>

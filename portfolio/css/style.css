@@ -173,7 +173,7 @@ body.active {
   height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
-  z-index: -1;
+  z-index: 0;
 }
 .start .main .main_text {
   position: absolute;
@@ -210,6 +210,7 @@ body.active {
 }
 .start .main .btn a {
   display: block;
+  z-index: 50;
 }
 .start .main .btn a img {
   display: block;

@@ -368,7 +368,7 @@ header.fixed{
 	display: block;
 }
 .mo_tab{
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: -9999px;
 	width: 90%;
