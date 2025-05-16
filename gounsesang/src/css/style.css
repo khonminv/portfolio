@@ -41,7 +41,9 @@ body {
 	position: relative;
 	font-family: "Roboto", "Noto Sans KR", sans-serif;
 }
-
+body.fix{
+	overflow: hidden;
+}
 li {
 	margin: 0;
 	padding: 0;
@@ -72,12 +74,14 @@ li {
 	align-items: center;
 }
 .cursor{
-	position: absolute;
+	position: fixed;
 	display: none;
 	width: 163px;
 	height: 163px;
-	background: url(../../public/images/href-i02.png) center center no-repeat;
+	background: url('./ico/href-i02.png') center center no-repeat;
 	z-index: 1000;
+	user-select: none;
+	pointer-events: none;
 }
 
 .mouse_on .cursor {
@@ -93,8 +97,8 @@ li {
     display: block;
     width: 100%;
     height: 100%;
-    background: url(../../public/images/arrow-bg02.png) no-repeat center center;
-    position: Absolute;
+    background: url("./ico/arrow-bg02.png") no-repeat center center;
+    position: absolute;
     left: 0;
     top: 0;
     animation: animation 40s linear infinite;
@@ -104,7 +108,7 @@ li {
 		font-size: 0.75em;
 	}
 
-	body>span {
+	.line {
 		font-size: 0.75em;
 	}
 
@@ -115,7 +119,7 @@ li {
 		font-size: 0.55em;
 	}
 
-	body>span {
+	.line {
 		font-size: 0.55em;
 	}
 
@@ -259,7 +263,7 @@ header .hd_inr > nav .mo_inr > ul>li.lang::after {
 	width: 100%;
 	height: 3px;
 	background-color: #000;
-
+	z-index: 3;
 }
 
 header .hd_inr > nav .mo_inr > ul>li>ul {
@@ -269,6 +273,7 @@ header .hd_inr > nav .mo_inr > ul>li>ul {
 	top: 95px;
 	left: 50%;
 	transform: translateX(-50%);
+	z-index: 5;
 }
 
 header .hd_inr > nav .mo_inr > ul>li>ul.active {
@@ -449,10 +454,11 @@ nav.mo .mo_fix {
 	display: block;
 	width: 100%;
 	background-color: #fff;
-
+	border-top: 1px solid #000;
 }
 nav.mo .mo_fix .mo_mid {
 	font-size: 1.25em;
+	padding: 1em;
 }
 nav.mo .mo_fix .mo_mid h4 {
 	font-size: 1.5em;
@@ -481,7 +487,6 @@ nav.mo .utils.lang {
 	position: fixed;
 	right: 5em;
 	bottom: 0;
-
 }
 header nav .lang ul.active{
 	display: block;
@@ -616,7 +621,7 @@ header .mo_bot .mo_lang ul li a.active::after {
 		width: 8px;
 		height: 13px;
 		background-color: none;
-		background: url(../../public/images/family-i.png) no-repeat;
+		background: url('./ico/family-i.png') no-repeat;
 		transform: translateY(50%);
 	}
 	header .hd_inr > nav .mo_inr > ul>li ul li a.active{
@@ -722,11 +727,11 @@ header .mo_bot .mo_lang ul li a.active::after {
 
 .main .text_box h3 {
 	font-size: 5em;
-	margin-bottom: .5em;
 }
 
 .main .text_box p {
 	font-size: 1.5em;
+	margin-top: 1em;
 }
 
 .main .mo {
@@ -1105,7 +1110,6 @@ header .mo_bot .mo_lang ul li a.active::after {
 
 .swiper {
 	width: 150%;
-	min-height: 500px;
 	overflow-x: hidden;
 }
 
@@ -1142,7 +1146,7 @@ header .mo_bot .mo_lang ul li a.active::after {
 	display: block;
 	width: 100%;
 	height: 100%;
-	background: url(../../public/images/arrow-bg02.png) center / cover no-repeat;
+	background: url('./ico/arrow-bg02.png') center / cover no-repeat;
 	animation: animation 20s linear infinite;
 	transform: translate(-50%,-50%);
 }
@@ -1485,7 +1489,7 @@ footer .ft_left .ft_info .ft_mid a::after {
 	position: absolute;
 	right: 0;
 	top: 50%;
-	background: url(../../public/images/family-i.png);
+	background: url('./ico/family-i.png');
 	width: 8px;
 	height: 13px;
 	transform: translateY(-50%);
@@ -1506,7 +1510,7 @@ footer .ft_right .gosite a::after {
 	position: absolute;
 	right: 0;
 	top: 50%;
-	background: url(../../public/images/family-i.png);
+	background: url('./ico/family-i.png');
 	width: 8px;
 	height: 13px;
 	transform: translateY(-50%);
@@ -1690,7 +1694,7 @@ footer .ft_bot .go_top a {
 		bottom: 50px;
 		width: calc(100% - 50px - 5em);
 		height: 50px;
-		background: rgba(255, 255, 255, 0.1) url(../../public/images/family-i.png) no-repeat right center;
+		background: rgba(255, 255, 255, 0.1) url('./ico/family-i.png') no-repeat right center;
 	}
 
 	footer .ft_right .gosite a {

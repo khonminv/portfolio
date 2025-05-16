@@ -75,7 +75,7 @@ window.addEventListener("load", function(){
 		gsap.to(cursor,{
 			x: e.clientX,
 			y: e.clientY,
-			duration:0.1,
+			duration:0,
 		});
 	});
 	aTag.forEach(function(item){
