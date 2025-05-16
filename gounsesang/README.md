@@ -3,6 +3,7 @@
 React와 GSAP를 활용해 스크롤 애니메이션과 동적 UI 인터랙션을 구현하며, ScrollTrigger와 Timeline 기법을 활용하여 모바일과 웹에서 최적화된 사용자 경험을 제공합니다.
 
 프로젝트 링크 : 
+
 ### ⚡Tech 
 ![HTML](https://img.shields.io/badge/-HTML-F05032?style=flat-square&logo=html5&logoColor=ffffff)
 ![CSS](https://img.shields.io/badge/-CSS-007ACC?style=flat-square&logo=css3)
