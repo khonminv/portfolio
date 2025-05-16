@@ -11,10 +11,8 @@ function UiScript(){
 		
 		let cursorFlag;
 		let cursor=document.querySelector(".cursor");
-		let storyBlock=document.querySelector("#sec2")
 		let mouseTarget=document.querySelector(".sec3_bot");
 		let mouseTargetList=Array.from(mouseTarget.firstElementChild.children);
-		let footerBlock=document.querySelector("footer");
 		let nav = document.querySelector("#nav");
 		let mobileTab = document.querySelector(".mobile");
 		let body = document.body;
@@ -84,10 +82,8 @@ function UiScript(){
 		}
 		triggerResizeEvent();
 
-		
+		//cursor
 		function moveCircle(e){
-			// cursor.style.top = e.pageX;
-			// cursor.style.left = e.pageY;
 			if(!isMobile){
 				gsap.to(cursor,{
 					x: e.clientX,
@@ -289,12 +285,14 @@ function UiScript(){
 		});
 		
 		//gsap
-		gsap.to(".main .text_box",{opacity:1,duration:0.3});
+		gsap.to(".main .text_box",{opacity:1,duration:0.3,delay:0.5});
+
 		//sec1
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: "#sec1",
-				start: "top 50%"
+				start: "top 50%",
+				// markers: true
 			},
 			ease:Power3.easeOut
 		});

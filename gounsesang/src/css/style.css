@@ -1421,13 +1421,20 @@ footer {
 	color: #fff;
 	padding: 0 5em;
 }
-
+.ft_line{
+	position: absolute;
+	left: 0em;
+	margin: 0 5em;
+	width: calc(100% - 10em);
+	height: 100%;
+	border-left: 1px solid rgba(255, 255, 255, 0.2);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
 .ft_inr {
 	max-width: 1400px;
 	margin: 0 auto;
 	padding-top: 5em;
-	border-left: 1px solid rgba(255, 255, 255, 0.2);
-	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	
 }
 
 .ft_top {
@@ -1617,7 +1624,7 @@ footer .ft_bot .go_top a {
 	}
 }
 
-@media only screen and (max-width:700px) {
+@media only screen and (max-width:680px) {
 	footer::after {
 		content: "";
 		position: absolute;

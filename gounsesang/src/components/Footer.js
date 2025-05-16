@@ -5,6 +5,7 @@ function Footer(){
 	const { t } = useTranslation();
 	return(
 		<footer>
+			<div className="ft_line"></div>
 			<div className="ft_inr">
 				<div className="ft_top">
 					<div className="ft_left">
@@ -16,7 +17,6 @@ function Footer(){
 							}
 						</div>
 						<div className="ft_info">
-							<p>{t("footer.info.p")}</p>
 							<div className="ft_mid">
 								<ul>
 									{
