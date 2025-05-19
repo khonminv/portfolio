@@ -300,7 +300,7 @@ function UiScript(){
 			opacity: 1,
 			duration: 1,
 		});
-		tl.to("#sec1 .left .img_box img", {
+		tl.to("#sec1 .left .img_box > img", {
 			scale: 1,
 			duration: 1,
 		}, 0);
