@@ -1,7 +1,7 @@
 ### 🍞SPC
 기존 SPC 사이트를 리뉴얼 하여 React 기반으로 제작 하였으며 Javascript를 이용한 동적인 페이지를 구성 하였으며 Swiper.js를 통해 여러 이미지를 슬라이드로 구현한 반응형 웹사이트 입니다.
 
-프로젝트 링크 : https://spc-kwonhomins-projects.vercel.app/
+프로젝트 링크 : https://spc-ashy.vercel.app/
 
 ### ⚡Tech 
 ![HTML](https://img.shields.io/badge/-HTML-F05032?style=flat-square&logo=html5&logoColor=ffffff)

@@ -65,13 +65,13 @@ const data ={
 				text1:"Vision",
 				text2:"비전",
 				text3:"SPC그룹의 비전은 전 세계인에게 존경받고 지속 성장 가능한 경쟁력을 갖춘 글로벌 종합식품기업이 되는 것입니다.",
-				image:"Vision.PNG"
+				image:"vision.PNG"
 			},
 			{
 				text1:"Core Value",
 				text2:"핵심가치",
 				text3:"SPC그룹의 핵심가치는 SPC문화를 구성하는 신조이며 최고의 기업으로 성장할 수 있는 성공 DNA입니다.",
-				image:"Core_Value.PNG"
+				image:"core_value.PNG"
 			},
 		],
 		content:[
@@ -107,7 +107,7 @@ const data ={
 	footer:{
 		link:["개인정보처리방침","이메일수신거부","거래희망사전등록","고정형 영상정보처리기기 운영관리 방침"],
 		sns:["ft_facebook.png","ft_insta.png","ft_youtube.png"]
-	}
+	},
 		
 }
 
