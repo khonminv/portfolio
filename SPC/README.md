@@ -140,7 +140,7 @@ function UiScript() {
 
 <br>
 
-<img src="public/images/Animation3.gif" width="100%" height="500px">
+<img src="public/images/Animation3.gif" width="80%" height="500px">
 
 <br>
 

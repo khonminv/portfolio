@@ -1,5 +1,5 @@
-### 🍞SPC
-기존 SPC 사이트를 리뉴얼 하여 React 기반으로 제작 하였으며 Javascript를 이용한 동적인 페이지를 구성 하였으며 Swiper.js를 통해 여러 이미지를 슬라이드로 구현한 반응형 웹사이트 입니다.
+### 🍞고운세상
+고운세상 사이트를 클론 코딩하였으며, React와 GSAP를 활용하여 스크롤 애니메이션과 동적 UI 인터랙션을 구현하였습니다. ScrollTrigger와 Timeline 기법을 통해 모바일과 웹에서 최적화된 사용자 경험을 제공하며, 사용자의 스크롤 동작에 맞춰 매끄럽고 시각적으로 매력적인 애니메이션 효과를 실현하였습니다. 이 프로젝트는 현대적인 웹 디자인을 반영하고, 사용자에게 몰입감 있는 인터페이스를 제공하는 데 중점을 두었습니다.
 
 프로젝트 링크 : https://goun.vercel.app/
 
@@ -9,163 +9,137 @@
 ![JavaScript](https://img.shields.io/badge/-JavaScript-dc8d2d?style=flat-square&logo=javascript&logoColor=ffffff)
 ![Swiper](https://img.shields.io/badge/swiper-6332F6?style=flat-square&logo=swiper&logoColor=ffffff)
 ![React](https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=white)
-![Swiper](https://img.shields.io/badge/GSAP-007ACC?style=flat-square&logo=visualstudio&logoColor=white")
+![GSAP](https://img.shields.io/badge/GSAP-007ACC?style=flat-square&logo=GSAP&logoColor=white")
+![i18next](https://img.shields.io/badge/i18next-16720C?style=flat-square&logo=i18next&logoColor=white")
 
 
 ### ⚡View 
 | 메인 | 슬라이더 | 모바일 |
 | :-: | :-: | :-: |
-| <img src="public/images/spc1.PNG" width="200px" height="200px" align="top"> | <img src="public/images/spc3.PNG" width="200px" height="200px" align="top"> | <img src="public/images/spc4.PNG" width="200px" align="top"> |
+| <img src="public/images/goun1.PNG" width="200px" height="200px" align="top"> | <img src="public/images/goun2.PNG" width="200px" height="200px" align="top"> | <img src="public/images/goun3.PNG" width="200px" align="top"> |
 
 ## 📣Focus
-* React, Redux, GSAP (GreenSock Animation Platform) 등을 활용하여 스크롤 애니메이션 및 다양한 UI구현
-* 모바일 메뉴 및 페이지 내 네비게이션 구현
-* CSS와 Grid 레이아웃을 활용하여 다양한 화면 크기에 최적화된 UI를 제공
-* Swiper.js를 활용하여 여러 컨텐츠들을 슬라이드로 구현
+* scrollTrigger()를 사용하여 스크롤 기반 인터랙션 구현
+* isMobile 사용으로 모바일에서 최적화된 UI/UX 제공
+* 반응형 웹사이트로 다양한 디바이스에서 최적화
+* i18next 사용하여 다국어 지원
 
 
 ### ⚡Code View 
 ---
 <br>
 
-```
-//store.js
-import { createStore } from 'redux';
-
-// 초기 상태
-const initialState = {
-    isMobile: window.innerWidth <= 1280,
-};
-
-// 리듀서
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'SET_MOBILE':
-            return { ...state, isMobile: action.payload };
-        default:
-            return state;
-    }
-};
-
-// 스토어 생성
-const store = createStore(reducer);
-
-export default store;
-```
-
-> Redux를 활용하여 현재 브라우저가 모바일 상태인지 확인하여 UI에 변화를 주었습니다. <br>
-초기 상태를 1280픽셀 이하로 설정 하고 리듀서가 SET_MOBILE 상태를 받아 변화 가 있다면 SET_MOBILE 상태를 저장을 합니다.
-
-
-<br><br>
-
-
-
 <img src="public/images/Animation1.gif">
 
 <br>
 
 ```
-//UiScript.js
-import { useDispatch, useSelector } from "react-redux";
-
-function UiScript() {
-  const dispatch = useDispatch();
-  const isMobile = useSelector((state) => state.isMobile);
-
-	//isMobile
-    const handleResize = () => {
-      const mobile = window.innerWidth <= 1280;
-      if (mobile !== isMobile) {
-        dispatch({ type: 'SET_MOBILE', payload: mobile });
-        if (mobile) {
-          	...
-          console.log("모바일");
-        } else {
-			...
-			console.log("pc");
-        }
-      }
-    };
-}
-
+const tl2 = gsap.timeline({
+		scrollTrigger: {
+			trigger: "#sec2",
+			start: "top 50%"
+		}
+	}, 0);
+	tl2.to("#sec2", {
+		opacity: 1,
+		duration: 1,
+	}, 0);
+	tl2.to("#sec2 .swiper-slide .img_box img", {
+		scale: 1,
+		duration: 1,
+	}, 0);
 ```
-> 스토어에 변경하려는 상태를 보내는 코드입니다. 스토어 안에 있는 initialState와 UiScript의 mobile 상태를 비교하여 변화가 있다면 ,dispatch를 통해 스토어에 상태 변화를 보내며 if문 안에 있는 내용을 실행합니다.
+> GSAP라이브러리의 ScrollTrigger 와 Timeline를 사용하여 전체적인 페이지를 구성하였습니다. 이 코드는 스크롤 시 #sec2 요소의 불투명도를 1로 설정하고, 내부 이미지의 크기를 원래 크기로 확대하는 애니메이션을 설정합니다. 타임라인은 #sec2가 뷰포트의 50%에 도달할 때 시작되며, 두 애니메이션은 동시에 1초 동안 진행됩니다.
+
 
 <br>
-<br>
-
-
-
 
 ---
 
 <br>
+
 <img src="public/images/Animation2.gif">
 
 <br>
 
 ```
- // wayTopList
-    const wayTopClickHandlers = [];
-    wayTopList.forEach((item, i) => {
-		const clickHandler = (e) => {
-			e.preventDefault();
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import KOdata from "./KOdata";
+import ENdata from "./ENdata";
 
-			if (!item.classList.contains("active")) {
-			wayTopList.forEach((item2, j) => {
-				item2.classList.remove("active");
-				wayBotList[j].classList.remove("active");
-			});
-			item.classList.add("active");
-			wayBotList[i].classList.add("active");
-			}
-		};
-		item.addEventListener("click", clickHandler);
-		wayTopClickHandlers.push({ item, clickHandler });
-    });
-	---------------------------------
-	//이벤트 정리
-	wayTopClickHandlers.forEach(({ item, clickHandler }) => {
-        item.removeEventListener("click", clickHandler);
-      });
-	----------------------------------
+const resources = {
+  en: {
+    translation: ENdata
+  },
+  ko: {
+    translation: KOdata
+  }
+};
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources,
+    lng: "ko",
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false
+    }
+  });
+
+export default i18n;
 ```
-> Redux 상태 변화가 발생할 때 페이지 로드가 다시 되기 때문에 이벤트가 중복 발생 되어 오류가 발생할 가능성이 있는데, 이벤트를 핸들러로 정의를 하여 이벤트 중복이 발생되지 않도록 하였습니다.
 
-<br>
+> 이 코드는 i18next와 react-i18next를 사용하여 다국어 지원을 설정하는 것으로, 한국어(KOdata)와 영어(ENdata) 번역 데이터를 포함합니다. resources 객체를 통해 언어와 번역 데이터를 정의하고, i18n을 초기화하여 기본 언어를 한국어로 설정하며, 영어를 대체 언어로 지정합니다. 
+
 <br>
 
 ---
 
 <br>
 
-<img src="public/images/Animation3.gif" width="100%" height="500px">
-
-<br>
-
 ```
-moWayList.forEach((item, i) => {
-		const clickHandler = (e) => {
-			e.preventDefault();
+function Navigation(p){
 
-			if (!item.classList.contains("active")) {
-			moWayList.forEach((item2, j) => {
-				gsap.to(moWayTab[j], { height: 0, duration: 0.5 });
-				item2.classList.remove("active");
-				moWayTab[j].classList.remove("active");
-			});
-			gsap.fromTo(moWayTab[i], { height: 0 }, { height: "auto", duration: 0.5 });
-			item.classList.add("active");
-			moWayTab[i].classList.add("active");
-			} else {
-			gsap.to(moWayTab[i], { height: 0, duration: 0.5 });
-			item.classList.remove("active");
-			moWayTab[i].classList.remove("active");
-			}
-		};
-		item.addEventListener("click", clickHandler);
-		moWayClickHandlers.push({ item, clickHandler });
-    });
+	const { t, i18n } = useTranslation();
+
+	const changeLanguage = (lng) => {
+		i18n.changeLanguage(lng);
+	};
+
+	return(
+		<nav id="nav">
+			<div className="mo_inr">
+				<ul>
+					{
+						t("header.navi", { returnObjects: true }).map((d1, i) => (
+                            <li key={i} className="gnb">
+                                <a href="">{d1.depth1}</a>
+                                <ul className="sub">
+                                    {
+                                        Array.isArray(d1.depth2) && d1.depth2.length > 0 ? (
+                                            d1.depth2.map((d2, j) => (
+                                                <li key={j}><a href="">{d2}</a></li>
+                                            ))
+                                        ) : null 
+                                    }
+                                </ul>
+                            </li>
+                        ))
+					}
+					<li className="utils lang">
+						<a href="">{t("header.lang")}</a>
+						<ul>
+							<li><a href="" className="KO active" onClick={() => changeLanguage('ko')}>KO</a></li>
+							<li><a href="" className="EN" onClick={() => changeLanguage('en')}>EN</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+		</nav>
+	)
+}
 ```
-> 바로 위에 있던 SPC Way 부분의 모바일 버전입니다. GSAP 라이브러리를 사용하여 클릭된 항목이 현재 활성화 상태가 아닌 경우, 모든 항목의 active 클래스를 제거하고, 관련된 콘텐츠의 높이를 0으로 설정하여 숨깁니다. 이후 클릭된 항목을 활성화 상태로 변경하고, 해당 콘텐츠의 높이를 auto로 설정하여 부드럽게 표시합니다. 이 이벤트도 마찬가지로 중복 발생을 하지 않도록 핸들러로 정의 하였습니다
+> 이 코드는 React 컴포넌트 Navigation을 정의하여 다국어 지원이 포함된 네비게이션 바를 생성합니다. useTranslation 훅을 통해 번역 함수와 언어 변경 기능을 가져오고, t("header.navi")를 사용하여 메뉴 항목을 렌더링하며, 각 항목은 서브 메뉴를 포함할 수 있습니다. 마지막으로 언어 변경 옵션을 제공하여 클릭 시 선택된 언어로 변경하는 기능을 구현합니다.
