@@ -57,11 +57,25 @@ li {
 	margin: 0 auto;
 	padding: 2em;
 	border: 1px solid #000;
-}
-ul{
 	overflow-y: scroll;
 }
+.message{
+	position: relative;
+}
+.message li{
+	border-bottom: 1px solid #ccc;
+	line-height: 25px;
+}
+.message span{
+	position: absolute;
+	right: 0;
+}
 form{
-	position: absolute; 
-	bottom: 0;
+	position: fixed; 
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+form [type=text]{
+	margin-right: 10px;
 }

@@ -5,7 +5,7 @@ const socket = io('https://port-0-portfolio-mawa5o8ve8151a2a.sel4.cloudtype.app/
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
-    const [name, setName] = useState(''); // 문자열로 변경
+    const [name, setName] = useState('');
     const [chat, setChat] = useState('');
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const Chat = () => {
 
         // 새로운 메시지 수신
         socket.on('chat message', (msg) => {
-            setMessages((prevMessages) => [...prevMessages, msg]); // 메시지를 그대로 추가
+            setMessages((prevMessages) => [...prevMessages, msg]);
         });
 
         return () => {
@@ -27,30 +27,47 @@ const Chat = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (chat && name) { // 이름이 비어있지 않은지 확인
-            socket.emit('chat message', { name, message: chat }); // 이름과 메시지를 함께 전송
+        if (chat && name) {
+            socket.emit('chat message', { name, message: chat });
             setChat('');
-        }else if (!name || !chat) { // name 또는 chat이 비어있으면
-			alert('이름과 메시지를 입력하이소'); // 경고 메시지 표시
-			return;
-		}
+        } else {
+            alert('이름과 메시지를 입력하이소');
+            return;
+        }
+    };
+
+    const handleDelete = (index) => {
+        setMessages((prevMessages) => {
+            const newMessages = [...prevMessages];
+            newMessages.splice(index, 1); // 해당 인덱스의 메시지 삭제
+            return newMessages;
+        });
     };
 
     return (
         <div className='wrapper'>
             <ul className='message'>
+				{/* <li id='test'>
+                        <strong>dlfma: </strong>zxc
+                        <span onClick={() => handleDelete()} style={{ cursor: 'pointer', marginLeft: '10px', color: 'red' }}>삭제</span>
+                    </li> */}
                 {messages.map((msg, index) => (
-                    <li key={index}><strong>{msg.name}: </strong>{msg.message}</li>
+                    <li key={index}>
+                        <strong>{msg.name}: </strong>{msg.message}
+                        <span onClick={() => handleDelete(index)} style={{ cursor: 'pointer', marginLeft: '10px', color: 'red' }}>삭제</span>
+                    </li>
                 ))}
             </ul>
             <form onSubmit={handleSubmit} className='form'>
                 <input
+                    id='name'
                     type='text'
                     value={name}
-                    onChange={(e) => setName(e.target.value)} // 이름 입력 처리
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="이름"
                 />
                 <input
+                    id='text'
                     type="text"
                     value={chat}
                     onChange={(e) => setChat(e.target.value)}
