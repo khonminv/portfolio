@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io('https://port-0-portfolio-mawa5o8ve8151a2a.sel4.cloudtype.app/');
+// 환경에 따라 소켓 URL 설정
+const API_URL = process.env.REACT_APP_API_URL;
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:3002';	
+const socket = io(SOCKET_URL);
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
     const [name, setName] = useState('');
     const [chat, setChat] = useState('');
+	
 
     useEffect(() => {
         // 이전 메시지 로드
@@ -36,37 +40,35 @@ const Chat = () => {
         }
     };
 
-   const handleDelete = (index, messageId) => {
-    fetch(`https://port-0-portfolio-mawa5o8ve8151a2a.sel4.cloudtype.app/messages/${messageId}`, {
-        method: 'DELETE',
-    })
-    .then(response => {
-        if (response.ok) {
-            setMessages((prevMessages) => {
-                const newMessages = [...prevMessages];
-                newMessages.splice(index, 1); // 해당 인덱스의 메시지 삭제
-                return newMessages;
-            });
-        }
-    })
-    .catch(err => {
-        console.error('Error deleting message:', err);
-    });
-};
+    const handleDelete = (index, messageId) => {
+        fetch(`${API_URL}/messages/${messageId}`, {
+			method: 'DELETE',
+		})
+        .then(response => {
+            if (response.ok) {
+                setMessages((prevMessages) => {
+                    const newMessages = [...prevMessages];
+                    newMessages.splice(index, 1);
+                    return newMessages;
+                });
+            }
+        })
+        .catch(err => {
+            console.error('Error deleting message:', err);
+        });
+		console.log(`DELETE 요청 URL: ${process.env.REACT_APP_API_URL}/messages/${messageId}`);
+
+    };
 
     return (
         <div className='wrapper'>
             <ul className='message'>
-				{/* <li id='test'>
-                        <strong>dlfma: </strong>zxc
-                        <span onClick={() => handleDelete()} style={{ cursor: 'pointer', marginLeft: '10px', color: 'red' }}>삭제</span>
-                    </li> */}
                 {messages.map((msg, index) => (
-					<li key={msg._id}>
-						<strong>{msg.name}: </strong>{msg.message}
-						<span onClick={() => handleDelete(index, msg._id)}>삭제</span>
-					</li>
-				))}
+                    <li key={msg._id}>
+                        <strong>{msg.name}: </strong>{msg.message}
+                        <span onClick={() => handleDelete(index, msg._id)}>삭제</span>
+                    </li>
+                ))}
             </ul>
             <form onSubmit={handleSubmit} className='form'>
                 <input

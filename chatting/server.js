@@ -7,18 +7,19 @@ const mongoose = require('mongoose');
 
 const app = express();
 const server = http.createServer(app);
+const allowedOrigin = process.env.FRONTEND_URL || 'http://localhost:3000';
 
 // CORS 설정
 const io = socketIo(server, {
     cors: {
-        origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-        methods: ['GET', 'POST']
+        origin: allowedOrigin,
+        methods: ['GET', 'POST', 'DELETE'],
     }
 });
 
 // Express 앱의 CORS도 허용
 app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: allowedOrigin,
 }));
 
 // MongoDB 연결
@@ -42,6 +43,7 @@ app.get('/', (req, res) => {
 // 메시지 삭제 API
 app.delete('/messages/:id', (req, res) => {
     const { id } = req.params;
+    console.log("Deleting message ID:", id); // 삭제할 메시지 ID 출력
     Message.findByIdAndDelete(id)
         .then(() => {
             io.emit('message deleted', id); // 삭제된 메시지 ID를 클라이언트에 전송
@@ -63,8 +65,8 @@ io.on('connection', (socket) => {
 
     socket.on('chat message', ({ name, message }) => {
         const newMessage = new Message({ name, message });
-        newMessage.save().then(() => {
-            io.emit('chat message', { name, message });
+        newMessage.save().then((savedMessage) => {
+            io.emit('chat message', savedMessage);
         });
     });
 
