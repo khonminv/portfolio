@@ -1,9 +1,12 @@
-require('dotenv').config(); // dotenv 패키지 불러오기
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
+require('dotenv').config({ path: envFile });
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 
 const app = express();
 const server = http.createServer(app);
@@ -22,6 +25,8 @@ app.use(cors({
     origin: allowedOrigin,
 }));
 
+app.use(express.json());
+
 // MongoDB 연결
 const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/chat'; // 환경 변수에서 URI 가져오기
 mongoose.connect(mongoUri)
@@ -33,6 +38,14 @@ const messageSchema = new mongoose.Schema({
     message: String,
     createdAt: { type: Date, default: Date.now }
 });
+const userSchema = new mongoose.Schema({
+    name: { type: String, required: true, unique: true },
+    password: { type: String, required: true }, // 비밀번호 필드 추가
+    createdAt: { type: Date, default: Date.now }
+});
+
+
+const User = mongoose.model('User', userSchema);
 
 const Message = mongoose.model('Message', messageSchema);
 
@@ -65,6 +78,34 @@ app.delete('/messages/:id', async (req, res) => {
         res.status(500).send();
     }
 });
+
+app.post('/login', async (req, res) => {
+    const { name, password } = req.body;
+    if (!name || !password) return res.status(400).json({ error: '이름과 비밀번호가 필요합니다.' });
+
+    const user = await User.findOne({ name });
+    if (!user) return res.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(401).json({ error: '비밀번호가 틀렸습니다.' });
+
+    res.json({ success: true, user: { name: user.name } });
+});
+
+app.post('/register', async (req, res) => {
+    const { name, password } = req.body;
+    if (!name || !password) return res.status(400).json({ error: '이름과 비밀번호가 필요합니다.' });
+
+    const existingUser = await User.findOne({ name });
+    if (existingUser) return res.status(409).json({ error: '이미 존재하는 사용자입니다.' });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ name, password: hashedPassword });
+    await newUser.save();
+
+    res.json({ success: true, user: { name: newUser.name } });
+});
+
 
 io.on('connection', (socket) => {
     console.log('A user connected');

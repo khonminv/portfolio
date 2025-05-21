@@ -49,18 +49,60 @@ li {
 *{
 	box-sizing: border-box;
 }
+
 .wrapper{
+	position: relative;
+	width: 100%;
+
+}
+
+/* gnb */
+#gnbbar{
+	height: 64px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+#gnbbar ul{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+#gnbbar ul li a{
+	display: block;
+}
+
+
+/* home */
+#home{
+	display: none;
+}
+#home.active{
+	display: block;
+}
+
+
+
+/* chat */
+#chat{
+	display: none;
 	position: relative;
 	max-width: 60vw;
 	width: 100%;
-	height: 90vh;
+	height: 80vh;
 	margin: 0 auto;
 	padding: 2em;
 	border: 1px solid #000;
 	overflow-y: scroll;
 }
+#chat.active{
+	display: block;
+}
 .message{
 	position: relative;
+	
 }
 .message li{
 	border-bottom: 1px solid #ccc;
@@ -72,12 +114,49 @@ li {
 	cursor: pointer;
 	color: red;
 }
-form{
+#chat form{
 	position: fixed; 
-	bottom: 20px;
+	bottom: 64px;
 	left: 50%;
 	transform: translateX(-50%);
 }
-form [type=text]{
+#chat form [type=text]{
 	margin-right: 10px;
+}
+#chat form #name{
+	width: 30%;
+}
+#chat form #text{
+	width: 100%;
+	line-height: 50px;
+}
+
+
+/* board */
+#board{
+	display: none;
+	max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+#board.active{
+	display: block;
+}
+#board form{
+	display: flex;
+    flex-direction: column;
+}
+#board form input,
+#board form textarea
+{
+	margin: 10px 0;
+    padding: 10px;
+}
+
+/* user */
+#user{
+	display: none;
+}
+#user.active{
+	display: block;
 }
