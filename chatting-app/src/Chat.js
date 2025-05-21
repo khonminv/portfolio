@@ -23,9 +23,16 @@ const Chat = () => {
             setMessages((prevMessages) => [...prevMessages, msg]);
         });
 
+		socket.on('message deleted', (deletedId) => {
+			setMessages((prevMessages) =>
+				prevMessages.filter((msg) => msg._id !== deletedId)
+			);
+		});
+
         return () => {
             socket.off('load messages');
             socket.off('chat message');
+			socket.off('message deleted');
         };
     }, []);
 
@@ -40,25 +47,15 @@ const Chat = () => {
         }
     };
 
-    const handleDelete = (index, messageId) => {
-        fetch(`${API_URL}/messages/${messageId}`, {
+   const handleDelete = (messageId) => {
+		fetch(`${API_URL}/messages/${messageId}`, {
 			method: 'DELETE',
 		})
-        .then(response => {
-            if (response.ok) {
-                setMessages((prevMessages) => {
-                    const newMessages = [...prevMessages];
-                    newMessages.splice(index, 1);
-                    return newMessages;
-                });
-            }
-        })
-        .catch(err => {
-            console.error('Error deleting message:', err);
-        });
-		console.log(`DELETE 요청 URL: ${process.env.REACT_APP_API_URL}/messages/${messageId}`);
+		.catch(err => {
+			console.error('Error deleting message:', err);
+		});
+	};
 
-    };
 
     return (
         <div className='wrapper'>
@@ -66,7 +63,7 @@ const Chat = () => {
                 {messages.map((msg, index) => (
                     <li key={msg._id}>
                         <strong>{msg.name}: </strong>{msg.message}
-                        <span onClick={() => handleDelete(index, msg._id)}>삭제</span>
+                       <span onClick={() => handleDelete(msg._id)}>삭제</span>
                     </li>
                 ))}
             </ul>

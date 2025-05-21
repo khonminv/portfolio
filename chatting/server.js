@@ -43,10 +43,10 @@ app.get('/', (req, res) => {
 // 메시지 삭제 API
 app.delete('/messages/:id', (req, res) => {
     const { id } = req.params;
-    console.log("Deleting message ID:", id); // 삭제할 메시지 ID 출력
+    console.log("Deleting message ID:", id);
     Message.findByIdAndDelete(id)
         .then(() => {
-            io.emit('message deleted', id); // 삭제된 메시지 ID를 클라이언트에 전송
+            io.emit('message deleted', id);
             res.status(200).send();
         })
         .catch(err => {
