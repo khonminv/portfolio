@@ -1,3 +1,4 @@
+require('dotenv').config(); // dotenv 패키지 불러오기
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
@@ -10,18 +11,19 @@ const server = http.createServer(app);
 // CORS 설정
 const io = socketIo(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: process.env.FRONTEND_URL || 'http://localhost:3000',
         methods: ['GET', 'POST']
     }
 });
 
 // Express 앱의 CORS도 허용
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
 }));
 
 // MongoDB 연결
-mongoose.connect('mongodb://localhost/chat')
+const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/chat'; // 환경 변수에서 URI 가져오기
+mongoose.connect(mongoUri)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
@@ -45,10 +47,10 @@ io.on('connection', (socket) => {
         socket.emit('load messages', messages);
     });
 
-    socket.on('chat message', ({ name, message }) => { // 이름과 메시지를 객체로 받음
+    socket.on('chat message', ({ name, message }) => {
         const newMessage = new Message({ name, message });
         newMessage.save().then(() => {
-            io.emit('chat message', { name, message }); // 이름과 메시지를 전송
+            io.emit('chat message', { name, message });
         });
     });
 
