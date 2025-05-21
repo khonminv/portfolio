@@ -39,6 +39,20 @@ app.get('/', (req, res) => {
     res.send('Server is running');
 });
 
+// 메시지 삭제 API
+app.delete('/messages/:id', (req, res) => {
+    const { id } = req.params;
+    Message.findByIdAndDelete(id)
+        .then(() => {
+            io.emit('message deleted', id); // 삭제된 메시지 ID를 클라이언트에 전송
+            res.status(200).send();
+        })
+        .catch(err => {
+            console.error('Delete error:', err);
+            res.status(500).send();
+        });
+});
+
 io.on('connection', (socket) => {
     console.log('A user connected');
 
