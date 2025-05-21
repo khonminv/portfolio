@@ -41,18 +41,29 @@ app.get('/', (req, res) => {
 });
 
 // 메시지 삭제 API
-app.delete('/messages/:id', (req, res) => {
+
+app.delete('/messages/:id', async (req, res) => {
     const { id } = req.params;
     console.log("Deleting message ID:", id);
-    Message.findByIdAndDelete(id)
-        .then(() => {
-            io.emit('message deleted', id);
-            res.status(200).send();
-        })
-        .catch(err => {
-            console.error('Delete error:', err);
-            res.status(500).send();
-        });
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        console.log("Invalid ObjectId:", id);
+        return res.status(400).send("Invalid message ID format");
+    }
+
+    try {
+        const deleted = await Message.findByIdAndDelete(id);
+        if (!deleted) {
+            console.log("Message not found:", id);
+            return res.status(404).send("Message not found");
+        }
+
+        io.emit('message deleted', id);
+        res.status(200).send();
+    } catch (err) {
+        console.error('Delete error:', err);
+        res.status(500).send();
+    }
 });
 
 io.on('connection', (socket) => {
