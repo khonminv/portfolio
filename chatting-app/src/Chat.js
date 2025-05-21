@@ -5,7 +5,8 @@ const socket = io('http://localhost:3002');
 
 const Chat = () => {
     const [messages, setMessages] = useState([]);
-    const [input, setInput] = useState('');
+    const [name, setName] = useState(''); // 문자열로 변경
+    const [chat, setChat] = useState('');
 
     useEffect(() => {
         // 이전 메시지 로드
@@ -14,8 +15,8 @@ const Chat = () => {
         });
 
         // 새로운 메시지 수신
-         socket.on('chat message', (msg) => {
-            setMessages((prevMessages) => [...prevMessages, { message: msg }]);
+        socket.on('chat message', (msg) => {
+            setMessages((prevMessages) => [...prevMessages, msg]); // 메시지를 그대로 추가
         });
 
         return () => {
@@ -26,27 +27,36 @@ const Chat = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (input) {
-            socket.emit('chat message', input);
-            setInput('');
-        }
+        if (chat && name) { // 이름이 비어있지 않은지 확인
+            socket.emit('chat message', { name, message: chat }); // 이름과 메시지를 함께 전송
+            setChat('');
+        }else if (!name || !chat) { // name 또는 chat이 비어있으면
+			alert('이름과 메시지를 입력하이소'); // 경고 메시지 표시
+			return;
+		}
     };
 
     return (
-        <div>
-            <ul>
+        <div className='wrapper'>
+            <ul className='message'>
                 {messages.map((msg, index) => (
-                    <li key={index}>{msg.message}</li>
+                    <li key={index}><strong>{msg.name}: </strong>{msg.message}</li>
                 ))}
             </ul>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='form'>
+                <input
+                    type='text'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)} // 이름 입력 처리
+                    placeholder="이름"
+                />
                 <input
                     type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Type a message"
+                    value={chat}
+                    onChange={(e) => setChat(e.target.value)}
+                    placeholder="메시지"
                 />
-                <button type="submit">Send</button>
+                <button type="submit">전송</button>
             </form>
         </div>
     );

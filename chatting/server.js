@@ -20,12 +20,13 @@ app.use(cors({
     origin: 'http://localhost:3000',
 }));
 
-// MongoDB 연결 (옵션 제거)
+// MongoDB 연결
 mongoose.connect('mongodb://localhost/chat')
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
 const messageSchema = new mongoose.Schema({
+    name: String,
     message: String,
     createdAt: { type: Date, default: Date.now }
 });
@@ -44,10 +45,10 @@ io.on('connection', (socket) => {
         socket.emit('load messages', messages);
     });
 
-    socket.on('chat message', (msg) => {
-        const message = new Message({ message: msg });
-        message.save().then(() => {
-            io.emit('chat message', msg);
+    socket.on('chat message', ({ name, message }) => { // 이름과 메시지를 객체로 받음
+        const newMessage = new Message({ name, message });
+        newMessage.save().then(() => {
+            io.emit('chat message', { name, message }); // 이름과 메시지를 전송
         });
     });
 
