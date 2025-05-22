@@ -77,6 +77,8 @@ li {
 	bottom: 0;
 	left: 0;
 	border-top: 1px solid #000;
+	background-color: #fff;
+	z-index: 2000;
 }
 
 #gnbbar ul{
@@ -266,22 +268,99 @@ li {
 /* board */
 #board{
 	display: none;
-	max-width: 600px;
-    margin: auto;
-    padding: 20px;
+	width: 100%;
+	height: calc(100vh - 64px);
+	padding: 3em;
 }
 #board.active{
 	display: block;
 }
-#board form{
+#board .b_header{
 	display: flex;
-    flex-direction: column;
+	justify-content: space-between;
+}
+#board .postpage{
+	position: fixed;
+	top: 100%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #54abed;
+	z-index: 50;
+}
+#board .postpage .postback{
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	transform: translateX(-50%);
+}
+#board form{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 80%;
+	height: 80%;
+	transform: translate(-50%,-50%);
 }
 #board form input,
 #board form textarea
 {
 	margin: 10px 0;
     padding: 10px;
+}
+#board form input{
+	width: 100%;
+}
+
+#board form textarea{
+	width: 100%;
+	height: 70%;
+}
+#board ul{
+	margin-top: 3em;
+}
+#board ul b{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+	margin-bottom: 1em;
+	border-bottom: 1px solid #000;
+}
+#board ul li a{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+	border-bottom: 1px solid #ccc;
+
+}
+#board .pagination {
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+    margin-top: 1rem;
+	transform: translateX(-50%);
+}
+#board .pagination button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    background: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+#board .pagination button:disabled {
+    background: #aaa;
+    cursor: default;
+}
+#board .posted{
+	position: fixed;
+	top: 100%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #54abed;
+	z-index: 50;
 }
 
 /* user */

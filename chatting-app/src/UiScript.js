@@ -1,5 +1,7 @@
 import data from "./data/data";
 import { useEffect } from "react";
+import gsap from "gsap";
+
 
 let {gnb} = data;
 
@@ -58,6 +60,35 @@ function UiScript() {
 			loginForm.classList.remove("active");
 		});
 
+
+
+
+		//gsap
+		const postBtn = document.querySelector(".b_header button")
+		postBtn.addEventListener("click",function(){
+			gsap.to(".postpage",{top:0,duration:0.5})
+		});
+		
+		const postBack = document.querySelector(".postback")
+		postBack.addEventListener("click",function(e){
+			e.preventDefault()
+			gsap.to(".postpage",{top:"100%",duration:0.5})
+		});
+		const postingbtn = document.querySelector(".postpage button")
+		postingbtn.addEventListener("click", function(){
+			gsap.to(".postpage",{top:"100%",duration:0.5})
+		});
+		
+		// setTimeout(() => {
+		// 	const postList = document.querySelectorAll(".postlist li")
+		// 	postList.forEach((item,i)=>{
+		// 		item.addEventListener("click", function(){
+		// 			gsap.to(".posted",{top:0,duration:0.5})
+		// 		});
+		// 	});
+		// },1000)
+		
+
         // 이벤트 리스너 등록
         gnbList.forEach((item, i) => {
             item.addEventListener("click", handleClick(i));
@@ -69,7 +100,6 @@ function UiScript() {
             gnbList.forEach((item, i) => {
                 item.removeEventListener("click", handleClick(i));
             });
-           
         };
     }, []);
 

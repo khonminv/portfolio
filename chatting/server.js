@@ -43,6 +43,15 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
 });
+const postSchema = new mongoose.Schema({
+    title: String,
+    content: String,
+    author: String,         // 작성자 이름
+    createdAt: { type: Date, default: Date.now }
+});
+
+
+const Post = mongoose.model('Post', postSchema);
 
 
 const User = mongoose.model('User', userSchema);
@@ -110,6 +119,41 @@ app.post('/register', async (req, res) => {
 
     res.json({ success: true, user: { name: newUser.name } });
 });
+
+// 게시글 목록 가져오기 (페이지네이션 포함)
+app.get('/posts', async (req, res) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+
+    try {
+        const posts = await Post.find()
+            .sort({ createdAt: -1 }) // 최신순
+            .skip((page - 1) * limit)
+            .limit(limit);
+
+        const total = await Post.countDocuments();
+        const totalPages = Math.ceil(total / limit);
+
+        res.json({ posts, totalPages, currentPage: page });
+    } catch (err) {
+        res.status(500).json({ error: '게시글을 불러오는 데 실패했습니다.' });
+    }
+});
+
+//글 작성
+app.post('/posts', async (req, res) => {
+    const { title, content, author } = req.body;
+    if (!title || !content || !author) {
+        return res.status(400).json({ error: '제목, 내용, 작성자가 필요합니다.' });
+    }
+
+    const newPost = new Post({ title, content, author });
+    await newPost.save();
+
+    res.status(201).json(newPost);
+});
+
+
 
 
 io.on('connection', (socket) => {

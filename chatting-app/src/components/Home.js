@@ -1,16 +1,8 @@
 import Login from "./Login";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { Autoplay } from 'swiper/modules';
 import News from "./News";
-
+import Mainslide from "./Mainslide";
 function Home({ user, setUser, onLogout }) {
-	const swiperStyle = {
-		width: '100vw',
-		height: '500px',
-	};
 	
-
 
     return (
         <section id="home">
@@ -29,27 +21,17 @@ function Home({ user, setUser, onLogout }) {
 				}
 				<Login onLogin={(user) => setUser(user)} />
 			</div>
-			<div className="main">
-				<Swiper
-					modules={[Autoplay]}
-					autoplay={{
-						delay: 3000,
-						disableOnInteraction: false,
-					}}
-					// loop={true}
-					style={swiperStyle}
-				>
-					<SwiperSlide><img src="/images/slide1.jpg" alt="slide1"/></SwiperSlide>
-					<SwiperSlide><img src="/images/slide2.jpg" alt="slide1"/></SwiperSlide>
-					<SwiperSlide><img src="/images/slide3.jpg" alt="slide1"/></SwiperSlide>
-				</Swiper>
-			</div>
+			<Mainslide />
 			<div className="news">
 				<h3>새로운 소식</h3>
 				<News />
 			</div>
-			<div className="gallery">
-				<h3>겔러리</h3>
+			<div className="polory">
+				<h3>포로리</h3>
+				
+			</div>
+			<div className="nubury">
+				<h3>너부리</h3>
 				
 			</div>
 			

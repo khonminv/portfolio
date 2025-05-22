@@ -1,4 +1,4 @@
-import { useState } from 'react'; // ← 추가
+import { useState } from 'react';
 import './css/style.css';
 import Chat from './components/Chat';
 import Gnb from './components/Gnb';
