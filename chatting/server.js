@@ -50,7 +50,7 @@ const User = mongoose.model('User', userSchema);
 const Message = mongoose.model('Message', messageSchema);
 
 app.get('/', (req, res) => {
-    res.send('Server is running');
+    res.send('Server is running V09');
 });
 
 // 메시지 삭제 API
