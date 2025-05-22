@@ -28,7 +28,7 @@ app.use(cors({
 app.use(express.json());
 
 // MongoDB 연결
-const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/chat'; // 환경 변수에서 URI 가져오기
+const mongoUri = process.env.MONGO_URI || 'mongodb://localhost/chat';
 mongoose.connect(mongoUri)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
@@ -40,7 +40,7 @@ const messageSchema = new mongoose.Schema({
 });
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
-    password: { type: String, required: true }, // 비밀번호 필드 추가
+    password: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
 });
 
@@ -48,6 +48,8 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 const Message = mongoose.model('Message', messageSchema);
+
+
 
 app.get('/', (req, res) => {
     res.send('Server is running V09');
@@ -79,6 +81,7 @@ app.delete('/messages/:id', async (req, res) => {
     }
 });
 
+//로그인 api
 app.post('/login', async (req, res) => {
     const { name, password } = req.body;
     if (!name || !password) return res.status(400).json({ error: '이름과 비밀번호가 필요합니다.' });
@@ -92,6 +95,8 @@ app.post('/login', async (req, res) => {
     res.json({ success: true, user: { name: user.name } });
 });
 
+
+//회원가입api
 app.post('/register', async (req, res) => {
     const { name, password } = req.body;
     if (!name || !password) return res.status(400).json({ error: '이름과 비밀번호가 필요합니다.' });

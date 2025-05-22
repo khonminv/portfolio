@@ -8,16 +8,17 @@ import User from './components/User';
 import UiScript from './UiScript';
 
 const App = () => {
-    const [user, setUser] = useState(null); // 로그인 상태 관리
+    const [user, setUser] = useState(null);
 
     const handleLogout = () => {
-        setUser(null); // 로그인 상태 제거
+        setUser(null);
         alert('로그아웃 되었습니다');
     };
 
     return (
         <div id='wrapper'>
             <UiScript />
+			<Dim />
             <Gnb />
             <Home user={user} setUser={setUser} onLogout={handleLogout} />
             <Chat user={user} setUser={setUser}/>
@@ -28,3 +29,9 @@ const App = () => {
 };
 
 export default App;
+
+function Dim(){
+	return(
+		<div className='dim'></div>
+	)
+}

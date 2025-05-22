@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const Auth = ({ onLogin }) => {
-    const [isRegister, setIsRegister] = useState(false);
+const Login = ({ onLogin }) => {
+    
+
 
     return (
         <div>
-            <div style={{ marginBottom: '10px' }}>
-                <button onClick={() => setIsRegister(false)}>로그인</button>
-                <button onClick={() => setIsRegister(true)}>회원가입</button>
+            <div  className='logbtn' style={{ marginBottom: '10px' }}>
+                <a className='loginbtn'>로그인</a>
+                <a className='registerbtn'>회원가입</a>
             </div>
-            {isRegister ? (
-                <RegisterForm onLogin={onLogin} />
-            ) : (
-                <LoginForm onLogin={onLogin} />
-            )}
+           
+            <RegisterForm onLogin={onLogin} />
+           
+            <LoginForm onLogin={onLogin} />
+           
         </div>
     );
 };
@@ -35,7 +36,7 @@ const LoginForm = ({ onLogin }) => {
     };
 
     return (
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className='loginform'>
             <h3>로그인</h3>
             <input value={name} onChange={e => setName(e.target.value)} placeholder="이름" />
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="비밀번호" />
@@ -54,13 +55,14 @@ const RegisterForm = ({ onLogin }) => {
             const res = await axios.post(process.env.REACT_APP_API_URL + '/register', { name, password });
             onLogin(res.data.user);
             alert(`${res.data.user.name}님 환영합니다`);
+			
         } catch (err) {
             alert(err.response?.data?.error || '회원가입 실패');
         }
     };
 
     return (
-        <form onSubmit={handleRegister}>
+        <form onSubmit={handleRegister} className='registerform'>
             <h3>회원가입</h3>
             <input value={name} onChange={e => setName(e.target.value)} placeholder="이름" />
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="비밀번호" />
@@ -69,4 +71,4 @@ const RegisterForm = ({ onLogin }) => {
     );
 };
 
-export default Auth;
+export default Login;
