@@ -50,12 +50,10 @@ li {
 *{
 	box-sizing: border-box;
 }
-
 #wrapper{
 	position: relative;
 	width: 100%;
-	height: 100vh;
-
+	height: 100%;
 }
 .dim{
 	display: none;
@@ -64,7 +62,7 @@ li {
 	top: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: rgba(0, 0, 0, .5);
+	background-color: rgba(0, 0, 0, .8);
 	z-index: 500;
 }
 .dim.active{
@@ -119,6 +117,9 @@ li {
 	gap: 10px;
 	line-height: 50px;
 }
+#home .logbox a{
+	text-decoration: underline;
+}
 #home .logbtn{
 	position: absolute;
 	display: flex;
@@ -164,13 +165,63 @@ li {
 	line-height: 50px;
 }
 
+#home .loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px dotted #aaa;
+}
+#home .loading img {
+	width: 35px;
+}
+#home {
+	width: 100vw;
+}
+#home .news{
+	padding: 2em;
+}
+#home .news h3{
+	margin-bottom: 1em;
+}
+#home .title {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 25px;
+}
+#home .title h3 {
+	line-height: 24px;
+	font-size: 1em;
+}
+#home .news_list .loading {
+	height: 100px;
+}
+#home .news_list{
+	width: 100%;
+}
+#home .news_list li {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 10px;
+	line-height: 30px;
+	font-size: 1.25em;
+}
+#home .news_list a{
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis; 
+}
+#home .news_list span {
+	color: #333;
+	white-space: nowrap;
+	font-size: 1em;
+}
 
 /* chat */
 #chat{
 	display: none;
 	position: relative;
 	width: 100%;
-	height: calc(100% - 120px);
+	height: calc(100vh - 120px);
 	margin: 0 auto;
 	padding: 2em;
 	border: 1px solid #000;
@@ -188,6 +239,7 @@ li {
 	position: relative;
 	border-bottom: 1px solid #ccc;
 	line-height: 40px;
+	
 }
 .message span{
 	position: absolute;

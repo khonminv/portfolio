@@ -7,7 +7,7 @@ const Login = ({ onLogin }) => {
 
     return (
         <div>
-            <div  className='logbtn' style={{ marginBottom: '10px' }}>
+            <div  className='logbtn'>
                 <a className='loginbtn'>로그인</a>
                 <a className='registerbtn'>회원가입</a>
             </div>
@@ -55,7 +55,7 @@ const RegisterForm = ({ onLogin }) => {
             const res = await axios.post(process.env.REACT_APP_API_URL + '/register', { name, password });
             onLogin(res.data.user);
             alert(`${res.data.user.name}님 환영합니다`);
-			
+
         } catch (err) {
             alert(err.response?.data?.error || '회원가입 실패');
         }

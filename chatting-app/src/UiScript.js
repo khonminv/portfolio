@@ -14,7 +14,6 @@ function UiScript() {
 		const registerForm = document.querySelector(".registerform")
 		const dim = document.querySelector(".dim")
 
-		console.log(registerForm.lastChild)
 		// console.log(loninForm)
 		//gnb
         const handleClick = (index) => (e) => {
