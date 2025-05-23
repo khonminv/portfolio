@@ -8,7 +8,7 @@ function Posting({ user, onPostSubmit }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:3002/posts', {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/posts` , {
                 title,
                 content,
                 author: user?.name || '익명',
