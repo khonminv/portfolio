@@ -16,8 +16,7 @@ function UiScript() {
 		const loginForm = document.querySelector(".loginform")
 		const registerForm = document.querySelector(".registerform")
 		const dim = document.querySelector(".dim")
-		const chatPage = document.querySelector("#chat")
-
+		
 		// console.log(loninForm)
 		//gnb
         const handleClick = (index) => (e) => {
@@ -35,8 +34,9 @@ function UiScript() {
         };
 	
 		gnbList[1].addEventListener("click",(e)=>{
+			const chatPage = document.querySelector("#chat ul")
 			let chatBottom = chatPage.scrollTop + chatPage.clientHeight
-			gsap.to(chatPage,{scrollTo:chatBottom})
+			gsap.to("#chat",{scrollTo:chatBottom, duration:0})
 		});
 
 		

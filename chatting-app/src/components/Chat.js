@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
+import gsap from 'gsap';
+import ScrollToPlugin from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const API_URL = process.env.REACT_APP_API_URL;
 const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:3002';
@@ -23,13 +27,14 @@ const Chat = ({ user }) => {
                 prevMessages.filter((msg) => msg._id !== deletedId)
             );
         });
+		
 
         return () => {
             socket.off('load messages');
             socket.off('chat message');
             socket.off('message deleted');
         };
-    }, []);
+    }, [messages]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -50,13 +55,13 @@ const Chat = ({ user }) => {
     return (
         <section id="chat">
             <ul className="message">
-				{!user && <p style={{ color: 'red' }}>로그인 후 채팅을 이용할 수 있습니다.</p>}
+				{!user && <small style={{ color: 'red' }}>로그인 후 채팅을 이용할 수 있습니다.</small>}
                 {messages.map((msg) => (
                     <li key={msg._id}>
                         <strong>{msg.name}: </strong>
-                        {msg.message}
+                       	<p>{msg.message}</p>
                         {user && msg.name === user.name && (
-							<span onClick={() => handleDelete(msg._id)} style={{ marginLeft: '10px', cursor: 'pointer' }}>
+							<span onClick={() => handleDelete(msg._id)}>
 								삭제
 							</span>
 						)}
