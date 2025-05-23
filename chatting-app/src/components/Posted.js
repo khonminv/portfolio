@@ -6,10 +6,17 @@ function Posted({ title, author, content }) {
 
     return (
         <div className="posted">
-            <h2>{title}</h2>
-			<span onClick={()=> {gsap.to(".posted", { top: "100%", duration: 0.5 });}}>뒤로가기</span>
-            <small>{author}</small>
-            <p>{content}</p>
+			<div className='postedTop'>
+				<span onClick={() => {gsap.to(".posted", { top: "100%", duration: 0.5 });}}>뒤로가기</span>
+			</div>
+			<div className='postedMid'>
+				<h2>{title}</h2>
+           		<small>{author}</small>
+			</div>
+			<div className='postedBot'>
+          	  	<p>{content}</p>
+			</div>
+
         </div>
     );
 }

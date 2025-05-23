@@ -1,21 +1,40 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const Login = ({ onLogin }) => {
+const Login = ({ user, onLogin , onLogout }) => {
     
 
 
     return (
         <div>
+			<div className='welcome'>
+				{
+					user?
+					(
+						<p>{`${user.name}님 환영합니다`}</p>
+					):
+					(
+						<p>로그인 해주세요</p>
+					)
+				}
+			</div>
             <div  className='logbtn'>
-                <a className='loginbtn'>로그인</a>
-                <a className='registerbtn'>회원가입</a>
+				
+				{
+					user?
+					<a onClick={onLogout}>로그아웃</a> :
+					<a className='loginbtn'>로그인</a>	
+				}
+				{
+					user?
+					null :
+					<a className='registerbtn'>회원가입</a>
+				}
             </div>
-           
-            <RegisterForm onLogin={onLogin} />
-           
+			
+			<RegisterForm onLogin={onLogin} />
             <LoginForm onLogin={onLogin} />
-           
+
         </div>
     );
 };

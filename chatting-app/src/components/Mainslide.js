@@ -17,7 +17,7 @@ function Mainslide(){
 					delay: 3000,
 					disableOnInteraction: false,
 				}}
-				// loop={true}
+				loop={true}
 				style={swiperStyle}
 			>
 				<SwiperSlide><img src="/images/slide1.jpg" alt="slide1"/></SwiperSlide>

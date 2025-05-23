@@ -79,15 +79,6 @@ function UiScript() {
 			gsap.to(".postpage",{top:"100%",duration:0.5})
 		});
 		
-		// setTimeout(() => {
-		// 	const postList = document.querySelectorAll(".postlist li")
-		// 	postList.forEach((item,i)=>{
-		// 		item.addEventListener("click", function(){
-		// 			gsap.to(".posted",{top:0,duration:0.5})
-		// 		});
-		// 	});
-		// },1000)
-		
 
         // 이벤트 리스너 등록
         gnbList.forEach((item, i) => {

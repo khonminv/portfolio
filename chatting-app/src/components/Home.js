@@ -7,19 +7,8 @@ function Home({ user, setUser, onLogout }) {
     return (
         <section id="home">
 			<div className="h_header">
-				{
-					user?
-					(
-						<div className="logbox">
-							<p>{`${user.name}님 환영합니다`}</p>
-							<a onClick={onLogout}>로그아웃</a>
-						</div>
-					):
-					(
-						<div className="logbox"><p>로그인 해주세요</p></div>
-					)
-				}
-				<Login onLogin={(user) => setUser(user)} />
+				
+				<Login onLogin={(user) => setUser(user)} onLogout={onLogout} user={user} />
 			</div>
 			<Mainslide />
 			<div className="news">

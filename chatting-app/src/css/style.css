@@ -101,32 +101,31 @@ li {
 #home.active{
 	display: block;
 }
-#home .h_header{
+#home .h_header {
 	position: relative;
 	top: 0;
 	left: 0;
 	height: 50px;
+	padding: 0 2em;
 }
 #home .main img{
 	display: block;
 	width: 100%;
 	height: 100%;
 }
-#home .logbox{
-	position: absolute;
-	right: 15em;
+.h_header > div{
 	display: flex;
-	gap: 10px;
+	justify-content: space-between;
+}
+#home .welcome{
 	line-height: 50px;
 }
 #home .logbox a{
 	text-decoration: underline;
 }
 #home .logbtn{
-	position: absolute;
 	display: flex;
 	gap: 20px;
-	right: 2em;
 	text-decoration: underline;
 	line-height: 50px;
 }
@@ -217,6 +216,12 @@ li {
 	white-space: nowrap;
 	font-size: 1em;
 }
+#home .polory{
+	width: 100%;
+	height: 100vh;
+}
+
+
 
 /* chat */
 #chat{
@@ -359,14 +364,40 @@ li {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
+	padding: 2em;
 	background-color: #54abed;
 	z-index: 50;
+	overflow-y: scroll;
 }
+#board .posted .postedTop{
+	width: 100%;
+	text-align: right;
+}
+#board .posted .postedMid{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 2em;
+
+}
+#board .posted .postedBot{
+	border-top: 1px solid #000;
+	width: 100%;
+	margin-top: 2em;
+	padding: 1em;
+
+}
+
 
 /* user */
 #user{
 	display: none;
+	padding: 2em;
 }
 #user.active{
 	display: block;
+}
+#user .user_top{
+	font-size: 1.5em;
+	margin-bottom: 2em;
 }
