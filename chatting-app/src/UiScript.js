@@ -1,8 +1,9 @@
 import data from "./data/data";
 import { useEffect } from "react";
 import gsap from "gsap";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 
-
+gsap.registerPlugin(ScrollToPlugin);
 let {gnb} = data;
 
 function UiScript() {
@@ -15,6 +16,7 @@ function UiScript() {
 		const loginForm = document.querySelector(".loginform")
 		const registerForm = document.querySelector(".registerform")
 		const dim = document.querySelector(".dim")
+		const chatPage = document.querySelector("#chat")
 
 		// console.log(loninForm)
 		//gnb
@@ -31,6 +33,13 @@ function UiScript() {
             secList[index]?.classList.add("active");
             gnbImages[index].src = `/images/${gnb[index].on}`;	
         };
+	
+		gnbList[1].addEventListener("click",(e)=>{
+			let chatBottom = chatPage.scrollTop + chatPage.clientHeight
+			gsap.to(chatPage,{scrollTo:chatBottom})
+		});
+
+		
 
 		gnbList[0]?.classList.add("active");
         secList[0]?.classList.add("active");
@@ -74,11 +83,7 @@ function UiScript() {
 			e.preventDefault()
 			gsap.to(".postpage",{top:"100%",duration:0.5})
 		});
-		const postingbtn = document.querySelector(".postpage button")
-		postingbtn.addEventListener("click", function(){
-			gsap.to(".postpage",{top:"100%",duration:0.5})
-		});
-		
+
 
         // 이벤트 리스너 등록
         gnbList.forEach((item, i) => {

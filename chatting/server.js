@@ -46,9 +46,8 @@ const userSchema = new mongoose.Schema({
 const postSchema = new mongoose.Schema({
     title: String,
     content: String,
-    author: String,         // 작성자 이름
-    createdAt: { type: Date, default: Date.now }
-});
+    author: String,         
+}, { timestamps: true });
 
 
 const Post = mongoose.model('Post', postSchema);
@@ -143,9 +142,11 @@ app.get('/posts', async (req, res) => {
 //글 작성
 app.post('/posts', async (req, res) => {
     const { title, content, author } = req.body;
-    if (!title || !content || !author) {
-        return res.status(400).json({ error: '제목, 내용, 작성자가 필요합니다.' });
-    }
+    if (!title) {
+        return res.status(400).json({ error: '제목이 필요합니다.' });
+    }else if(!content){
+		return res.status(400).json({ error: '내용이 필요합니다.' });
+	}
 
     const newPost = new Post({ title, content, author });
     await newPost.save();

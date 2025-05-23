@@ -1,8 +1,12 @@
-import React from 'react';
 import gsap from 'gsap';
 
-function Posted({ title, author, content }) {
+function Posted({ title, author, content, createdAt }) {
     if (!title) return null;
+
+	const postDate = (isoString) => {
+		const date = new Date(isoString);
+		return date.toLocaleString();
+	}
 
     return (
         <div className="posted">
@@ -11,6 +15,7 @@ function Posted({ title, author, content }) {
 			</div>
 			<div className='postedMid'>
 				<h2>{title}</h2>
+				<small>{postDate(createdAt)}</small>
            		<small>{author}</small>
 			</div>
 			<div className='postedBot'>

@@ -5,7 +5,7 @@ function Mainslide(){
 	
 	const swiperStyle = {
 		width: '100vw',
-		height: '500px',
+		height: '400px',
 	};
 	
 

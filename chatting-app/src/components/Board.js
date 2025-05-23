@@ -10,6 +10,13 @@ function Board({ user }) {
     const [totalPages, setTotalPages] = useState(1);
 	const [selectedPost, setSelectedPost] = useState(null);
 
+	
+	//포스팅 날짜
+	const postDate = (isoString) => {
+		const date = new Date(isoString);
+		return date.toLocaleDateString();
+	}
+
     const fetchPosts = async (pageNum) => {
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/posts?page=${pageNum}`);
@@ -40,22 +47,28 @@ function Board({ user }) {
                 <button className='postingbtn'>글쓰기</button>
             </div>
             <Posting user={user} onPostSubmit={handleNewPost} />
-            <ul className='postlist'>
-				<b><h4>제목</h4><span>작성자</span></b>
-                {posts.map((post, index) => (
-                    <li key={index}>
-						 <a
-							onClick={() => {
-								setSelectedPost(post);
-								gsap.to(".posted", { top: 0, duration: 0.5 });
-							}}
-						>
-							<h3>{post.title}</h3>
-							<small>{post.author}</small>
-						</a>
-                    </li>
+            <table className='postlist'>
+				<thead>
+					<tr>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					{posts.map((post, index) => (
+                    <tr key={index} 
+						onClick={() => {
+						setSelectedPost(post);
+						gsap.to(".posted", { top: 0, duration: 0.5 });}}>
+							<td>{post.title}</td>
+							<td>{post.author}</td>
+							<td>{postDate(post.createdAt)}</td>
+                    </tr>
                 ))}
-            </ul>
+				</tbody>
+                
+            </table>
             <div className="pagination">
                 {Array.from({ length: totalPages }, (_, i) => (
                     <button
@@ -71,6 +84,7 @@ function Board({ user }) {
                 title={selectedPost?.title}
                 author={selectedPost?.author}
                 content={selectedPost?.content}
+				createdAt={selectedPost?.createdAt}
             />
         </section>
     );

@@ -1,6 +1,8 @@
 import Login from "./Login";
 import News from "./News";
 import Mainslide from "./Mainslide";
+import Poroly from "./Poroly";
+
 function Home({ user, setUser, onLogout }) {
 	
 
@@ -15,9 +17,9 @@ function Home({ user, setUser, onLogout }) {
 				<h3>새로운 소식</h3>
 				<News />
 			</div>
-			<div className="polory">
+			<div className="poroly">
 				<h3>포로리</h3>
-				
+				<Poroly />
 			</div>
 			<div className="nubury">
 				<h3>너부리</h3>

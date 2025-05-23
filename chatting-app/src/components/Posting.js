@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import gsap from 'gsap';
+
 
 function Posting({ user, onPostSubmit }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
+	
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -16,9 +19,10 @@ function Posting({ user, onPostSubmit }) {
             onPostSubmit(res.data);
             setTitle('');
             setContent('');
+			gsap.to(".postpage",{top:"100%",duration:0.5})
         } catch (err) {
             console.error('글 등록 실패:', err);
-            alert('글 등록에 실패했습니다.');
+            alert(err.response?.data?.error || '글 등록 실패');
         }
     };
 
@@ -31,13 +35,13 @@ function Posting({ user, onPostSubmit }) {
                     placeholder="제목"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    required
+                  
                 />
                 <textarea
                     placeholder="내용"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                    required
+                    
                 />
                 <button type="submit">게시글 추가</button>
             </form>
