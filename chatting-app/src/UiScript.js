@@ -19,6 +19,11 @@ function UiScript() {
 		
 		// console.log(loninForm)
 		//gnb
+
+		if(window.innerWidth > 1000){
+			alert("모바일 전용 페이지입니다.")
+		}
+
         const handleClick = (index) => (e) => {
             e.preventDefault();
 
@@ -36,6 +41,7 @@ function UiScript() {
 		gnbList[1].addEventListener("click",(e)=>{
 			const chatPage = document.querySelector("#chat ul")
 			let chatBottom = chatPage.scrollTop + chatPage.clientHeight
+			console.log(chatBottom)
 			gsap.to("#chat",{scrollTo:chatBottom, duration:0})
 		});
 

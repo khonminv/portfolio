@@ -34,7 +34,7 @@ const Chat = ({ user }) => {
             socket.off('chat message');
             socket.off('message deleted');
         };
-    }, [messages]);
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault();

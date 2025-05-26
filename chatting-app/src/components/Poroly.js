@@ -6,10 +6,12 @@ function Poroly(){
 		height : "150px",
 		objectFit : "cover"
 	}
-	let sliderStyle = {
+	const imageStyle = {
+		width: "100%",
+		height: "100%",
 		objectFit: "cover",
 		display: "block"
-	}
+	};
 
 	return(
 		<>
@@ -19,10 +21,10 @@ function Poroly(){
 				spaceBetween={10}
 				style={porolySlider}
 			>
-				<SwiperSlide style={sliderStyle}><img src="/images/poroly1.jpg" alt="poroly1"/></SwiperSlide>
-				<SwiperSlide><img src="/images/poroly2.jpg" alt="poroly2"/></SwiperSlide>
-				<SwiperSlide><img src="/images/poroly3.jpg" alt="poroly3"/></SwiperSlide>
-				<SwiperSlide><img src="/images/poroly4.jpg" alt="poroly4"/></SwiperSlide>
+				<SwiperSlide><img style={imageStyle} src="/images/poroly1.jpg" alt="poroly1"/></SwiperSlide>
+				<SwiperSlide><img style={imageStyle} src="/images/poroly2.jpg" alt="poroly2"/></SwiperSlide>
+				<SwiperSlide><img style={imageStyle} src="/images/poroly3.jpg" alt="poroly3"/></SwiperSlide>
+				<SwiperSlide><img style={imageStyle} src="/images/poroly4.jpg" alt="poroly4"/></SwiperSlide>
 			</Swiper>
 		</>
 	)
