@@ -44,17 +44,6 @@ export default function Board() {
 
 	useEffect(() => {
 		fetchPosts(1); // 최초 로딩 시 1페이지
-
-		const postBtn = document.querySelector(".postingbtn")
-		postBtn.addEventListener("click",function(){
-			gsap.to(".postpage",{top:0,duration:0.5})
-		});
-		
-		const postBack = document.querySelector(".postback")
-		postBack.addEventListener("click",function(e){
-			e.preventDefault()
-			gsap.to(".postpage",{top:"100%",duration:0.5})
-		});
 	}, []);
 
 	const handlePageChange = (newPage: number) => {
@@ -69,7 +58,7 @@ export default function Board() {
 		<section id="board">
 		<div className="b_header">
 			<h1>게시판</h1>
-			<button className="postingbtn">글쓰기</button>
+			<button className="postingbtn" onClick={() => gsap.to(".postpage",{top:0,duration:0.5})}>글쓰기</button>
 		</div>
 
 		<Posting user={user} onPostSubmit={handleNewPost} />
