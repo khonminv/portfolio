@@ -20,8 +20,10 @@ export default function H_header() {
   return (
 	<div>
 		<h2>로그인 해주세요.</h2>
-		<Link href="/login" className="btn">로그인</Link>
-		<Link href="/register" className="btn">회원가입</Link>
+		<div className='links'>
+			<Link href="/login" className="btn">로그인</Link>
+			<Link href="/register" className="btn">회원가입</Link>
+		</div>
 	</div>
   );
 }

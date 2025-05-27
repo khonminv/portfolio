@@ -110,6 +110,10 @@ li {
 	height: 50px;
 	padding: 0 2em;
 }
+#home .h_header .links{
+	display: flex;
+	gap: 20px;
+}
 #home .main img{
 	display: block;
 	width: 100%;
@@ -141,13 +145,15 @@ li {
 	width: 40%;
 	z-index: 1000;
 }
+.plzlogin{
+	display: flex;
+	justify-content: space-between;
+}
 #home form.active{
 	display: flex;
 }
-#home .loginform{
-	gap: 20px;
-	flex-direction: column;
-	font-size: 2em;
+.loginform{
+	padding: 2em;
 }
 #home .loginform input{
 	line-height: 40px;
