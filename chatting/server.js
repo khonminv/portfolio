@@ -160,6 +160,11 @@ app.post('/posts', async (req, res) => {
 io.on('connection', (socket) => {
     console.log('A user connected');
 
+	socket.on('load messages', async () => {
+		const messages = await Message.find().sort({ createdAt: 1 });
+		socket.emit('load messages', messages);
+	});
+
     // 이전 메시지 로드
     Message.find().sort({ createdAt: 1 }).then(messages => {
         socket.emit('load messages', messages);

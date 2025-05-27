@@ -9,6 +9,9 @@
 ![Swiper](https://img.shields.io/badge/swiper-6332F6?style=flat-square&logo=swiper&logoColor=ffffff)
 ![React](https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=white)
 ![Swiper](https://img.shields.io/badge/GSAP-007ACC?style=flat-square&logo=visualstudio&logoColor=white")
+![Axios](https://img.shields.io/badge/Axios-81AABC?style=flat-square&logo=visualstudio&logoColor=white")
+![Node](https://img.shields.io/badge/Node-007ACC?style=flat-square&logo=visualstudio&logoColor=white")
+![Mongo](https://img.shields.io/badge/Mongo-007200?style=flat-square&logo=visualstudio&logoColor=white")
 
 
 ### ⚡View 

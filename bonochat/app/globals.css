@@ -1,26 +1,457 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+table,
+dl,
+dd {
+	margin: 0;
+	padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+h1 {
+	font-size: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+	vertical-align: top;
+	border: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	position: relative;
+	font-family: "Roboto", "Noto Sans KR", sans-serif;
+	background-color: #54abed;
+}
+body.fix{
+	overflow: hidden;
+}
+li {
+	margin: 0;
+	padding: 0;
+}
+*{
+	box-sizing: border-box;
+}
+#wrapper{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.dim{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .8);
+	z-index: 500;
+}
+.dim.active{
+	display: block;
+}
+
+/* gnb */
+#gnbbar{
+	height: 64px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	border-top: 1px solid #000;
+	background-color: #fff;
+	z-index: 2000;
+}
+
+#gnbbar ul{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+#gnbbar ul li a{
+	display: block;
+}
+
+
+/* home */
+#home{
+	display: block;
+	position: relative;
+	width: 100%;
+	height: calc(100% - 64px);
+}
+#home.active{
+	display: block;
+}
+#home .h_header {
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 50px;
+	padding: 0 2em;
+}
+#home .main img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.h_header > div{
+	display: flex;
+	justify-content: space-between;
+	line-height: 50px;
+}
+#home .welcome{
+	line-height: 50px;
+}
+#home .logbox a{
+	text-decoration: underline;
+}
+#home .logbtn{
+	display: flex;
+	gap: 20px;
+	text-decoration: underline;
+	line-height: 50px;
+}
+#home form{
+	display: block;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: 40%;
+	z-index: 1000;
+}
+#home form.active{
+	display: flex;
+}
+#home .loginform{
+	gap: 20px;
+	flex-direction: column;
+	font-size: 2em;
+}
+#home .loginform input{
+	line-height: 40px;
+	width: 100%;
+}
+#home .loginform button{
+	line-height: 50px;
+}
+#home .registerform{
+	gap: 20px;
+	flex-direction: column;
+	font-size: 2em;
+}
+#home .registerform input{
+	line-height: 40px;
+	width: 100%;
+}
+#home .registerform button{
+	line-height: 50px;
+}
+
+#home .loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px dotted #aaa;
+}
+#home .loading img {
+	width: 35px;
+}
+#home {
+	width: 100vw;
+}
+#home .news{
+	padding: 2em;
+}
+#home .news h3{
+	margin-bottom: 1em;
+}
+#home .news li{
+	border-bottom: 1px solid #aaa;
+}
+#home .title {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 25px;
+}
+#home .title h3 {
+	line-height: 24px;
+	font-size: 1em;
+}
+#home .news_list .loading {
+	height: 100px;
+}
+#home .news_list{
+	width: 100%;
+}
+#home .news_list li {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 10px;
+	line-height: 30px;
+	font-size: 1em;
+}
+#home .news_list a{
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis; 
+}
+#home .news_list span {
+	color: #333;
+	white-space: nowrap;
+	font-size: 1em;
+}
+#home .poroly{
+	width: 100%;
+	height: 100%;
+	padding: 2em;
+}
+#home .poroly h3{
+	margin-bottom: 1em;
+}
+#home .nubury{
+	height: 50vh;
+	padding: 2em;
+}
+
+
+/* chat */
+#chat{
+	display: block;
+	position: relative;
+	width: 100%;
+	height: calc(100vh - 120px);
+	margin: 0 auto;
+	padding: 2em;
+	border: 1px solid #000;
+	overflow-y: scroll;
+}
+#chat.active{
+	display: block;
+}
+.message{
+	position: relative;
+	width: 100%;
+	
+}
+.message li{
+	position: relative;
+	border-bottom: 1px solid #ccc;
+	line-height: 30px;
+	
+}
+.message span{
+	position: absolute;
+	top: 50%;
+	right: 0;
+	cursor: pointer;
+	color: red;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+.message small {
+	position: fixed;
+	bottom: 130px;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+}
+.message p{
+	white-space: wrap;
+	word-break: break-all;
+}
+#chat form{
+	display: flex;
+	position: fixed; 
+	bottom: 64px;
+	left: 50%;
+	width: 100%;
+	transform: translateX(-50%);
+}
+#chat form [type=text]{
+	width: 90%;
+	line-height: 50px;
+}
+#chat form button{
+	width: 10%;
+}
+
+/* board */
+#board{
+	position: relative;
+	display: block;
+	width: 100%;
+	padding: 3em 3em calc(3em + 80px) 3em;
+	overflow-y: scroll;
+}
+#board.active{
+	display: block;
+}
+#board .b_header{
+	display: flex;
+	justify-content: space-between;
+}
+#board .postpage{
+	position: fixed;
+	top: 100%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #54abed;
+	z-index: 50;
+}
+#board .postpage .postback{
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	transform: translateX(-50%);
+}
+#board form{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 80%;
+	height: 80%;
+	transform: translate(-50%,-50%);
+}
+#board form input,
+#board form textarea
+{
+	margin: 10px 0;
+    padding: 10px;
+}
+#board form input{
+	width: 100%;
+}
+
+#board form textarea{
+	width: 100%;
+	height: 70%;
+}
+#board table{
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 3em;
+	table-layout: fixed;
+}
+#board table thead{
+	line-height: 50px;
+	border-bottom: 1px solid #000;
+	white-space: nowrap;
+}
+#board table th:nth-child(1){
+	width: 60%;
+}
+#board table th:nth-child(2){
+	width: 20%;
+	text-align: center;
+}
+#board table th:nth-child(3){
+	width: 20%;
+	text-align: right;
+}
+#board table tr:not(:first-child){
+	border-bottom: 1px solid #aaa;
+}
+#board table td:nth-child(1){
+	line-height: 50px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+}
+#board table td:nth-child(2){
+	line-height: 50px;
+	text-align: center;
+	white-space: nowrap;
+}
+#board table td:nth-child(3){
+	line-height: 50px;
+	text-align: right;
+	font-size: 0.75em;
+	white-space: nowrap;
+}
+
+
+#board .pagination {
+	position: absolute;
+	left: 50%;
+	bottom: 70px;
+    margin-top: 1rem;
+	transform: translateX(-50%);
+}
+#board .pagination button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    background: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+#board .pagination button:disabled {
+    background: #aaa;
+    cursor: default;
+}
+#board .posted{
+	position: fixed;
+	top: 100%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	padding: 2em;
+	background-color: #54abed;
+	z-index: 50;
+	overflow-y: scroll;
+}
+#board .posted .postedTop{
+	width: 100%;
+	text-align: right;
+}
+#board .posted .postedMid{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 2em;
+
+}
+#board .posted .postedBot{
+	border-top: 1px solid #000;
+	width: 100%;
+	margin-top: 2em;
+	padding: 1em;
+
+}
+
+
+/* user */
+#user{
+	display: block;
+	padding: 2em;
+}
+#user.active{
+	display: block;
+}
+#user .user_top{
+	font-size: 1.5em;
+	margin-bottom: 2em;
 }

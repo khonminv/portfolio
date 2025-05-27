@@ -1,15 +1,29 @@
-import data from '../data/data'
+'use client';
 
+import data from '../data/data';
+import Image from 'next/image';
 
-function Gnb(){
-	return(
-		<div id="gnbbar">
-			<ul>
-				{
-					data.gnb.map((d,i) => <li key={i} className='gnb'><a href=''><img src={`/images/${d.off}`} alt={d.off.split(".")[0]}></img></a></li>)
-				}
-			</ul>
-		</div>
-	)
+interface GnbItem {
+  off: string;
 }
-export default Gnb;
+
+export default function Gnb() {
+  return (
+    <div id="gnbbar">
+      <ul>
+        {data.gnb.map((d: GnbItem, i: number) => (
+          <li key={i} className="gnb">
+            <a href="">
+              <Image
+                src={`/images/${d.off}`}
+                alt={d.off.split('.')[0]}
+                width={50} // 적절한 값으로 수정
+                height={50} // 적절한 값으로 수정
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
