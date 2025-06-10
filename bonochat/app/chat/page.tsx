@@ -21,15 +21,15 @@ export default function Chat() {
 		if (!socket) return;
 
 		const loadMessagesHandler = (loadedMessages: Message[]) => {
-		setMessages(loadedMessages);
-		console.log("불러와잇")
+			setMessages(loadedMessages);
+			console.log("불러와잇")
 		};
 		const chatMessageHandler = (msg: Message) => {
-		setMessages((prev) => [...prev, msg]);
-		console.log("보내잇")
+			setMessages((prev) => [...prev, msg]);
+			console.log("보내잇")
 		};
 		const messageDeletedHandler = (deletedId: string) => {
-		setMessages((prev) => prev.filter((msg) => msg._id !== deletedId));
+			setMessages((prev) => prev.filter((msg) => msg._id !== deletedId));
 		};
 
 		socket.on('load messages', loadMessagesHandler);

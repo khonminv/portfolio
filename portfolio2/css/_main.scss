@@ -1,0 +1,157 @@
+.start{
+	width: 100%;
+	height: 100vh;
+
+	#header{
+		position: absolute;
+		top: 20px;
+		left: 0;
+		width: 100%;
+		height: 70px;
+		background-color: transparent;
+		z-index: 1000;
+		transition: 0.3s;
+		overflow: hidden;
+		@media only screen and (max-width:780px){
+			height: 55px;
+		}
+		&.fixed{
+			position: fixed;
+			background-color: transparent;
+		}
+
+		.header_zone{
+			display: flex;
+			align-content: center;
+			justify-content: space-between;
+			
+			.logo{
+				@include padding-style(10px 0);
+				width: 150px;
+				a{
+					display: block;
+					img{
+						@media only screen and (max-width:780px){
+							width: 70%;
+						}
+				}
+				
+				}
+				
+			}
+			nav ul{
+				display: flex;
+				gap: 50px;
+				@media only screen and (max-width:1080px){
+					gap: 30px;
+				}
+				@media only screen and (max-width:780px){
+					position: fixed;
+					right: 10px;
+					top: 50%;
+					flex-direction: column;
+					gap: 15px;
+					text-align: right;
+					transform: translateY(-50%);
+				}
+				li{
+					&.active a{
+						color: #8B0000;
+						// border: 2px solid #f7ea2d;
+						box-sizing: border-box;
+						
+						@media only screen and (max-width:780px){
+							border: 1px solid #8B0000;
+						}
+					}
+					a{	
+						
+						@include padding-style(7px 20px);
+						display: inline-block;
+						line-height: 50px;
+						color: $main-color;
+						border-radius: 8px;
+						margin-top: 2px;
+						font-weight: 500;
+
+						@media only screen and (max-width:780px){
+							@include padding-style(3px 5px);
+							line-height: 20px;
+						}
+						
+					}
+				} 
+			}
+		}
+	}
+	.main{
+		video{
+			width: 100%;
+			height: 100vh;
+			object-fit: cover;
+			z-index: 0;
+		}
+		.main_text{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: $translate-mid;
+			b{
+				display: block;
+				font-size: 6em;
+				color: $main-color;
+				// font-family: "Lora", serif;
+				line-height: 0.9;
+				letter-spacing: 4px;
+				@media only screen and (max-width:480px){
+					font-size: 5em;
+				}
+			}
+			p{	
+				display: block;
+				font-size: 6em;
+				font-style: italic;
+				color: $main-color;
+				font-family: $start-font;
+				letter-spacing: 12px;
+				@media only screen and (max-width:480px){
+					font-size: 5em;
+					letter-spacing: 8px;
+				}
+			}
+			
+
+			
+			
+		}
+		.btn{
+			position: absolute;
+			right: 7.5em;
+			bottom: 4.5em;
+			display: flex;
+			gap: 30px;
+
+			@media only screen and (max-width:480px){
+				right: 4.5em;
+			}
+			a{
+				display: block;
+				z-index: 50;
+				
+				img{
+					display: block;
+					width: 2em;
+					height: 2em;
+				}
+			}
+		}
+		span{
+			display: block;
+			position: absolute;
+			left: 50%;
+			bottom: 20px;
+			transform: translateX(-50%);
+			color: $main-color;
+		}
+	} 
+}

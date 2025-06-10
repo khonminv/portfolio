@@ -1,0 +1,99 @@
+#project{
+	@extend %section;
+	@include padding-style(10vh 0 10vh);
+	position: relative;
+	height: 250vh;
+	color: $main-color;
+	@media only screen and (max-width:780px){
+		height: 180vh;
+	}
+	.inr {
+		h3{
+			display: block;
+			font-size: 3em;
+			font-family: $start-font;
+			padding-bottom: 50px;
+			letter-spacing: 10px;
+		}
+		ul {
+			li {
+				border-bottom: 1px solid #fff;
+				&:first-child{
+					border-top: 1px solid #fff;
+				}
+				a{	
+					@include padding-style(7em 3em);
+					display: flex;
+					position: relative;
+					align-items: center;
+					justify-content: space-between;
+					width: 100%;
+					color: $main-color;
+
+					@media only screen and (max-width:1080px){
+						@include padding-style(8em 0);
+					}
+					@media only screen and (max-width:780px){
+						@include padding-style(5em 0);
+					}
+					@media only screen and (max-width:480px){
+						display: block;
+					}
+					.pro_left h4{
+						@include padding-style(0 0 0 1.5em);
+						font-size: 2.5em;
+
+						@media only screen and (max-width:780px){
+							@include padding-style(0 0 0 0.5em);
+						
+						}
+						@media only screen and (max-width:480px){
+							margin-bottom: 1em;
+						
+						}
+					}
+					.pro_right{
+						@include padding-style(0 1.5em 0 );
+						width: 35%;
+						@media only screen and (max-width:1080px){
+							width: 45%;
+						}
+						@media only screen and (max-width:780px){
+							width: 60%;
+						}
+						@media only screen and (max-width:480px){
+							width: 100%;
+						}
+						p{
+							display: block;
+							font-size: 1em;
+							line-height: 1.5;
+						}
+					}
+					.img_box{
+						position: absolute;
+						left:40%;
+						top: 50%;
+						width: 30%;
+						height: 100%;
+						transform: $translate-mid;
+						z-index: 2;
+						@media only screen and (max-width:780px){
+							display: none;
+						}
+						img{
+							display: block;
+							position: absolute;
+							width: 30em;
+							height: 30em;
+							object-fit: contain;
+							z-index: 99999;
+							
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}

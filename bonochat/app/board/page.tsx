@@ -33,12 +33,12 @@ export default function Board() {
 
 	const fetchPosts = async (pageNum: number) => {
 		try {
-		const res = await axios.get(`${API_URL}/posts?page=${pageNum}`);
-		setPosts(res.data.posts);
-		setTotalPages(res.data.totalPages);
-		setPage(res.data.currentPage);
+			const res = await axios.get(`${API_URL}/posts?page=${pageNum}`);
+			setPosts(res.data.posts);
+			setTotalPages(res.data.totalPages);
+			setPage(res.data.currentPage);
 		} catch (err) {
-		console.error('게시글 불러오기 실패:', err);
+			console.error('게시글 불러오기 실패:', err);
 		}
 	};
 
