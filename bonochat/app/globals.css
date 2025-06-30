@@ -23,7 +23,7 @@ h1 {
 
 a {
 	text-decoration: none;
-	color: #000;
+	color: #fff;
 }
 
 ul,
@@ -40,7 +40,7 @@ img {
 body {
 	position: relative;
 	font-family: "Roboto", "Noto Sans KR", sans-serif;
-	background-color: #54abed;
+	background-color: #000;
 }
 body.fix{
 	overflow: hidden;
@@ -78,7 +78,7 @@ li {
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	border-top: 1px solid #000;
+	border-top: 1px solid #fff;
 	background-color: #fff;
 	z-index: 2000;
 }
@@ -109,6 +109,9 @@ li {
 	left: 0;
 	height: 50px;
 	padding: 0 2em;
+}
+#home .h_header h2{
+	color: #fff;
 }
 #home .h_header .links{
 	display: flex;
@@ -192,6 +195,7 @@ li {
 }
 #home .news h3{
 	margin-bottom: 1em;
+	color: #fff;
 }
 #home .news li{
 	border-bottom: 1px solid #aaa;
@@ -224,7 +228,7 @@ li {
   	text-overflow: ellipsis; 
 }
 #home .news_list span {
-	color: #333;
+	color: #fff;
 	white-space: nowrap;
 	font-size: 1em;
 }
@@ -235,6 +239,7 @@ li {
 }
 #home .poroly h3{
 	margin-bottom: 1em;
+	color: #fff;
 }
 #home .nubury{
 	height: 50vh;
@@ -250,7 +255,7 @@ li {
 	height: calc(100vh - 120px);
 	margin: 0 auto;
 	padding: 2em;
-	border: 1px solid #000;
+	border: 1px solid #fff;
 	overflow-y: scroll;
 }
 #chat.active{
@@ -265,7 +270,7 @@ li {
 	position: relative;
 	border-bottom: 1px solid #ccc;
 	line-height: 30px;
-	
+	color: #fff;
 }
 .message span{
 	position: absolute;
@@ -318,6 +323,9 @@ li {
 	display: flex;
 	justify-content: space-between;
 }
+#board .b_header h1{
+ 	color: #fff;
+}
 #board .postpage{
 	position: fixed;
 	top: 100%;
@@ -360,10 +368,11 @@ li {
 	border-collapse: collapse;
 	margin-top: 3em;
 	table-layout: fixed;
+	color: #fff;
 }
-#board table thead{
+#board table thead{ 
 	line-height: 50px;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #fff;
 	white-space: nowrap;
 }
 #board table th:nth-child(1){
@@ -441,7 +450,7 @@ li {
 
 }
 #board .posted .postedBot{
-	border-top: 1px solid #000;
+	border-top: 1px solid #fff;
 	width: 100%;
 	margin-top: 2em;
 	padding: 1em;
@@ -453,6 +462,7 @@ li {
 #user{
 	display: block;
 	padding: 2em;
+	color: #fff;
 }
 #user.active{
 	display: block;
