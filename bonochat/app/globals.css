@@ -407,7 +407,12 @@ li {
 	font-size: 0.75em;
 	white-space: nowrap;
 }
-
+#board table tbody tr{
+	border-bottom: 1px solid #fff;
+}
+#board table tbody tr td:nth-child(1){
+	cursor: pointer;
+}
 
 #board .pagination {
 	position: absolute;
