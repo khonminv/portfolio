@@ -16,26 +16,26 @@ const imageStyle: React.CSSProperties = {
   display: 'block',
 };
 
-export default function Poroly() {
+export default function Nubury() {
   return (
     <Swiper loop={true} slidesPerView={3} spaceBetween={30} style={porolySliderStyle}>
       <SwiperSlide>
-        <Image src="/images/fireman.jpeg" alt="poroly1" style={imageStyle} width={150} height={300} />
+        <Image src="/images/wikid.jpeg" alt="poroly1" style={imageStyle} width={150} height={300} />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src="/images/family.jpeg" alt="poroly2" style={imageStyle} width={300} height={150} />
+        <Image src="/images/thecrow.jpeg" alt="poroly2" style={imageStyle} width={300} height={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src="/images/harbin.jpeg" alt="poroly3" style={imageStyle} width={300} height={150} />
+        <Image src="/images/redwon.jpeg" alt="poroly3" style={imageStyle} width={300} height={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src="/images/citylove.jpeg" alt="poroly4" style={imageStyle} width={300} height={150} />
+        <Image src="/images/hellboy.jpeg" alt="poroly4" style={imageStyle} width={300} height={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src="/images/firstwin.jpeg" alt="poroly5" style={imageStyle} width={300} height={150} />
+        <Image src="/images/immoohye.jpeg" alt="poroly5" style={imageStyle} width={300} height={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src="/images/anemone.jpeg" alt="poroly5" style={imageStyle} width={300} height={150} />
+        <Image src="/images/wingka.jpeg" alt="poroly5" style={imageStyle} width={300} height={150} />
       </SwiperSlide>
     </Swiper>
   );

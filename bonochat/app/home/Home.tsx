@@ -4,6 +4,7 @@ import H_header from "./components/H_header";
 import Mainslide from "./components/Mainslide";
 import News from "./components/News";
 import Poroly from "./components/Poroly";
+import Nubury from "./components/Nubury";
 
 export default function Home() {
 
@@ -19,12 +20,12 @@ export default function Home() {
         <News />
       </div>
       <div className="poroly">
-        <h3>포로리</h3>
+        <h3>드라마</h3>
         <Poroly />
       </div>
       <div className="nubury">
-        <h3>너부리</h3>
-       
+        <h3>판타지</h3>
+        <Nubury />
       </div>
     </section>
   );

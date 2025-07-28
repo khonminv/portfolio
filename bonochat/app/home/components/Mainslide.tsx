@@ -20,9 +20,8 @@ function Mainslide(){
 				loop={true}
 				style={swiperStyle}
 			>
-				<SwiperSlide><img src="/images/slide1.jpg" alt="slide1"/></SwiperSlide>
-				<SwiperSlide><img src="/images/slide2.jpg" alt="slide1"/></SwiperSlide>
-				<SwiperSlide><img src="/images/slide3.jpg" alt="slide1"/></SwiperSlide>
+				<SwiperSlide><img src="/images/mainbanner1.jpg" alt="slide1"/></SwiperSlide>
+				<SwiperSlide><img src="/images/mainbanner2.jpeg" alt="slide2"/></SwiperSlide>
 			</Swiper>
 		</div>
 	)

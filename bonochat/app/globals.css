@@ -242,8 +242,13 @@ li {
 	color: #fff;
 }
 #home .nubury{
-	height: 50vh;
+	height: 100%;
 	padding: 2em;
+	margin-bottom: 50vh;
+}
+#home .nubury h3{
+	margin-bottom: 1em;
+	color: #fff;
 }
 
 
