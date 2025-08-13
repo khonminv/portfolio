@@ -312,14 +312,20 @@ window.addEventListener("load", function(){
 		  },
 		breakpoints:{
 			480:{
+				spaceBetween:10,
 				slidesPerView: 2,
 			},
 			780:{
 				spaceBetween:20,
-				slidesPerView: 3,
+				slidesPerView: 2,
+			},
+			980:{
+				spaceBetween:20,
+				slidesPerView: 2,
 			},
 			1080:{
 				spaceBetween:30,
+				slidesPerView: 3,
 			},
 			1400:{
 				spaceBetween:40,

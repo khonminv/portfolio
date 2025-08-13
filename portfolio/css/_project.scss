@@ -22,7 +22,7 @@
 					border-top: 1px solid #fff;
 				}
 				a{	
-					@include padding-style(7em 3em);
+					@include padding-style(8em 3em);
 					display: flex;
 					position: relative;
 					align-items: center;
@@ -31,13 +31,14 @@
 					color: $main-color;
 
 					@media only screen and (max-width:1080px){
-						@include padding-style(8em 0);
+						@include padding-style(8em 3em);
 					}
 					@media only screen and (max-width:780px){
-						@include padding-style(5em 0);
+						@include padding-style(5em 2em);
 					}
 					@media only screen and (max-width:480px){
 						display: block;
+						@include padding-style(2em 0em);
 					}
 					.pro_left h4{
 						@include padding-style(0 0 0 1.5em);
@@ -54,14 +55,14 @@
 					}
 					.pro_right{
 						@include padding-style(0 1.5em 0 );
-						width: 35%;
+						width: 40%;
 						@media only screen and (max-width:1080px){
-							width: 45%;
+							width: 65%;
 						}
 						@media only screen and (max-width:780px){
 							width: 60%;
 						}
-						@media only screen and (max-width:480px){
+						@media only screen and (max-width:580px){
 							width: 100%;
 						}
 						p{

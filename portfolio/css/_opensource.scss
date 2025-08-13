@@ -5,8 +5,14 @@
 	@extend %section;
 	@include padding-style(10vh 0);
 
-	@media only screen and (max-width:1200px) {
-		margin: 20vh 0;
+	@media only screen and (min-width:1200px) {
+		margin: 40vh 0;
+	} 
+	@media only screen and (max-width:1199px) {
+		margin: 50vh 0;
+	} 
+	@media only screen and (max-width:400px) {
+		margin: 50vh 0;
 	} 
 	.swiper {
 		width: 100%;
@@ -43,10 +49,10 @@
 			.slide_mid{
 				@include margin-style(0 0 10px 0);
 				display: block;
-				height: 200px;
+				height: 150px;
 				p{
 					font-size: 1em;
-					@media only screen and (max-width:480px){
+					@media only screen and (max-width:510px){
 						font-size: 1.25em;
 					}
 				}

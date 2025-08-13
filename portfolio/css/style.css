@@ -202,7 +202,7 @@ body.active {
 }
 @media only screen and (max-width: 480px) {
   .start .main .main_text b {
-    font-size: 5em;
+    font-size: 4em;
   }
 }
 .start .main .main_text p {
@@ -215,7 +215,7 @@ body.active {
 }
 @media only screen and (max-width: 480px) {
   .start .main .main_text p {
-    font-size: 5em;
+    font-size: 4em;
     letter-spacing: 8px;
   }
 }
@@ -456,7 +456,7 @@ body.active {
   border-top: 1px solid #fff;
 }
 #project .inr ul li a {
-  padding: 7em 3em;
+  padding: 8em 3em;
   display: flex;
   position: relative;
   align-items: center;
@@ -466,17 +466,18 @@ body.active {
 }
 @media only screen and (max-width: 1080px) {
   #project .inr ul li a {
-    padding: 8em 0;
+    padding: 8em 3em;
   }
 }
 @media only screen and (max-width: 780px) {
   #project .inr ul li a {
-    padding: 5em 0;
+    padding: 5em 2em;
   }
 }
 @media only screen and (max-width: 480px) {
   #project .inr ul li a {
     display: block;
+    padding: 2em 0em;
   }
 }
 #project .inr ul li a .pro_left h4 {
@@ -495,11 +496,11 @@ body.active {
 }
 #project .inr ul li a .pro_right {
   padding: 0 1.5em 0;
-  width: 35%;
+  width: 40%;
 }
 @media only screen and (max-width: 1080px) {
   #project .inr ul li a .pro_right {
-    width: 45%;
+    width: 65%;
   }
 }
 @media only screen and (max-width: 780px) {
@@ -507,7 +508,7 @@ body.active {
     width: 60%;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 580px) {
   #project .inr ul li a .pro_right {
     width: 100%;
   }
@@ -548,9 +549,19 @@ body.active {
 #open_source {
   padding: 10vh 0;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   #open_source {
-    margin: 20vh 0;
+    margin: 40vh 0;
+  }
+}
+@media only screen and (max-width: 1199px) {
+  #open_source {
+    margin: 50vh 0;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #open_source {
+    margin: 50vh 0;
   }
 }
 #open_source .swiper {
@@ -588,12 +599,12 @@ body.active {
 #open_source .swiper .swiper-slide .slide_mid {
   margin: 0 0 10px 0;
   display: block;
-  height: 200px;
+  height: 150px;
 }
 #open_source .swiper .swiper-slide .slide_mid p {
   font-size: 1em;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 510px) {
   #open_source .swiper .swiper-slide .slide_mid p {
     font-size: 1.25em;
   }
@@ -799,4 +810,4 @@ path {
   to {
     height: 50px;
   }
-}
+}/*# sourceMappingURL=style.css.map */
